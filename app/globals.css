@@ -1,0 +1,519 @@
+@import "tailwindcss";
+
+/*
+ * eduRealm design system — navy · gold · charcoal on cream.
+ * Gold is an accent FILL (navy text on it). Gold text on light surfaces uses gold-ink only.
+ * No gold anywhere on /programs/mind-before-marks.
+ */
+@theme {
+  /* Brand: #19A7E6 (sky). Bright fills carry dark ink text — white on #19A7E6 is only 2.7:1.
+     The former navy tokens now map to deep shades of the same hue (white text on them passes AA). */
+  --color-brand: #19a7e6;
+  --color-brand-600: #0e8fcc;
+  --color-brand-ink: #03263a;
+  --color-brand-tint: #e5f5fd;
+  --color-brand-100: #cdebfa;
+  --color-navy-950: #053c59;
+  --color-navy: #075985;
+  --color-navy-800: #0a6a9c;
+  --color-blue: #0a6a9c;
+  --color-sky: #a9dcf5;
+  --color-charcoal: #1e2329;
+  --color-charcoal-800: #2a3037;
+  --color-graphite: #3a4149;
+  --color-gray: #6b7280;
+  --color-gold: #e9b42c;
+  --color-gold-soft: #fbf0cf;
+  --color-gold-ink: #7a5a08;
+  --color-cream: #f4fafd;
+  --color-cream-200: #e4f2fa;
+  --color-paper: #ffffff;
+  --color-white: #ffffff;
+  --color-mist: #e5f5fd;
+  --color-rule: #d5e8f3;
+  /* legacy aliases used by older components */
+  --color-ink: #03263a;
+  --color-ink-soft: #3a4149;
+  --color-sky-pale: #e5f5fd;
+  --color-silver: #c3cbd3;
+  --color-blue-mid: #2c7db8;
+
+  --font-display: "General Sans", system-ui, sans-serif;
+  --font-sans: "General Sans", system-ui, sans-serif;
+  --font-serif: var(--font-instrument), Georgia, serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+  --font-deva: var(--font-noto-deva), sans-serif;
+
+  /* Scale: 72/56/40/28/20/17/15/13 */
+  --text-d1: 4.5rem;
+  --text-d1--line-height: 1.05;
+  --text-d2: 3.5rem;
+  --text-d2--line-height: 1.08;
+  --text-d3: 2.5rem;
+  --text-d3--line-height: 1.12;
+  --text-d4: 1.75rem;
+  --text-d4--line-height: 1.2;
+  --text-d5: 1.25rem;
+  --text-d5--line-height: 1.3;
+  --text-lead: 1.1875rem;
+  --text-lead--line-height: 1.6;
+  --text-body: 1.0625rem;
+  --text-body--line-height: 1.6;
+  --text-small: 0.9375rem;
+  --text-small--line-height: 1.55;
+  --text-micro: 0.8125rem;
+  --text-micro--line-height: 1.45;
+
+  --radius-card: 24px;
+  --radius-photo: 28px;
+  --radius-field: 12px;
+
+  --shadow-float: 0 18px 40px -18px rgb(3 38 58 / 0.22);
+
+  --ease-reveal: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-graphite);
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--color-navy);
+  text-wrap: balance;
+}
+.on-dark h1,
+.on-dark h2,
+.on-dark h3,
+.on-dark h4 {
+  color: var(--color-white);
+}
+
+/* The serif italic accent word in headlines */
+h1 em,
+h2 em,
+h3 em,
+.accent {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+.on-dark :focus-visible {
+  outline-color: var(--color-gold);
+}
+
+::selection {
+  background: var(--color-gold-soft);
+  color: var(--color-navy);
+}
+
+/* ---------------------------------------------------------------- */
+/* §2 Base reveal — hidden only once JS is known to run              */
+/* ---------------------------------------------------------------- */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(var(--reveal-travel, 12px));
+  transition:
+    opacity var(--reveal-duration, 600ms) var(--ease-reveal),
+    transform var(--reveal-duration, 600ms) var(--ease-reveal);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.js [data-reveal].is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* Mind Before Marks: 400ms opacity fades only. Nothing else. */
+[data-motion="strict"] [data-reveal] {
+  --reveal-travel: 0px !important;
+  --reveal-duration: 400ms !important;
+  transition-property: opacity !important;
+}
+[data-motion="strict"] .photo-zoom img {
+  transform: none !important;
+}
+
+/* ---------------------------------------------------------------- */
+/* CSS-only motion: marquee, stamp, tab crossfade, card hover        */
+/* ---------------------------------------------------------------- */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 38s linear infinite;
+}
+.marquee:hover .marquee-track,
+.marquee:focus-within .marquee-track,
+.marquee[data-paused="true"] .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.stamp-ring {
+  animation: spin 40s linear infinite;
+  transform-origin: 50% 50%;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.tab-panel {
+  animation: fade-in 300ms var(--ease-reveal);
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+.photo-zoom img {
+  transition: transform 500ms var(--ease-reveal);
+}
+.group:hover .photo-zoom img,
+.photo-zoom:hover img {
+  transform: scale(1.03);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .marquee-track,
+  .stamp-ring,
+  .tab-panel {
+    animation: none !important;
+  }
+  .photo-zoom img {
+    transition: none;
+    transform: none !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Radix accordion — 200ms height transition */
+.acc-content {
+  overflow: hidden;
+}
+.acc-content[data-state="open"] {
+  animation: acc-down 200ms var(--ease-reveal);
+}
+.acc-content[data-state="closed"] {
+  animation: acc-up 200ms var(--ease-reveal);
+}
+@keyframes acc-down {
+  from { height: 0; }
+  to { height: var(--radix-accordion-content-height); }
+}
+@keyframes acc-up {
+  from { height: var(--radix-accordion-content-height); }
+  to { height: 0; }
+}
+
+/* /zeo timeline — single stroke drawn on enter */
+.draw-line {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+.js [data-reveal] .draw-line {
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 900ms var(--ease-reveal) 200ms;
+}
+.js [data-reveal].is-revealed .draw-line {
+  stroke-dashoffset: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal] .draw-line {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Speech-bubble tail on dark bands (Finovate pattern) */
+.bubble-tail {
+  position: relative;
+}
+.bubble-tail::after {
+  content: "";
+  position: absolute;
+  left: 3rem;
+  bottom: -18px;
+  width: 36px;
+  height: 18px;
+  background: inherit;
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+
+/* Subtle dot texture for cream heroes */
+.dot-texture {
+  background-image: radial-gradient(rgb(7 89 133 / 0.12) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+/* "To confirm" placeholder chip — legible on light and dark surfaces */
+.ph {
+  border: 1px dashed rgb(7 89 133 / 0.4);
+  border-radius: 10px;
+  background: var(--color-cream-200);
+  color: var(--color-graphite);
+}
+.ph .ph-label {
+  color: var(--color-navy);
+}
+.on-dark .ph {
+  border-color: rgb(255 255 255 / 0.35);
+  background: rgb(255 255 255 / 0.06);
+  color: rgb(255 255 255 / 0.8);
+}
+.on-dark .ph .ph-label {
+  color: var(--color-gold);
+}
+
+/* ---------------------------------------------------------------- */
+/* Homepage hero — auto-playing carousel animation                  */
+/* ---------------------------------------------------------------- */
+.hero-word {
+  display: inline-block;
+  animation: hero-word-up 750ms var(--ease-reveal) both;
+}
+@keyframes hero-word-up {
+  from {
+    opacity: 0;
+    transform: translateY(105%);
+  }
+}
+.hero-fade {
+  animation: hero-fade-up 650ms var(--ease-reveal) both;
+}
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+/* Progress bar per tab; the active bar's animationend advances the carousel */
+.hero-progress {
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+.hero-progress.is-done {
+  transform: scaleX(1);
+  opacity: 0.35;
+}
+.hero-progress.is-active {
+  animation-name: hero-progress;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+[data-running="false"] .hero-progress.is-active {
+  animation-play-state: paused;
+}
+@keyframes hero-progress {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Collage: tiles wipe in one after another; the main photo slowly zooms (Ken Burns).
+   .collage-in wraps the PhotoCollage grid; its children are tile, tile, tile, stamp, (chip). */
+.collage-in > div > :nth-child(-n + 3) {
+  animation: tile-in 950ms var(--ease-reveal) both;
+}
+.collage-in > div > :nth-child(2) {
+  animation-delay: 120ms;
+}
+.collage-in > div > :nth-child(3) {
+  animation-delay: 240ms;
+}
+@keyframes tile-in {
+  from {
+    clip-path: inset(100% 0 0 0 round 28px);
+    transform: translateY(24px);
+  }
+  to {
+    clip-path: inset(0 0 0 0 round 28px);
+  }
+}
+.collage-in > div > :nth-child(1) img {
+  animation: ken-burns 7s linear both;
+}
+@keyframes ken-burns {
+  from {
+    transform: scale(1.12);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+.collage-in > div > :nth-child(4) {
+  animation: stamp-pop 700ms var(--ease-reveal) 350ms both;
+}
+@keyframes stamp-pop {
+  from {
+    opacity: 0;
+    scale: 0.6;
+  }
+}
+
+/* Desktop: the hero fits one viewport with the header — the collage sizes to the viewport height. */
+@media (min-width: 1024px) {
+  .hero-fit .collage-in > div {
+    height: min(66svh, 560px);
+    grid-template-rows: 1fr 1fr;
+  }
+  .hero-fit .collage-in .photo-zoom {
+    min-height: 0;
+  }
+}
+
+/* Slow drifting background glows */
+.hero-blob {
+  animation: blob-drift 16s ease-in-out infinite alternate;
+}
+.hero-blob-2 {
+  animation: blob-drift 20s ease-in-out infinite alternate-reverse;
+}
+@keyframes blob-drift {
+  to {
+    transform: translate(-60px, 40px) scale(1.12);
+  }
+}
+
+/* Mind Before Marks route: shared chrome (header, footer) drops every gold accent. */
+html[data-calm] .bg-gold {
+  background-color: var(--color-sky) !important;
+}
+html[data-calm] .text-gold {
+  color: var(--color-sky) !important;
+}
+html[data-calm] .border-gold,
+html[data-calm] .ring-gold {
+  border-color: var(--color-sky) !important;
+}
+html[data-calm] ::selection {
+  background: var(--color-sky);
+}
+
+/* Light surfaces nested inside dark bands keep navy headings (e.g. the gold highlight card). */
+.on-dark :is(.bg-gold, .bg-paper, .bg-cream, .bg-white) :is(h1, h2, h3, h4) {
+  color: var(--color-navy);
+}
+html[data-calm] .on-dark .ph .ph-label {
+  color: var(--color-sky);
+}
+
+/* Bright brand surfaces (#19A7E6): dark ink text for contrast. */
+.on-brand {
+  color: var(--color-brand-ink);
+}
+.on-brand :is(h1, h2, h3, h4) {
+  color: var(--color-brand-ink);
+}
+.on-brand :is(.bg-paper, .bg-cream, .bg-white) :is(h1, h2, h3, h4) {
+  color: var(--color-navy);
+}
+.on-brand :focus-visible {
+  outline-color: var(--color-brand-ink);
+}
+.on-brand .ph {
+  border-color: rgb(3 38 58 / 0.45);
+  background: rgb(255 255 255 / 0.35);
+  color: var(--color-brand-ink);
+}
+.on-brand .ph .ph-label {
+  color: var(--color-brand-ink);
+}
+
+/* Pointer spotlight on interactive cards (hand-built interactivity; off under reduced motion + on Mind Before Marks). */
+[data-spotlight] {
+  position: relative;
+  isolation: isolate;
+}
+[data-spotlight]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 200ms ease;
+  background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 50%), rgb(25 167 230 / 0.16), transparent 60%);
+}
+[data-spotlight]:hover::before {
+  opacity: 1;
+}
+[data-motion="strict"] [data-spotlight]::before {
+  display: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-spotlight]::before {
+    display: none;
+  }
+}
+
+/* Inner-page hero decoration */
+.hero-rings {
+  background:
+    radial-gradient(circle at 85% 20%, rgb(255 255 255 / 0.22) 0 120px, transparent 121px),
+    radial-gradient(circle at 85% 20%, transparent 0 180px, rgb(255 255 255 / 0.18) 181px 182px, transparent 183px),
+    radial-gradient(circle at 85% 20%, transparent 0 260px, rgb(255 255 255 / 0.12) 261px 262px, transparent 263px),
+    radial-gradient(circle at 5% 110%, rgb(3 38 58 / 0.12) 0 220px, transparent 221px);
+}
+.dot-texture-light {
+  background-image: radial-gradient(rgb(255 255 255 / 0.35) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+/* Gentle lift on spotlight cards (interactive feedback). */
+.js [data-reveal][data-spotlight].is-revealed {
+  transition:
+    opacity var(--reveal-duration, 600ms) var(--ease-reveal),
+    transform 200ms var(--ease-reveal);
+}
+.js [data-reveal][data-spotlight].is-revealed:hover {
+  transform: translateY(-4px);
+}
+[data-motion="strict"] [data-spotlight]:hover {
+  transform: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal][data-spotlight].is-revealed:hover {
+    transform: none;
+  }
+}
