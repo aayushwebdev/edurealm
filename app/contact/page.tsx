@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
 import Link from "next/link";
 import { ArrowRight, Mail, Map as MapIcon, MapPin, Phone } from "lucide-react";
 import { ContactForm } from "@/components/forms/ContactForm";
@@ -54,9 +53,7 @@ export default function Contact() {
             </h2>
             <p className="mt-3 max-w-lg text-body text-graphite">Tell us who you are and what you need. Your message goes straight to the right team.</p>
             <div className="mt-10">
-              <Suspense fallback={null}>
-                <ContactForm />
-              </Suspense>
+              <ContactForm />
             </div>
           </div>
 

@@ -1,7 +1,6 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
-import { useId, useState, type FormEvent, type ReactNode } from "react";
+import { useEffect, useId, useState, type FormEvent, type ReactNode } from "react";
 import { ArrowRight, Building2, CheckCircle2, Clock, Landmark, Mail, MessageSquareText, Phone, School, User, Users, type LucideIcon } from "lucide-react";
 import { EMAIL_RE } from "@/components/forms/Field";
 import { cx } from "@/components/ui";
@@ -61,11 +60,18 @@ function IconField({ id, label, icon: Icon, error, children }: { id: string; lab
 /** One form, routed by role: Parent · School · Company · NGO/Government. Name, email and phone are required. */
 export function ContactForm() {
   const uid = useId();
-  const params = useSearchParams();
-  const initialRole = (ROLES.find((r) => r.v === params.get("role"))?.v ?? "parent") as Role;
-  const topic = TOPICS[params.get("topic") ?? ""];
+  const [role, setRole] = useState<Role>("parent");
+  const [topic, setTopic] = useState<string | undefined>();
 
-  const [role, setRole] = useState<Role>(initialRole);
+  // Pre-select role/topic from ?role=…&topic=… (links from program pages). Read after mount so the
+  // form hydrates with the page — no Suspense boundary needed.
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const r = ROLES.find((x) => x.v === params.get("role"))?.v;
+    if (r) setRole(r);
+    setTopic(TOPICS[params.get("topic") ?? ""]);
+  }, []);
+
   const [values, setValues] = useState<Values>({ name: "", email: "", phone: "", message: "" });
   const [errors, setErrors] = useState<Errors>({});
   const [done, setDone] = useState(false);
