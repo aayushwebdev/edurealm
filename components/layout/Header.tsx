@@ -40,11 +40,11 @@ export function Header() {
       <div className="px-3 pt-3 md:px-6">
         <div
           className={cx(
-            "mx-auto flex h-16 max-w-[1200px] items-center justify-between gap-4 rounded-full border bg-paper/95 pr-2 pl-5 backdrop-blur transition-shadow duration-200",
+            "mx-auto flex h-16 max-w-[1320px] items-center justify-between gap-6 rounded-full border bg-paper/95 pr-2 pl-5 backdrop-blur transition-shadow duration-200",
             scrolled ? "border-rule shadow-[var(--shadow-float)]" : "border-transparent",
           )}
         >
-          <Link href="/" className="flex items-center gap-2 text-d5 font-semibold text-navy" aria-label="eduRealm home">
+          <Link href="/" className="flex shrink-0 items-center gap-2 text-d5 font-semibold text-navy" aria-label="eduRealm home">
             <span className="grid h-8 w-8 place-items-center rounded-full bg-navy text-gold">
               <Mark className="h-5 w-5" />
             </span>
@@ -54,14 +54,14 @@ export function Header() {
           </Link>
 
           <nav aria-label="Main" className="hidden xl:block">
-            <ul className="flex items-center gap-1 rounded-full bg-cream p-1 text-small">
+            <ul className="flex items-center gap-0.5 rounded-full bg-cream p-1 text-[0.8125rem] min-[1440px]:text-small">
               {NAV.map((n) => (
                 <li key={n.href}>
                   <Link
                     href={n.href}
                     aria-current={isActive(n.href) ? "page" : undefined}
                     className={cx(
-                      "block rounded-full px-4 py-2 transition-colors duration-150",
+                      "block rounded-full px-2.5 py-2 whitespace-nowrap transition-colors duration-150 min-[1440px]:px-3.5",
                       isActive(n.href) ? "bg-navy text-white" : "text-navy hover:bg-paper",
                     )}
                   >
@@ -72,12 +72,12 @@ export function Header() {
             </ul>
           </nav>
 
-          <div className="flex items-center gap-2">
+          <div className="flex shrink-0 items-center gap-2">
             <Link
               href={BOOK_HREF}
-              className="hidden min-h-12 items-center rounded-full bg-gold px-6 text-small font-medium text-navy transition-colors duration-150 hover:bg-[#f2c64f] sm:inline-flex"
+              className="hidden min-h-12 items-center whitespace-nowrap rounded-full bg-gold px-5 text-small min-[1440px]:px-6 font-medium text-navy transition-colors duration-150 hover:bg-[#f2c64f] sm:inline-flex"
             >
-              Book a session
+              Book A Session
             </Link>
             <button
               type="button"
@@ -101,7 +101,7 @@ export function Header() {
         className="fixed inset-x-3 top-20 bottom-3 overflow-y-auto rounded-card bg-navy p-6 text-white xl:hidden"
       >
         <ul className="flex flex-col">
-          {[...NAV, { href: "/resources", label: "Free resources" }, { href: "/contact", label: "Contact" }].map((n) => (
+          {[...NAV, { href: "/impact", label: "Impact" }, { href: "/resources", label: "Free resources" }, { href: "/contact", label: "Contact" }].map((n) => (
             <li key={n.href}>
               <Link
                 href={n.href}
@@ -117,7 +117,7 @@ export function Header() {
           href={BOOK_HREF}
           className="mt-8 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-gold px-6 text-small font-medium text-navy"
         >
-          Book a session
+          Book A Session
         </Link>
       </nav>
     </header>

@@ -13,12 +13,12 @@ export const HELPLINES = [
 
 export const NAV = [
   { href: "/", label: "Home" },
-  { href: "/programs", label: "Programs" },
+  { href: "/about", label: "About Us" },
+  { href: "/programs", label: "Student Solutions" },
+  { href: "/institutions", label: "Institutional Solutions" },
   { href: "/zeo", label: "ZEO Olympiad" },
-  { href: "/institutions", label: "For schools" },
-  { href: "/partner", label: "Partner" },
-  { href: "/impact", label: "Impact" },
-  { href: "/about", label: "About us" },
+  { href: "/partner", label: "NGO & CSR" },
+  { href: "/media", label: "Media & Events" },
 ] as const;
 
 /** The strictest-motion, no-gold route (design draft §6). */

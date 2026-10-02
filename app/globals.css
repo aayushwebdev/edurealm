@@ -328,14 +328,10 @@ p {
   }
 }
 
-/* Progress bar per tab; the active bar's animationend advances the carousel */
+/* Progress bar per slide dot; the active bar's animationend advances the carousel */
 .hero-progress {
   transform: scaleX(0);
   transform-origin: left center;
-}
-.hero-progress.is-done {
-  transform: scaleX(1);
-  opacity: 0.35;
 }
 .hero-progress.is-active {
   animation-name: hero-progress;
@@ -351,56 +347,36 @@ p {
   }
 }
 
-/* Collage: tiles wipe in one after another; the main photo slowly zooms (Ken Burns).
-   .collage-in wraps the PhotoCollage grid; its children are tile, tile, tile, stamp, (chip). */
-.collage-in > div > :nth-child(-n + 3) {
-  animation: tile-in 950ms var(--ease-reveal) both;
+/* Full-bleed photos: slides crossfade; the incoming photo settles from a slight zoom, then drifts
+   very slowly for the rest of its turn. */
+.hero-slide {
+  opacity: 0;
+  transition: opacity 1100ms var(--ease-reveal);
 }
-.collage-in > div > :nth-child(2) {
-  animation-delay: 120ms;
+.hero-slide img {
+  transform: scale(1.05);
 }
-.collage-in > div > :nth-child(3) {
-  animation-delay: 240ms;
+.hero-slide.is-active {
+  opacity: 1;
 }
-@keyframes tile-in {
-  from {
-    clip-path: inset(100% 0 0 0 round 28px);
-    transform: translateY(24px);
-  }
-  to {
-    clip-path: inset(0 0 0 0 round 28px);
-  }
+.hero-slide.is-active img {
+  animation: hero-settle 8.5s linear both;
 }
-.collage-in > div > :nth-child(1) img {
-  animation: ken-burns 7s linear both;
-}
-@keyframes ken-burns {
-  from {
+@keyframes hero-settle {
+  0% {
     transform: scale(1.12);
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
   }
-  to {
+  18% {
     transform: scale(1);
+    animation-timing-function: linear;
+  }
+  100% {
+    transform: scale(1.05);
   }
 }
-.collage-in > div > :nth-child(4) {
-  animation: stamp-pop 700ms var(--ease-reveal) 350ms both;
-}
-@keyframes stamp-pop {
-  from {
-    opacity: 0;
-    scale: 0.6;
-  }
-}
-
-/* Desktop: the hero fits one viewport with the header — the collage sizes to the viewport height. */
-@media (min-width: 1024px) {
-  .hero-fit .collage-in > div {
-    height: min(66svh, 560px);
-    grid-template-rows: 1fr 1fr;
-  }
-  .hero-fit .collage-in .photo-zoom {
-    min-height: 0;
-  }
+[data-running="false"] .hero-slide.is-active img {
+  animation-play-state: paused;
 }
 
 /* Slow drifting background glows */
