@@ -51,7 +51,10 @@ const SLIDES: {
       { label: "Book a School Workshop", href: BOOK_SCHOOL_HREF },
       { label: "Learn the Truth", href: "/programs/informed-choice" },
     ],
-    photo: { src: "/hero/slide-2.webp", alt: "A parent and her daughter read through brochures together at a table" },
+    photo: {
+      src: "/hero/slide-2-coaching.webp",
+      alt: "A worried student holds a stack of coaching brochures while a counsellor points at a form at a crowded admissions desk",
+    },
   },
   {
     tab: "Rural Empowerment",
@@ -62,7 +65,7 @@ const SLIDES: {
       { label: "Partner with us", href: "/partner" },
       { label: "Sponsor a student", href: "/partner#csr" },
     ],
-    photo: { src: "/hero/slide-3.webp", alt: "Two students cycle out of a school gate on a sunny rural morning" },
+    photo: { src: "/hero/slide-3-rural.webp", alt: "Three students cycle out of a rural school gate on a sunny morning" },
   },
 ];
 
