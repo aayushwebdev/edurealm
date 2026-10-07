@@ -82,11 +82,11 @@ export default function MindBeforeMarks() {
 
       <DetailStack className="py-16 md:py-24">
         <Detail index={0} title="A session, in brief">
-          <Ph block>Hour-by-hour breakdown — format, group size, materials.</Ph>
+          <Ph block>Hour-by-hour breakdown: format, group size, materials.</Ph>
         </Detail>
         <Detail index={1} title="Who delivers this">
           {/* Real facilitators only. Never fabricate a name or credential. */}
-          <Ph block>NAME, CREDENTIAL, REGISTRATION NUMBER — real facilitators only.</Ph>
+          <Ph block>NAME, CREDENTIAL, REGISTRATION NUMBER: real facilitators only.</Ph>
         </Detail>
         <Reveal as="section" className="rounded-card bg-mist p-8 md:col-span-2 md:p-10">
           <p className="font-mono text-micro text-gray">03</p>

@@ -31,7 +31,7 @@ export const DELIVER: CardItem[] = [
 /** DRAFT */
 export const PROCESS: Step[] = [
   { title: "Discovery", body: "A call or visit to understand your current curriculum, staffing, and specific gaps." },
-  { title: "Proposal", body: "A written scope and quote, tailored to what you actually need — not a fixed package." },
+  { title: "Proposal", body: "A written scope and quote, tailored to what you actually need, not a fixed package." },
   { title: "Delivery", body: "Work begins on the agreed timeline, with a named point of contact on our side throughout." },
   {
     title: "Review",
@@ -42,12 +42,12 @@ export const PROCESS: Step[] = [
 /** DRAFT — accurate general NEP 2020 content; fact-check against specific curriculum claims before publishing. */
 export const NEP = [
   "The National Education Policy 2020 shifts emphasis toward competency-based learning over rote memorisation, holistic and progress-card-style assessment rather than single high-stakes exams, stronger foundational literacy and numeracy in early grades, multilingual instruction where feasible, and earlier exposure to vocational and skills-based learning from the middle-school years onward.",
-  "Our curriculum design work is built around these same principles — practical thinking assessed in more than one way, not memorisation tested once a year.",
+  "Our curriculum design work is built around these same principles: practical thinking assessed in more than one way, not memorisation tested once a year.",
 ];
 
 export const FAQ: FaqItem[] = [
   { id: "boards", q: "Which boards do you work with?", a: <Ph>boards supported</Ph> },
-  { id: "replace", q: "Do you replace our teachers?", a: "No. We train and support your teachers — they stay in the classroom." },
-  { id: "price", q: "How is pricing worked out?", a: "A written scope and quote, tailored to what you actually need — not a fixed package." },
+  { id: "replace", q: "Do you replace our teachers?", a: "No. We train and support your teachers. They stay in the classroom." },
+  { id: "price", q: "How is pricing worked out?", a: "A written scope and quote, tailored to what you actually need, not a fixed package." },
   { id: "case", q: "Do you have a case study?", a: "Not yet. We will publish one only with the school’s written consent." },
 ];

@@ -23,17 +23,19 @@ type Seg = { t: string; em?: boolean };
 
 const SLIDES: {
   tab: string;
-  eyebrow: string;
+  /** Main heading (h1). */
   title: Seg[];
+  /** Subheading under the main heading. */
+  subtitle: string;
   body: string;
   ctas: { label: string; href: string }[];
   photo: { src: string; alt: string };
 }[] = [
   {
     tab: "Mental Health & Resilience",
-    eyebrow: "Mental Health & Resilience",
-    title: [{ t: "Strengthen Young Minds: Suicide Prevention &" }, { t: "Awareness", em: true }],
-    body: "Equipping parents, students, and educators to navigate modern pressures. Our expert-led workshops tackle the root causes of student distress—from academic anxiety and competitive exams to social media vanity and family dynamics.",
+    title: [{ t: "Mental Health &" }, { t: "Resilience", em: true }],
+    subtitle: "Strengthen Young Minds: Suicide Prevention & Awareness",
+    body: "Equipping parents, students, and educators to navigate modern pressures. Our expert-led workshops tackle the root causes of student distress, from academic anxiety and competitive exams to social media vanity and family dynamics.",
     ctas: [
       { label: "Book a Workshop", href: BOOK_SCHOOL_HREF },
       { label: "View Workshop Details", href: "/programs/mind-before-marks" },
@@ -42,8 +44,8 @@ const SLIDES: {
   },
   {
     tab: "Beware of Coaching Tactics",
-    eyebrow: "Beware of Coaching Tactics",
-    title: [{ t: "Education Over Exploitation: Uncovering Coaching" }, { t: "Tactics", em: true }],
+    title: [{ t: "Beware of Coaching" }, { t: "Tactics", em: true }],
+    subtitle: "Education Over Exploitation: Uncovering Coaching Tactics",
     body: "Protect your child from the commercialization of education. Learn directly from neutral, former industry insiders who expose the hidden academic tactics, false promises, teenage validation traps and psychological baits used by modern coaching centers and their faculty.",
     ctas: [
       { label: "Book a School Workshop", href: BOOK_SCHOOL_HREF },
@@ -53,8 +55,8 @@ const SLIDES: {
   },
   {
     tab: "Rural Empowerment",
-    eyebrow: "Rural Empowerment",
-    title: [{ t: "Empowering Youth in Tier 2, 3 & Rural" }, { t: "Towns", em: true }],
+    title: [{ t: "Rural" }, { t: "Empowerment", em: true }],
+    subtitle: "Empowering Youth in Tier 2, 3 & Rural Towns",
     body: "Bridging the opportunity gap for underprivileged young minds. We provide dedicated mentorship, academic guidance, personality development, and entrepreneurial training to help every student unlock their true potential.",
     ctas: [
       { label: "Partner with us", href: "/partner" },
@@ -158,23 +160,28 @@ export function HeroSplit() {
 
       {/* Content */}
       <div className="relative mx-auto flex w-full max-w-[1368px] flex-1 flex-col justify-center px-8 pt-28 pb-10 md:px-11 lg:pt-[5.5rem] lg:pb-6">
-        <div className="max-w-[40rem]">
+        <div className="max-w-[40rem] lg:max-w-[46rem]">
           <p className="inline-flex items-center gap-2 rounded-full border border-navy/10 bg-paper/80 p-1 pr-4 text-small text-navy backdrop-blur">
             <span className="rounded-full bg-brand px-3 py-1 text-micro font-medium text-brand-ink">eduRealm</span>
             We work for the student.
           </p>
 
-          {/* Active slide — key replays the entrance animation. Headline and body reserve 3 and 5 lines
-              on desktop so the layout doesn't jump between slides. */}
+          {/* Active slide — key replays the entrance animation. Heading stays on one line on desktop;
+              subheading and body reserve 2 and 5 lines so the layout doesn't jump between slides. */}
           <div key={active} id="hero-panel" role="tabpanel" aria-labelledby={`hero-tab-${active}`}>
-            <p className="hero-fade mt-6 font-mono text-micro tracking-wide text-blue uppercase">{s.eyebrow}</p>
             <h1
               id="hero-title"
-              className="mt-3 text-[2.3rem] leading-[1.05] tracking-[-0.025em] text-navy md:text-[3.2rem] lg:min-h-[3.15em] lg:text-[clamp(2.3rem,6svh,3.6rem)]"
+              className="mt-6 min-h-[2.1em] text-[2.5rem] leading-[1.04] tracking-[-0.025em] whitespace-normal text-navy md:text-[3.5rem] lg:min-h-0 lg:text-[clamp(2.6rem,7svh,3.75rem)] lg:whitespace-nowrap"
             >
               <AnimatedTitle segs={s.title} />
             </h1>
-            <p className="hero-fade mt-4 max-w-xl text-body text-graphite lg:min-h-[8em]" style={{ animationDelay: "350ms" }}>
+            <p
+              className="hero-fade mt-4 max-w-xl text-[1.25rem] leading-snug font-medium text-blue md:text-[1.5rem] lg:min-h-[2.75em]"
+              style={{ animationDelay: "250ms" }}
+            >
+              {s.subtitle}
+            </p>
+            <p className="hero-fade mt-3 max-w-xl text-body text-graphite lg:min-h-[8em]" style={{ animationDelay: "350ms" }}>
               {s.body}
             </p>
             <div className="hero-fade mt-6 flex flex-wrap gap-3" style={{ animationDelay: "480ms" }}>

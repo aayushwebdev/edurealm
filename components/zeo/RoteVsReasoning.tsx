@@ -39,7 +39,7 @@ export function RoteVsReasoning() {
               </IconBadge>
               <p className="mt-8 text-micro font-medium tracking-wider text-gold uppercase">A ZEO question</p>
               <p className="mt-3 text-d4 font-medium text-white">
-                Gives incomplete information and asks for the best reasoned answer — shown, not just stated.
+                Gives incomplete information and asks for the best reasoned answer, shown and not just stated.
               </p>
             </article>
           </Reveal>

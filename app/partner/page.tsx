@@ -1,139 +1,255 @@
 import type { Metadata } from "next";
-import { Building2, Landmark } from "lucide-react";
+import {
+  AlertTriangle,
+  ArrowRight,
+  FileCheck2,
+  GraduationCap,
+  HeartHandshake,
+  Landmark,
+  Languages,
+  Lightbulb,
+  School,
+  Tablet,
+  Users,
+  type LucideIcon,
+} from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
-import { CardGrid, CheckList, FaqBlock, PageSection, StepFlow } from "@/components/sections";
-import { COMMITMENTS, FAQ, FLOW, NGO_MODELS, OLYMPIAD_GETS, REPORT_INCLUDES, VERIFICATION } from "@/content/pages/partner";
-import { Button, ButtonRow, Container, IconBadge, PageHero, Ph, PhotoFrame, Section, Tag } from "@/components/ui";
+import { FaqBlock } from "@/components/sections";
+import { FAQ, FLOW } from "@/content/pages/partner";
+import { Button, ButtonRow, Container, IconBadge, PageHero, Ph, PhotoFrame, Section, SectionHeading, Tag } from "@/components/ui";
 import { PHOTOS } from "@/content/photos";
 
+const INTRO =
+  "Connecting corporate CSR capital, NGO outreach, and government programs with deserving students and under-resourced schools across India.";
+
 export const metadata: Metadata = {
-  title: "Partner with eduRealm",
-  description: "CSR, corporate, NGO and government partnerships — verified rural scholarships and district programs.",
+  title: "NGO & CSR Partnerships",
+  description: INTRO,
 };
 
-const ENQUIRY = "/contact?role=company&topic=partnership#form";
+const CSR_ENQUIRY = "/contact?role=company&topic=partnership#form";
+const OVERVIEW = "/contact?role=company&topic=overview#form";
 
-/* Motion: base reveal, 100ms two-column offset. */
+const OPPORTUNITIES: { icon: LucideIcon; title: string; body: string }[] = [
+  {
+    icon: GraduationCap,
+    title: "Sponsoring Rural & Tribal Scholarships",
+    body: "Directly fund the higher education of verified, high-potential students identified through our ZEO Olympiad talent search.",
+  },
+  {
+    icon: School,
+    title: "Adopting Underserved Schools",
+    body: "Sponsor modern study materials, curriculum upgrades, and comprehensive teacher training for schools in remote areas.",
+  },
+  {
+    icon: HeartHandshake,
+    title: "Funding Student Mental Health & Suicide Prevention Drives",
+    body: "Support free, life-saving parent awareness and student counseling seminars in high-pressure regional hubs.",
+  },
+  {
+    icon: Tablet,
+    title: "Digital & Skill Infrastructure Kits",
+    body: "Provide foundational learning kits, tablet devices, and skill workshops to tribal community classrooms.",
+  },
+];
+
+const COLLABORATION: { icon: LucideIcon; title: string; body: string }[] = [
+  { icon: Users, title: "Joint Welfare Drives", body: "Collaborating with local NGOs to conduct community counseling and literacy drives." },
+  {
+    icon: Landmark,
+    title: "Government Program Alignment",
+    body: "Partnering on regional educational initiatives and public school teacher development.",
+  },
+  {
+    icon: Languages,
+    title: "Localized Language Tools",
+    body: "Delivering guidance materials in regional languages so parents can understand them easily.",
+  },
+];
+
+/* Motion: base reveal only. */
 export default function Partner() {
   return (
     <>
+      {/* 1 · Hero */}
       <PageHero
-        crumbs={[{ href: "/partner", label: "Partner" }]}
-        tag="CSR · NGOs · Government"
+        crumbs={[{ href: "/partner", label: "NGO & CSR" }]}
+        tag="NGO & CSR"
         title={
           <>
-            Partner with <em>eduRealm</em>
+            Transforming Grassroots Education Through Purposeful <em>Partnerships</em>
           </>
         }
-        photo={PHOTOS.fiveKids}
+        lead={INTRO}
       >
         <ButtonRow>
-          <Button href={ENQUIRY}>Start a partnership enquiry</Button>
+          <Button href={CSR_ENQUIRY} variant="dark">
+            Discuss a CSR Partnership
+          </Button>
         </ButtonRow>
       </PageHero>
 
-      {/* One page, anchor switch between the two partner types */}
-      <Container className="pt-16 md:pt-24">
-        <nav aria-label="Partner type" className="inline-flex gap-1 rounded-full bg-paper p-1 ring-1 ring-rule">
-          <a href="#csr" className="rounded-full px-5 py-2.5 text-small font-medium text-navy transition-colors duration-150 hover:bg-cream">
-            CSR &amp; corporates
-          </a>
-          <a href="#ngo" className="rounded-full px-5 py-2.5 text-small font-medium text-navy transition-colors duration-150 hover:bg-cream">
-            NGOs &amp; government
-          </a>
-        </nav>
-      </Container>
-
-      <Container className="grid gap-5 pt-8 pb-16 md:grid-cols-2 md:pb-24">
-        <Reveal index={0} stagger={100} id="csr" className="flex scroll-mt-28 flex-col overflow-hidden rounded-card border border-rule bg-paper">
-          <PhotoFrame photo={PHOTOS.rural} decorative sizes="(min-width: 768px) 50vw, 100vw" className="aspect-[16/9] rounded-none" />
-          <div className="flex flex-1 flex-col p-8">
-            <IconBadge tone="navy">
-              <Building2 size={20} aria-hidden="true" />
-            </IconBadge>
-            <h2 className="mt-6 text-d4">CSR &amp; corporates</h2>
-            <p className="mt-3 text-graphite">
-              Route CSR funds to verified rural scholarships. Co-brand a regional ZEO Olympiad. Get dated, measurable impact
-              reporting and compliance documentation.
-            </p>
-            <Ph block>sample report — once a reporting cycle exists</Ph>
-          </div>
-        </Reveal>
-        <Reveal index={1} stagger={100} id="ngo" className="flex scroll-mt-28 flex-col overflow-hidden rounded-card border border-rule bg-paper">
-          <PhotoFrame photo={PHOTOS.tableGroup} decorative sizes="(min-width: 768px) 50vw, 100vw" className="aspect-[16/9] rounded-none" />
-          <div className="flex flex-1 flex-col p-8">
-            <IconBadge tone="navy">
-              <Landmark size={20} aria-hidden="true" />
-            </IconBadge>
-            <h2 className="mt-6 text-d4">NGOs &amp; government</h2>
-            <p className="mt-3 text-graphite">
-              Deliver career guidance, digital literacy, and study material in your districts, alongside our team. Joint
-              literacy drives and regional bootcamps, in local languages.
-            </p>
-          </div>
-        </Reveal>
-      </Container>
-
-      <PageSection id="flow" tone="paper" tag="How it works" title={<>How a contribution <em>flows</em></>}>
-        <StepFlow steps={FLOW} />
-      </PageSection>
-
-      <PageSection
-        id="verification"
-        tone="brand"
-        tag="Recipient verification"
-        title={<>How a recipient is <em>verified</em></>}
-        confirm="confirm against operational capacity"
-      >
-        <StepFlow steps={VERIFICATION} />
-      </PageSection>
-
-      <PageSection id="reporting" tone="paper" tag="Reporting" title={<>What reporting <em>includes</em></>}>
-        <div className="grid gap-5 lg:grid-cols-2">
-          <Reveal className="rounded-card border border-rule bg-cream p-8">
-            <CheckList items={REPORT_INCLUDES} />
-          </Reveal>
-          <Reveal index={1} className="rounded-card border border-dashed border-navy/20 bg-cream p-8">
-            <p className="font-mono text-micro tracking-wider text-gray uppercase">Sample report</p>
-            <Ph block>sample report — once a reporting cycle exists</Ph>
-          </Reveal>
-        </div>
-      </PageSection>
-
-      <PageSection id="olympiad" tag="For CSR & corporates" title={<>What a co-branded regional Olympiad sponsor <em>gets</em></>}>
-        <Reveal className="max-w-3xl rounded-card border border-rule bg-paper p-8">
-          <CheckList items={OLYMPIAD_GETS} />
-        </Reveal>
-      </PageSection>
-
-      <PageSection id="ngo-models" tone="paper" tag="For NGOs & government" title={<>Engagement <em>models</em></>}>
-        <CardGrid items={NGO_MODELS} />
-      </PageSection>
-
-      <PageSection id="commitments" tag="Our commitments" title={<>What every partner can <em>expect</em></>}>
-        <Reveal className="max-w-3xl rounded-card border border-rule bg-paper p-8">
-          <CheckList items={COMMITMENTS} />
-        </Reveal>
-      </PageSection>
-
-      <FaqBlock id="partner-faq" items={FAQ} />
-
-      <Section tone="navy" labelledBy="shared-title" className="mb-16 md:mb-24">
-        <Container className="grid items-center gap-10 lg:grid-cols-[1.4fr_1fr]">
+      {/* 2 · The grassroots reality */}
+      <Section tone="paper" id="reality" labelledBy="reality-title">
+        <Container>
           <Reveal>
-            <Tag dark>Shared</Tag>
-            <h2 id="shared-title" className="mt-5 text-d3 md:text-d2">
-              Every contribution logs against a named, verified <em>recipient</em>.
-            </h2>
-            <p className="mt-5 text-white/75">
-              Reporting cadence: <Ph>to define</Ph>
-            </p>
+            <SectionHeading
+              center
+              tag="The grassroots reality we address"
+              id="reality-title"
+              title={
+                <>
+                  Closing the Divide in Rural and Tribal <em>India</em>
+                </>
+              }
+            />
           </Reveal>
-          <Reveal index={1} className="lg:justify-self-end">
-            <Button href={ENQUIRY}>Start a partnership enquiry</Button>
-          </Reveal>
+          <div className="relative mt-12 grid gap-5 lg:grid-cols-2 lg:gap-8">
+            <Reveal className="flex flex-col rounded-card border border-rule bg-cream p-8 md:p-10">
+              <span className="inline-flex w-fit items-center gap-2 rounded-full bg-paper px-3 py-1 text-micro font-semibold tracking-wide text-navy uppercase">
+                <AlertTriangle size={14} aria-hidden="true" className="text-gold" /> The problem
+              </span>
+              <p className="mt-6 text-lead text-graphite">
+                While metropolitan centers have abundant counseling and modern classrooms, Tier 2, Tier 3, rural, and tribal regions face
+                severe shortages of quality guidance, teacher support, and financial aid. Many bright students drop out simply because
+                their families lack resources.
+              </p>
+            </Reveal>
+            {/* Arrow linking problem to solution (desktop) */}
+            <span
+              aria-hidden="true"
+              className="absolute top-1/2 left-1/2 z-10 hidden h-14 w-14 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-brand text-brand-ink shadow-[0_0_0_8px_white] lg:grid"
+            >
+              <ArrowRight size={22} />
+            </span>
+            <Reveal index={1} className="on-dark relative flex flex-col overflow-hidden rounded-card bg-navy p-8 text-white/80 md:p-10">
+              <div aria-hidden="true" className="hero-rings pointer-events-none absolute inset-0 opacity-40" />
+              <span className="relative inline-flex w-fit items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-micro font-semibold tracking-wide text-white uppercase">
+                <Lightbulb size={14} aria-hidden="true" className="text-gold" /> Our solution
+              </span>
+              <p className="relative mt-6 text-lead text-white">
+                We bring verified field programs, modern learning resources, mental health drives, and direct scholarships straight to local
+                doorsteps.
+              </p>
+            </Reveal>
+          </div>
         </Container>
       </Section>
+
+      {/* 3 · CSR partnership opportunities */}
+      <Section tone="tint" id="csr" labelledBy="csr-title">
+        <Container>
+          <Reveal>
+            <SectionHeading
+              tag="CSR partnership opportunities"
+              id="csr-title"
+              title={
+                <>
+                  Meaningful Ways Your Company Can <em>Help</em>
+                </>
+              }
+              action={
+                <Button href={CSR_ENQUIRY} variant="dark">
+                  Discuss a CSR Partnership
+                </Button>
+              }
+            />
+          </Reveal>
+          <ol className="mt-12 grid gap-5 md:grid-cols-2">
+            {OPPORTUNITIES.map((o, i) => (
+              <Reveal
+                as="li"
+                key={o.title}
+                index={i}
+                className="flex gap-5 rounded-card border border-brand/15 bg-paper p-7 transition-[border-color,transform] duration-200 hover:-translate-y-1 hover:border-brand/50 md:p-8"
+              >
+                <div className="flex flex-col items-center gap-3">
+                  <IconBadge tone="brand">
+                    <o.icon size={22} aria-hidden="true" />
+                  </IconBadge>
+                  <span className="font-mono text-micro text-gray">{String(i + 1).padStart(2, "0")}</span>
+                </div>
+                <div>
+                  <h3 className="text-d5 font-medium">{o.title}</h3>
+                  <p className="mt-2 text-body text-graphite">{o.body}</p>
+                </div>
+              </Reveal>
+            ))}
+          </ol>
+        </Container>
+      </Section>
+
+      {/* 4 · NGO and government collaboration */}
+      <Section tone="cream" id="ngo" labelledBy="ngo-title">
+        <Container className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+          <Reveal>
+            <Tag>NGO &amp; government collaboration</Tag>
+            <h2 id="ngo-title" className="mt-5 text-d3 md:text-d2">
+              Working Hand-in-Hand With Community <em>Leaders</em>
+            </h2>
+            <PhotoFrame photo={PHOTOS.ruralAerial} decorative className="mt-10 aspect-[16/10]" />
+          </Reveal>
+          <ul className="space-y-4">
+            {COLLABORATION.map((c, i) => (
+              <Reveal as="li" key={c.title} index={i} className="flex gap-5 rounded-card border border-rule bg-paper p-6 md:p-7">
+                <IconBadge tone="navy">
+                  <c.icon size={22} aria-hidden="true" />
+                </IconBadge>
+                <div>
+                  <h3 className="text-d5 font-medium">{c.title}</h3>
+                  <p className="mt-1 text-body text-graphite">{c.body}</p>
+                </div>
+              </Reveal>
+            ))}
+          </ul>
+        </Container>
+      </Section>
+
+      {/* 5 · Transparent reporting and verifiable impact */}
+      <Section tone="navy" id="reporting" labelledBy="reporting-title" className="overflow-hidden">
+        <div aria-hidden="true" className="hero-blob pointer-events-none absolute -top-40 -right-32 h-[30rem] w-[30rem] rounded-full bg-brand/25 blur-3xl" />
+        <Container className="relative">
+          <div className="grid items-center gap-10 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
+            <Reveal>
+              <Tag dark>Transparent reporting &amp; verifiable impact</Tag>
+              <h2 id="reporting-title" className="mt-5 text-d3 text-white md:text-d2">
+                Honest Metrics You Can <em>Trust</em>
+              </h2>
+              <p className="mt-5 max-w-xl text-lead">
+                Every rupee deployed through our partnership programs is tracked with complete transparency. We provide corporate partners
+                with comprehensive impact reports, student progress audits, and compliance documentation.
+              </p>
+              <ButtonRow className="mt-9">
+                <Button href={OVERVIEW}>Download Partnership Overview</Button>
+              </ButtonRow>
+              <p className="on-dark mt-3">
+                <Ph>partnership overview PDF to add</Ph>
+              </p>
+            </Reveal>
+            <Reveal index={1} className="rounded-card border border-white/10 bg-white/[0.05] p-7 md:p-8">
+              <p className="flex items-center gap-2 text-micro font-semibold tracking-wide text-gold uppercase">
+                <FileCheck2 size={15} aria-hidden="true" /> How a contribution flows
+              </p>
+              <ol className="mt-6 space-y-5">
+                {FLOW.map((f, i) => (
+                  <li key={f.title} className="flex gap-4">
+                    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-brand font-mono text-small font-medium text-brand-ink">
+                      {i + 1}
+                    </span>
+                    <div>
+                      <p className="font-medium text-white">{f.title}</p>
+                      <p className="mt-1 text-small text-white/75">{f.body}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </Reveal>
+          </div>
+        </Container>
+      </Section>
+
+      {/* FAQ (kept from the previous page) */}
+      <FaqBlock id="partner-faq" items={FAQ} />
     </>
   );
 }

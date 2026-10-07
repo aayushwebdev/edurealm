@@ -13,7 +13,7 @@ export const MEASURES = {
     ["Districts covered", "Districts planned for the year"],
   ],
 };
-export const MEASURES_NOTE = "Every one of these publishes with its denominator, every time — never a number alone.";
+export const MEASURES_NOTE = "Every one of these publishes with its denominator, every time. Never a number alone.";
 
 /** FRAMEWORK — suggested cadence. */
 export const CALENDAR = [

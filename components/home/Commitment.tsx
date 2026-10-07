@@ -63,8 +63,8 @@ export function Commitment() {
                   </li>
                 ))}
               </ol>
-              <Button href="/about#roadmap" variant="dark" className="mt-8">
-                Read the full roadmap
+              <Button href="/about#ecosystem" variant="dark" className="mt-8">
+                How everything connects
               </Button>
             </Reveal>
           </div>

@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 export default function InformedChoice() {
   return (
     <>
-      <ReviewBanner>Legal review required before publish — see edurealm-legal-sourcing.md</ReviewBanner>
+      <ReviewBanner>Legal review required before publish. See edurealm-legal-sourcing.md</ReviewBanner>
       <PageHero
         crumbs={[
           { href: "/programs", label: "Programs" },
@@ -88,7 +88,7 @@ export default function InformedChoice() {
           ))}
         </ul>
         <p className="mt-6">
-          <Ph>source link per tactic — from legal sourcing</Ph>
+          <Ph>source link per tactic, from legal sourcing</Ph>
         </p>
       </PageSection>
 
@@ -151,7 +151,7 @@ export default function InformedChoice() {
               court order, or published report.
             </p>
             <p className="mt-3">
-              <Ph>source links per claim — from legal sourcing</Ph>
+              <Ph>source links per claim, from legal sourcing</Ph>
             </p>
           </Reveal>
         </div>

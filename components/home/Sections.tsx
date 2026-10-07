@@ -3,13 +3,20 @@ import {
   ArrowRight,
   BookOpen,
   BookOpenCheck,
+  Brain,
   Briefcase,
+  Calculator,
   FileBarChart,
   GraduationCap,
   HandCoins,
+  HeartHandshake,
+  Laptop,
   Layers,
   Mic,
   Newspaper,
+  Puzzle,
+  Rocket,
+  Sparkles,
   Trophy,
   Tv,
   type LucideIcon,
@@ -37,15 +44,14 @@ import { PHOTOS } from "@/content/photos";
 import { BOOK_HREF, BOOK_SCHOOL_HREF, ETHICS_CHARTER, FUNDING, INSTITUTION_NEEDS, MEDIA, PROGRAMS, TARGETS_YEAR_ONE } from "@/content/site";
 
 /* ---------------------------------------------------------------- */
-/* 6 · For students & parents — navy band of photo program cards     */
+/* 6 · For students & parents: light-blue band of photo program cards */
 /* ---------------------------------------------------------------- */
 export function ProgramsBand() {
   return (
-    <Section tone="navy" labelledBy="book-title">
+    <Section tone="tint" labelledBy="book-title">
       <Container>
         <Reveal>
           <SectionHeading
-            dark
             tag="For students & parents"
             id="book-title"
             title={
@@ -54,7 +60,7 @@ export function ProgramsBand() {
               </>
             }
             action={
-              <Button href="/programs" variant="outlineLight">
+              <Button href="/programs" variant="outline" className="bg-paper/70">
                 Browse all programs
               </Button>
             }
@@ -63,7 +69,7 @@ export function ProgramsBand() {
         <ul className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {PROGRAMS.map((p, i) => (
             <Reveal as="li" key={p.slug} index={i}>
-              <ProgramCard program={p} tone="dark" />
+              <ProgramCard program={p} tone="paper" />
             </Reveal>
           ))}
           {/* The one highlighted card in this group (agency / Finovate pattern) */}
@@ -92,38 +98,116 @@ export function ProgramsBand() {
 }
 
 /* ---------------------------------------------------------------- */
-/* 4 · ZEO — rounded photo banner with overlay card (Nuova feature)   */
+/* 4 · ZEO: light bento showcase (matches the /zeo page content)      */
 /* ---------------------------------------------------------------- */
+const ZEO_AREAS: { icon: LucideIcon; title: string }[] = [
+  { icon: Calculator, title: "Quantitative Reasoning" },
+  { icon: HeartHandshake, title: "Emotional Intelligence (EQ)" },
+  { icon: Brain, title: "Critical Thinking" },
+  { icon: Puzzle, title: "Practical Problem-Solving" },
+  { icon: Sparkles, title: "Multiple Intelligences" },
+  { icon: Rocket, title: "Entrepreneurial Mindset" },
+];
+const ZEO_JOURNEY = ["Register", "Take the Assessment", "Detailed Report Card", "State & National Recognition", "Mentorship & Scholarships"];
+
 export function ZeoFeature() {
-  const chips = ["Reasoning", "Emotional intelligence", "Rural toppers: scholarship"];
   return (
-    <section aria-labelledby="zeo-title" className="bg-cream py-16 md:py-24">
+    <section aria-labelledby="zeo-title" className="relative isolate overflow-hidden bg-paper py-20 md:py-28">
+      {/* Soft glows + faded dot grid */}
+      <div aria-hidden="true" className="hero-blob pointer-events-none absolute -top-40 -left-40 -z-10 h-[30rem] w-[30rem] rounded-full bg-brand/15 blur-3xl" />
+      <div aria-hidden="true" className="hero-blob-2 pointer-events-none absolute -right-40 -bottom-40 -z-10 h-[30rem] w-[30rem] rounded-full bg-gold/15 blur-3xl" />
+      <div aria-hidden="true" className="page-hero-dots pointer-events-none absolute inset-0 -z-10 opacity-70" />
+
       <Container>
-        <Reveal>
-          <PhotoFrame photo={PHOTOS.classroomWide} decorative sizes="100vw" imgClassName="object-[center_75%]" className="min-h-[34rem] md:min-h-[38rem]" overlay>
-            <div className="absolute inset-x-4 bottom-4 md:inset-x-auto md:bottom-8 md:left-8 md:max-w-xl">
-              <div className="on-dark rounded-card bg-navy/95 p-7 text-white/80 backdrop-blur md:p-9">
-                <Tag dark>National Talent Search</Tag>
-                <h2 id="zeo-title" className="mt-5 text-d3">
-                  An exam that tests <em>judgement</em>. Not memory.
-                </h2>
-                <p className="mt-4">
-                  The Zubuntu eduRealm Olympiad measures reasoning and emotional intelligence, not recall. Every rural topper
-                  gets a scholarship — fully CSR-funded, from year one.
-                </p>
-                <ul className="mt-5 flex flex-wrap gap-2">
-                  {chips.map((c) => (
-                    <li key={c} className="rounded-full border border-white/20 px-3 py-1 text-micro text-white">
-                      {c}
-                    </li>
-                  ))}
-                </ul>
-                <ButtonRow className="mt-7">
-                  <Button href="/zeo">Full details &amp; registration</Button>
-                </ButtonRow>
+        {/* Header */}
+        <Reveal className="mx-auto flex max-w-3xl flex-col items-center text-center">
+          <span className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/15 px-4 py-1.5 text-small font-medium text-navy">
+            <Trophy size={15} aria-hidden="true" className="text-gold" /> National Talent Search · ZEO 2026
+          </span>
+          <h2 id="zeo-title" className="mt-6 text-d3 md:text-d2">
+            Zubuntu eduRealm <em>Olympiad</em>
+          </h2>
+          <p className="mt-4 text-lead text-graphite">
+            A national talent discovery assessment designed to find, nurture, and empower India&rsquo;s brightest young minds.
+          </p>
+        </Reveal>
+
+        {/* Bento */}
+        <div className="mt-14 grid gap-5 lg:grid-cols-[1.05fr_1fr]">
+          {/* Feature card */}
+          <Reveal className="on-brand relative flex flex-col overflow-hidden rounded-[28px] bg-gradient-to-br from-brand to-brand-600 p-8 md:p-10">
+            <div aria-hidden="true" className="hero-rings pointer-events-none absolute inset-0" />
+            <div className="relative flex flex-1 flex-col">
+              <p className="font-mono text-micro tracking-wide uppercase opacity-80">What is ZEO?</p>
+              <h3 className="mt-4 text-d3 leading-tight">
+                Testing Real Intelligence, Not Just <em>Memory</em>
+              </h3>
+              <p className="mt-4 max-w-lg text-body">
+                ZEO evaluates practical reasoning, emotional balance, and everyday problem-solving skills, giving every student a fair and
+                equal chance to show their natural intelligence.
+              </p>
+              <div className="mt-auto flex flex-wrap gap-3 pt-8">
+                <Button href="/contact?role=parent&topic=zeo#form" variant="dark">
+                  Register as a Student
+                </Button>
+                <Button href="/contact?role=school&topic=zeo#form" variant="light">
+                  Register Your School
+                </Button>
               </div>
             </div>
-          </PhotoFrame>
+          </Reveal>
+
+          {/* What ZEO measures + rewards */}
+          <div className="flex flex-col gap-5">
+            <Reveal index={1} className="rounded-[28px] border border-rule bg-paper p-6 shadow-[var(--shadow-float)] md:p-7">
+              <p className="text-micro font-semibold tracking-wide text-blue uppercase">What ZEO measures</p>
+              <ul className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3">
+                {ZEO_AREAS.map((z) => (
+                  <li
+                    key={z.title}
+                    className="group flex flex-col items-start gap-3 rounded-2xl bg-cream p-4 transition-[background-color,transform] duration-200 hover:-translate-y-0.5 hover:bg-brand-tint"
+                  >
+                    <span className="grid h-10 w-10 place-items-center rounded-full bg-brand text-brand-ink transition-transform duration-200 group-hover:scale-110">
+                      <z.icon size={18} aria-hidden="true" />
+                    </span>
+                    <span className="text-small leading-snug font-medium text-navy">{z.title}</span>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+            <Reveal index={2} className="flex flex-1 items-center gap-5 rounded-[28px] bg-navy p-6 text-white md:p-7">
+              <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-gold text-navy">
+                <Laptop size={26} aria-hidden="true" />
+              </span>
+              <div>
+                <p className="text-d5 font-medium">Rewards and benefits</p>
+                <p className="mt-1 text-small text-white/80">
+                  Learning devices like laptops or tablets for toppers, national recognition, and scholarship opportunities.
+                </p>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+
+        {/* Journey strip */}
+        <Reveal className="mt-5 rounded-[28px] border border-rule bg-paper p-5 md:p-6">
+          <ol className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5 lg:gap-0">
+            {ZEO_JOURNEY.map((step, i) => (
+              <li key={step} className="flex items-center gap-3 lg:px-3">
+                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-brand-tint font-mono text-small font-medium text-navy">
+                  {i + 1}
+                </span>
+                <span className="text-small font-medium text-navy">{step}</span>
+                {i < ZEO_JOURNEY.length - 1 && <ArrowRight size={16} aria-hidden="true" className="ml-auto hidden shrink-0 text-brand lg:block" />}
+              </li>
+            ))}
+          </ol>
+        </Reveal>
+
+        <Reveal className="mt-8 flex justify-center">
+          <Link href="/zeo" className="inline-flex items-center gap-2 text-small font-medium text-navy underline-offset-4 hover:underline">
+            Explore the full ZEO details <ArrowRight size={15} aria-hidden="true" />
+          </Link>
         </Reveal>
       </Container>
     </section>
@@ -147,7 +231,7 @@ export function RuralBand() {
               This work doesn&rsquo;t fund <em>itself</em>.
             </h2>
             <p className="mt-5 text-lead text-white/80">
-              Career guidance, digital literacy, and study material in Tier 2, Tier 3, rural and tribal districts —
+              Career guidance, digital literacy, and study material in Tier 2, Tier 3, rural and tribal districts,
               delivered with NGO and district partners.
             </p>
             <p className="mt-4">Every scholarship goes to a named, verified student. Every sponsor sees exactly where the money went.</p>

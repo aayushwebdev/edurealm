@@ -16,7 +16,7 @@ const notoDeva = Noto_Sans_Devanagari({ subsets: ["devanagari"], variable: "--fo
 const INIT_SCRIPT = `(function(){var d=document.documentElement;d.classList.add('js');if(location.pathname.indexOf('${CALM_PATH}')===0)d.dataset.calm='';})()`;
 
 export const metadata: Metadata = {
-  title: { default: "eduRealm — We work for the student.", template: "%s · eduRealm" },
+  title: { default: "eduRealm | We work for the student.", template: "%s · eduRealm" },
   description:
     "Ethical education consultancy, India. Suicide prevention and academic pressure support, coaching tactics awareness, and free scholarships for rural and Tier 2/3 students.",
 };

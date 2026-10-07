@@ -18,7 +18,7 @@ export default function Terms() {
         {
           title: "What this site is and isn’t",
           known:
-            "Informational and enquiry-based. Booking a session doesn’t happen through the site itself — it happens through follow-up.",
+            "Informational and enquiry-based. Booking a session doesn’t happen through the site itself. It happens through follow-up.",
         },
         {
           title: "No guarantee of outcomes",

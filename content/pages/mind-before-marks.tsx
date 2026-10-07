@@ -12,7 +12,7 @@ import { HELPLINES } from "@/content/site";
 
 /** DRAFT */
 export const WHY = [
-  "Academic pressure builds quietly. A student under strain doesn’t always look distressed — often they look busy, high-achieving, and fine. Schools see this pattern every year and rarely have a structured way to respond to it.",
+  "Academic pressure builds quietly. A student under strain doesn’t always look distressed. Often they look busy, high-achieving, and fine. Schools see this pattern every year and rarely have a structured way to respond to it.",
   "Mind Before Marks gives students a place to name what they’re carrying, gives parents language for supporting rather than adding to the pressure, and gives teachers a clear, practical way to notice a student who’s struggling and know what to do next.",
 ];
 
@@ -105,7 +105,7 @@ export const FAQ: FaqItem[] = [
     id: "identify",
     q: "Will you identify at-risk students to the school?",
     // FRAMEWORK — draft policy answer, confirm before publishing.
-    a: "If a facilitator becomes concerned about a specific student, we raise it privately with the school’s designated point of contact, following the referral pathway above. We don’t diagnose or label a student — we flag a concern and let the school’s own safeguarding process take it from there.",
+    a: "If a facilitator becomes concerned about a specific student, we raise it privately with the school’s designated point of contact, following the referral pathway above. We don’t diagnose or label a student. We flag a concern and let the school’s own safeguarding process take it from there.",
   },
   {
     id: "confidential",

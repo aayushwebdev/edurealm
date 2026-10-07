@@ -18,25 +18,25 @@ export const FIT = [
   {
     who: "If you're a student",
     items: [
-      <><L slug="compass">Compass</L> — career direction</>,
-      <><L slug="cognitive-skills">Cognitive Skill Workshops</L> — reasoning and EQ</>,
-      <><L slug="founders-bootcamp">Founders&rsquo; Bootcamp</L> — turning an idea into a plan</>,
+      <><L slug="compass">Compass</L>: career direction</>,
+      <><L slug="cognitive-skills">Cognitive Skill Workshops</L>: reasoning and EQ</>,
+      <><L slug="founders-bootcamp">Founders&rsquo; Bootcamp</L>: turning an idea into a plan</>,
     ],
   },
   {
     who: "If you're a parent",
     items: [
-      <><L slug="mind-before-marks">Mind Before Marks</L> — pressure and wellbeing</>,
-      <><L slug="informed-choice">Informed Choice</L> — coaching-fee decisions</>,
-      <><L slug="compass">Compass</L> — alongside your child</>,
+      <><L slug="mind-before-marks">Mind Before Marks</L>: pressure and wellbeing</>,
+      <><L slug="informed-choice">Informed Choice</L>: coaching-fee decisions</>,
+      <><L slug="compass">Compass</L>: alongside your child</>,
     ],
   },
   {
     who: "If you're a school",
     items: [
-      <><L slug="mind-before-marks">Mind Before Marks</L> and <L slug="informed-choice">Informed Choice</L> — as full-school programs</>,
-      <><L slug="cognitive-skills">Cognitive Skill Workshops</L> — as a batch add-on</>,
-      <><L slug="founders-bootcamp">Founders&rsquo; Bootcamp</L> — as a summer offering</>,
+      <><L slug="mind-before-marks">Mind Before Marks</L> and <L slug="informed-choice">Informed Choice</L>, as full-school programs</>,
+      <><L slug="cognitive-skills">Cognitive Skill Workshops</L>, as a batch add-on</>,
+      <><L slug="founders-bootcamp">Founders&rsquo; Bootcamp</L>, as a summer offering</>,
     ],
   },
 ];
@@ -57,7 +57,7 @@ export const COMPARE = {
 export const BOOKING: Step[] = [
   { title: "Enquire", body: "Tell us your school, grade levels, and which program you're interested in." },
   { title: "We confirm format and quote", body: "We'll follow up within two business days with a proposed format, timing, and cost." },
-  { title: "Session delivered", body: "We handle materials and facilitation — you provide the space and the students." },
+  { title: "Session delivered", body: "We handle materials and facilitation. You provide the space and the students." },
 ];
 
 export const PROMISE = ["We take no commission from any institute.", "We never guarantee a rank."];
@@ -67,7 +67,7 @@ export const FAQ: FaqItem[] = [
   {
     id: "format",
     q: "Online or on campus?",
-    a: "Mind Before Marks and Cognitive Skill Workshops are delivered on-campus only — both rely on in-room group dynamics that don't translate well online. Informed Choice and Compass are available either way; tell us your preference when you enquire.",
+    a: "Mind Before Marks and Cognitive Skill Workshops are delivered on-campus only. Both rely on in-room group dynamics that don't translate well online. Informed Choice and Compass are available either way; tell us your preference when you enquire.",
   },
   {
     id: "size",

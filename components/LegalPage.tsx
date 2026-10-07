@@ -25,7 +25,7 @@ export function LegalPage({
         {sections.map((s, i) => (
           <Detail key={s.title} index={i} title={s.title}>
             {s.known && <p>{s.known}</p>}
-            <Ph block>final legal wording — legal review</Ph>
+            <Ph block>final legal wording, after legal review</Ph>
           </Detail>
         ))}
       </DetailStack>

@@ -1,24 +1,19 @@
-import Link from "next/link";
 import type { ReactNode } from "react";
-import { ChevronRight } from "lucide-react";
 import type { Photo } from "@/content/photos";
-import { Mark } from "@/components/layout/Mark";
 import { Reveal } from "@/components/motion/Reveal";
-import { Container, Tag, cx } from "./primitives";
-import { PhotoFrame } from "./photo";
+import { Tag, cx } from "./primitives";
 
 /**
- * Inner-page hero: a bold rounded panel in the brand colour (#19A7E6) with dark ink text,
- * decorative rings, and a white-framed photo card.
- * `tone="mist"` is the calm variant (Mind Before Marks): soft sky tint, no gold, no rings.
+ * Inner-page hero: centred tag, heading and lead on a clean light gradient, with soft brand glows,
+ * a faded dot texture, and a curved arc along the bottom edge.
+ * `tone="mist"` is the calm variant (Mind Before Marks): softer sky tones, no gold, no drifting glows.
+ * `photo` and `crumbs` are accepted for compatibility but not shown in this layout.
  */
 export function PageHero({
   tag,
   title,
   lead,
   children,
-  photo,
-  crumbs = [],
   tone = "cream",
   noGold,
   aside,
@@ -29,73 +24,47 @@ export function PageHero({
   children?: ReactNode;
   photo?: Photo;
   crumbs?: { href: string; label: string }[];
-  /** "cream" (default) = bold brand panel; "mist" = calm variant. */
+  /** "cream" (default) = brand gradient; "mist" = calm variant. */
   tone?: "cream" | "mist";
   /** Mind Before Marks: no gold anywhere. */
   noGold?: boolean;
-  /** Replaces the photo column (e.g. a card). */
+  /** Extra content under the lead (e.g. helpline card). */
   aside?: ReactNode;
 }) {
   const calm = tone === "mist";
-  const right = photo || aside;
 
   return (
-    <header className="bg-cream px-3 pt-24 pb-4 md:px-6 md:pt-28">
+    <header className="relative isolate overflow-hidden bg-gradient-to-b from-paper via-brand-tint/70 to-paper px-4 pt-36 pb-28 text-center md:pt-44 md:pb-36">
+      {/* Soft glows */}
       <div
+        aria-hidden="true"
         className={cx(
-          "relative mx-auto max-w-[1400px] overflow-hidden rounded-[32px] md:rounded-[44px]",
-          calm ? "bg-gradient-to-br from-brand-tint to-brand-100" : "on-brand bg-gradient-to-br from-brand to-brand-600",
+          "pointer-events-none absolute -top-40 -left-40 -z-10 h-[32rem] w-[32rem] rounded-full blur-3xl",
+          calm ? "bg-brand/10" : "hero-blob bg-brand/20",
         )}
-      >
-        {!calm && <div aria-hidden="true" className="hero-rings pointer-events-none absolute inset-0" />}
-        {!calm && <div aria-hidden="true" className="dot-texture-light pointer-events-none absolute inset-y-0 left-0 w-1/3 opacity-60" />}
-
-        <Container className={cx("relative grid items-center gap-10 py-14 md:py-20", right && "lg:grid-cols-[1.1fr_1fr] lg:gap-14")}>
-          <Reveal>
-            <nav aria-label="Breadcrumb" className="mb-6">
-              <ol className={cx("flex flex-wrap items-center gap-1.5 text-micro", calm ? "text-navy/70" : "text-brand-ink/75")}>
-                <li>
-                  <Link href="/" className="hover:underline">
-                    Home
-                  </Link>
-                </li>
-                {crumbs.map((c) => (
-                  <li key={c.href} className="flex items-center gap-1.5">
-                    <ChevronRight size={13} aria-hidden="true" />
-                    <Link href={c.href} className="hover:underline">
-                      {c.label}
-                    </Link>
-                  </li>
-                ))}
-              </ol>
-            </nav>
-            {tag && (
-              <Tag brand={!calm} noGold={noGold}>
-                {tag}
-              </Tag>
-            )}
-            <h1 className="mt-5 text-[2.75rem] leading-[1.04] md:text-d1">{title}</h1>
-            {lead && <p className={cx("mt-6 max-w-xl text-lead", calm ? "text-graphite" : "text-brand-ink/85")}>{lead}</p>}
-            {children}
-          </Reveal>
-
-          {photo && (
-            <Reveal index={1} className="relative">
-              <div className={cx("rounded-[36px] p-2.5", calm ? "bg-white/70" : "bg-white/35 backdrop-blur")}>
-                <PhotoFrame photo={photo} priority sizes="(min-width: 1024px) 45vw, 100vw" className="aspect-[5/4] w-full" />
-              </div>
-            </Reveal>
-          )}
-          {!photo && aside && <Reveal index={1}>{aside}</Reveal>}
-        </Container>
-
-        {/* Text-only variant: a large brand mark fills the empty side */}
-        {!right && !calm && (
-          <div aria-hidden="true" className="pointer-events-none absolute top-1/2 right-[-4rem] hidden -translate-y-1/2 text-white/25 lg:block">
-            <Mark className="h-[26rem] w-[26rem]" />
-          </div>
+      />
+      <div
+        aria-hidden="true"
+        className={cx(
+          "pointer-events-none absolute -top-32 -right-40 -z-10 h-[28rem] w-[28rem] rounded-full blur-3xl",
+          calm ? "bg-brand-100/60" : "hero-blob-2 bg-brand-100",
         )}
-      </div>
+      />
+      {/* Fine dot texture, faded out towards the edges */}
+      <div aria-hidden="true" className="page-hero-dots pointer-events-none absolute inset-0 -z-10" />
+      {/* Curved arc along the bottom edge */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute bottom-0 left-1/2 -z-10 h-48 w-[160%] -translate-x-1/2 translate-y-1/2 rounded-[100%] bg-gradient-to-b from-brand-100/90 via-brand-tint/60 via-20% to-paper to-40% md:h-56 md:w-[130%]"
+      />
+
+      <Reveal className="relative mx-auto flex max-w-4xl flex-col items-center">
+        {tag && <Tag noGold={noGold || calm}>{tag}</Tag>}
+        <h1 className="mt-6 text-[2.6rem] leading-[1.04] tracking-[-0.02em] text-navy md:text-[4.25rem]">{title}</h1>
+        {lead && <p className="mt-6 max-w-2xl text-lead text-graphite">{lead}</p>}
+        {children}
+        {aside && <div className="mt-10 w-full max-w-xl text-left">{aside}</div>}
+      </Reveal>
     </header>
   );
 }

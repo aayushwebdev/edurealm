@@ -11,11 +11,17 @@ export const HELPLINES = [
   { name: "KIRAN", number: "1800-599-0019", tel: "18005990019" },
 ] as const;
 
+/** Public contact details (set by the owner, 2026-10). No phone number published for now. */
+export const CONTACT = {
+  email: "zubuntuedu@gmail.com",
+  address: "Flat 202, Parsvnath, Panorama, Alpha Greater Noida, Gautam Buddha Nagar, 201310",
+} as const;
+
 export const NAV = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About Us" },
-  { href: "/programs", label: "Student Solutions" },
-  { href: "/institutions", label: "Institutional Solutions" },
+  { href: "/programs", label: "Student Hub" },
+  { href: "/institutions", label: "Institutional Services" },
   { href: "/zeo", label: "ZEO Olympiad" },
   { href: "/partner", label: "NGO & CSR" },
   { href: "/media", label: "Media & Events" },
@@ -130,7 +136,7 @@ export const TARGETS_YEAR_ONE = { districts: 20, scholarships: 100 };
 
 export const TARGETS_2030 = [
   { value: 500, label: "partner schools by 2030" },
-  { value: 100000, label: "students reached through pressure-awareness sessions" },
+  { value: 100000, label: "students will reach through pressure-awareness sessions" },
   { value: 1000, label: "fully funded rural scholarships" },
 ];
 
@@ -162,7 +168,7 @@ export const POSITIONING =
   "An ethical education consultancy that protects students and parents from academic pressure and coaching-industry sales tactics, while building capacity in schools and channeling opportunity into Tier 2, Tier 3, rural and tribal India.";
 
 export const DIFFERENCE =
-  "Most education organizations are either fully commercial (selling courses) or fully non-profit (relying on charity). eduRealm uses B2B revenue from schools and companies to fund free, protective work for students and families — and channels that same funding into rural and tribal scholarships.";
+  "Most education organizations are either fully commercial (selling courses) or fully non-profit (relying on charity). eduRealm uses B2B revenue from schools and companies to fund free, protective work for students and families, and channels that same funding into rural and tribal scholarships.";
 
 export const AUDIENCES = [
   {
@@ -203,12 +209,12 @@ export const PILLARS_EXPLAINED = [
 /** DRAFT (content strategist) — what each ethics-charter vow actually restricts. Order matches ETHICS_CHARTER. */
 export const ETHICS_EXPANDED = [
   "We’re never paid by a coaching provider, school vendor, or third party to recommend them. Every recommendation we make is based only on what’s best for the student or school in front of us.",
-  "Any student story we publish has explicit, written consent from the family, obtained separately from any program enrolment — consent to participate in a session is never treated as consent to be featured publicly.",
+  "Any student story we publish has explicit, written consent from the family, obtained separately from any program enrolment. Consent to participate in a session is never treated as consent to be featured publicly.",
   "A number without context can say anything. Every statistic we publish shows what it’s a fraction of, and when it was last updated.",
-  "No program we run promises a specific academic outcome — we promise a process, not a result, because promising a result is exactly the sales tactic Informed Choice exists to warn against.",
-  "If a client relationship — a school, a company, a partner — would require us to push a student toward an outcome rather than support their own judgement, we decline that work.",
+  "No program we run promises a specific academic outcome. We promise a process, not a result, because promising a result is exactly the sales tactic Informed Choice exists to warn against.",
+  "If a client relationship (a school, a company, a partner) would require us to push a student toward an outcome rather than support their own judgement, we decline that work.",
 ];
 
 /** DRAFT (content strategist) */
 export const CAREERS =
-  "We’re a small, growing team. If nothing’s listed below right now, that doesn’t mean we’re not hiring — reach out through the contact page and tell us what you’d bring.";
+  "We’re a small, growing team. If nothing’s listed below right now, that doesn’t mean we’re not hiring. Reach out through the contact page and tell us what you’d bring.";

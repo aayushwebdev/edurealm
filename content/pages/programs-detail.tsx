@@ -14,7 +14,7 @@ import type { CardItem, FaqItem } from "@/components/sections";
 export const COMPASS_SESSIONS: CardItem[] = [
   {
     title: "1 · Assessment",
-    body: "The student completes two structured assessments under a counsellor’s guidance: one measuring aptitudes, one measuring interests and working style. No right or wrong answers — this isn’t a test to pass.",
+    body: "The student completes two structured assessments under a counsellor’s guidance: one measuring aptitudes, one measuring interests and working style. No right or wrong answers. This isn’t a test to pass.",
     meta: "Student · 45 minutes",
   },
   {
@@ -24,7 +24,7 @@ export const COMPASS_SESSIONS: CardItem[] = [
   },
   {
     title: "3 · Report review",
-    body: "Student and parent review the written report together with the counsellor, with room for questions and a discussion of next steps — subjects to focus on, extracurriculars worth exploring, or further research the family can do together.",
+    body: "Student and parent review the written report together with the counsellor, with room for questions and a discussion of next steps: subjects to focus on, extracurriculars worth exploring, or further research the family can do together.",
     meta: "Student and parent · 45 minutes",
   },
 ];
@@ -43,7 +43,7 @@ export const COMPASS_REPORT = [
   "A one-page plain-language summary of the student’s aptitude and interest profile.",
   "Three to five career directions worth exploring, with a short note on why each one surfaced.",
   "A short list of subjects or extracurriculars that align with the profile.",
-  "No single “you should become X” recommendation — the report is a starting point for a conversation, not a verdict.",
+  "No single “you should become X” recommendation. The report is a starting point for a conversation, not a verdict.",
 ];
 
 /** DRAFT — clearly fictional, for illustration only. */
@@ -54,18 +54,18 @@ export const SAMPLE_REPORT = [
   {
     label: "Directions worth exploring",
     value:
-      "Engineering disciplines, applied sciences, design and architecture-adjacent fields. Each surfaced from the combination of strong spatial reasoning and investigative interest — not from either alone.",
+      "Engineering disciplines, applied sciences, design and architecture-adjacent fields. Each surfaced from the combination of strong spatial reasoning and investigative interest, not from either alone.",
   },
   {
     label: "Discussion notes",
     value:
-      "Consider whether the student has had exposure to any of these fields directly (a workshop, a relative’s work, a school project) — direct exposure often matters more than the assessment alone in narrowing interest further.",
+      "Consider whether the student has had exposure to any of these fields directly (a workshop, a relative’s work, a school project). Direct exposure often matters more than the assessment alone in narrowing interest further.",
   },
 ];
 export const SAMPLE_NOTE = "This is a sample report for illustration. Real reports are personalised to the individual student’s results.";
 
 export const COMPASS_FAQ: FaqItem[] = [
-  { id: "fail", q: "Can my child fail Compass?", a: "No. There are no right or wrong answers — this isn’t a test to pass." },
+  { id: "fail", q: "Can my child fail Compass?", a: "No. There are no right or wrong answers. This isn’t a test to pass." },
   { id: "recommend", q: "Will you recommend a college or institute?", a: "No. No recommended institutes. No commissions." },
   { id: "screen", q: "Is it done on a computer?", a: "Not a quiz. Not software. A trained counsellor working through real assessments with your child." },
   { id: "format", q: "Online or on campus?", a: "Either. Tell us your preference when you enquire." },
@@ -101,7 +101,7 @@ export const WORKSHOP_FORMATS: CardItem[] = [
 
 /** DRAFT */
 export const WORKSHOP_BOOKING =
-  "Tell us your grade level and preferred skill-area focus when you enquire — we’ll confirm a half-day or full-day format based on your schedule and group size.";
+  "Tell us your grade level and preferred skill-area focus when you enquire, and we’ll confirm a half-day or full-day format based on your schedule and group size.";
 
 export const WORKSHOP_RELATED = (
   <>
@@ -117,7 +117,7 @@ export const WORKSHOP_RELATED = (
 
 export const BUILD: CardItem[] = [
   { icon: Lightbulb, title: "Market research", body: "Talk to real potential users and test whether the problem actually exists." },
-  { icon: Calculator, title: "A basic plan", body: "Costs, pricing, and how the idea could sustain itself — in simple numbers." },
+  { icon: Calculator, title: "A basic plan", body: "Costs, pricing, and how the idea could sustain itself, in simple numbers." },
   { icon: Sparkles, title: "A pitch", body: "A short, honest presentation of the idea, the evidence, and the next step." },
 ];
 
@@ -133,7 +133,7 @@ export const BOOTCAMP_FACTS = [
 
 /** DRAFT */
 export const BOOTCAMP_NOT =
-  "Not a finished company. Not an investment pitch to real investors. Not a promise of funding, a job, or a guaranteed outcome. It’s a structured week of learning how founders actually think — students leave with a plan and a pitch, not a business.";
+  "Not a finished company. Not an investment pitch to real investors. Not a promise of funding, a job, or a guaranteed outcome. It’s a structured week of learning how founders actually think. Students leave with a plan and a pitch, not a business.";
 
 /** DRAFT — role description; names once confirmed. */
 export const MENTORS = (
@@ -146,7 +146,7 @@ export const MENTORS = (
 
 /** DRAFT */
 export const PITCH_DAY =
-  "The bootcamp closes with each team presenting a five-minute pitch to a small panel — mentors, and where possible, an outside guest with relevant experience. Feedback is constructive and specific, not scored competitively; the point is the practice of pitching, not a winner.";
+  "The bootcamp closes with each team presenting a five-minute pitch to a small panel: mentors and, where possible,, an outside guest with relevant experience. Feedback is constructive and specific, not scored competitively; the point is the practice of pitching, not a winner.";
 
 /** FRAMEWORK — standard camp safety draft; confirm against the actual venue and staffing plan. */
 export const SUPERVISION = [

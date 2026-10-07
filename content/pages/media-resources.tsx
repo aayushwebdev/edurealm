@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Ph } from "@/components/ui";
+import { CONTACT } from "@/content/site";
 
 /* /media and /resources. Copy: eduRealm content strategist draft. */
 
@@ -30,7 +30,11 @@ export const STANDARDS = [
 /** DRAFT */
 export const SUGGEST = (
   <>
-    Have a topic you think we should cover? <Ph>email address</Ph> — we read every suggestion, even if we can&rsquo;t
+    Have a topic you think we should cover? Email{" "}
+    <a href={`mailto:${CONTACT.email}`} className="font-medium text-navy underline underline-offset-4">
+      {CONTACT.email}
+    </a>
+    . We read every suggestion, even if we can&rsquo;t
     respond to all of them individually.
   </>
 );

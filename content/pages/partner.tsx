@@ -7,7 +7,10 @@ import { Handshake, HandCoins, Share2 } from "lucide-react";
 /** DRAFT */
 export const FLOW: Step[] = [
   { title: "Fund committed", body: "A CSR or individual contribution is allocated to a specific scholarship pool or program." },
-  { title: "Recipient identified and verified", body: "Against the criteria below." },
+  {
+    title: "Recipient identified and verified",
+    body: "Nominated through a partner school or NGO, then checked for enrolment, geography, and family hardship.",
+  },
   { title: "Funds disbursed", body: "Directly toward the student’s education costs, not as unrestricted cash." },
   { title: "Dated report sent", body: "Confirming who was supported and how the funds were used, on the reporting cadence agreed with the partner." },
 ];
@@ -26,7 +29,7 @@ export const VERIFICATION: Step[] = [
 /** Derived from the flow and the charter (report contents). */
 export const REPORT_INCLUDES = [
   "Who was supported, and how the funds were used.",
-  "Every recipient named and verified — shared with the family’s consent.",
+  "Every recipient named and verified, shared with the family’s consent.",
   "Every number with its denominator and a date.",
   "Compliance documentation.",
 ];
@@ -56,7 +59,7 @@ export const COMMITMENTS = [
 ];
 
 export const FAQ: FaqItem[] = [
-  { id: "csr", q: "Is this eligible CSR spend?", a: <Ph>CSR eligibility — confirm with your compliance team</Ph> },
+  { id: "csr", q: "Is this eligible CSR spend?", a: <Ph>CSR eligibility: confirm with your compliance team</Ph> },
   { id: "min", q: "Is there a minimum contribution?", a: <Ph>minimum, if any</Ph> },
   { id: "cash", q: "Does the money go to the student as cash?", a: "No. Funds are disbursed directly toward the student’s education costs, not as unrestricted cash." },
   { id: "report", q: "When do we get reports?", a: <>On the reporting cadence agreed with each partner. <Ph>default cadence</Ph></> },

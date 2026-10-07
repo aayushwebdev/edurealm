@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -44,13 +45,8 @@ export function Header() {
             scrolled ? "border-rule shadow-[var(--shadow-float)]" : "border-transparent",
           )}
         >
-          <Link href="/" className="flex shrink-0 items-center gap-2 text-d5 font-semibold text-navy" aria-label="eduRealm home">
-            <span className="grid h-8 w-8 place-items-center rounded-full bg-navy text-gold">
-              <Mark className="h-5 w-5" />
-            </span>
-            <span>
-              edu<span className="accent text-[1.4rem] font-normal">Realm</span>
-            </span>
+          <Link href="/" className="flex shrink-0 items-center" aria-label="eduRealm home">
+            <Image src="/brand/edurealm-logo.png" alt="eduRealm: Scientia, Nexus, Crescendum" width={1188} height={342} priority className="h-12 w-auto" />
           </Link>
 
           <nav aria-label="Main" className="hidden xl:block">

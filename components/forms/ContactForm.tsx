@@ -16,6 +16,13 @@ type Role = (typeof ROLES)[number]["v"];
 
 const TOPICS: Record<string, string> = {
   zeo: "ZEO 2026 registration",
+  counseling: "Booking a counseling session",
+  awareness: "Attending an awareness session",
+  career: "Career guidance session",
+  consultation: "Institutional consultation",
+  "campus-drive": "Scheduling a campus drive",
+  industry: "Industry-academia partnership",
+  overview: "Partnership overview request",
   compass: "Booking Compass",
   workshop: "Booking a Cognitive Skill Workshop",
   bootcamp: "Booking a Founders' Bootcamp seat",

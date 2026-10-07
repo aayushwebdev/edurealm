@@ -22,7 +22,7 @@ const CLAUSES = [
   {
     n: "9.3",
     text: "For board registration the student shall be enrolled in an associated school. Regular attendance at the associated school is not required.",
-    note: "This is a “dummy school” enrolment. Check your board’s attendance rules — a shortfall can affect eligibility to sit board exams.",
+    note: "This is a “dummy school” enrolment. Check your board’s attendance rules: a shortfall can affect eligibility to sit board exams.",
   },
   {
     n: "11.1",

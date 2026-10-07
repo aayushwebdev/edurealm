@@ -8,7 +8,7 @@ import { COMPASS_FAQ, COMPASS_INSTRUMENTS, COMPASS_REPORT, COMPASS_SESSIONS, SAM
 import { PHOTOS } from "@/content/photos";
 
 export const metadata: Metadata = {
-  title: "Compass — Career Discovery",
+  title: "Compass: Career Discovery",
   description: "Three sessions with a counsellor. One written report.",
 };
 
@@ -37,7 +37,7 @@ export default function Compass() {
         </ButtonRow>
       </PageHero>
 
-      <PageSection id="who" tone="paper" tag="Who it's for" title={<>For students in grades 9–12 — and their <em>parents</em></>}>
+      <PageSection id="who" tone="paper" tag="Who it's for" title={<>For students in grades 9–12, and their <em>parents</em></>}>
         <Reveal className="max-w-3xl text-lead text-graphite">
           <p>Students do the assessments and the interpretation. Parents join for the final report review.</p>
         </Reveal>
@@ -52,7 +52,7 @@ export default function Compass() {
           <p>{COMPASS_INSTRUMENTS}</p>
         </Detail>
         <Detail index={1} title="Who interprets them">
-          <Ph block>NAME, CREDENTIAL — real counsellors only.</Ph>
+          <Ph block>NAME, CREDENTIAL: real counsellors only.</Ph>
         </Detail>
         <Detail index={2} title="The written report">
           <CheckList items={COMPASS_REPORT} />

@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Mail, Map as MapIcon, MapPin, Phone } from "lucide-react";
+import { ArrowRight, Mail, MapPin } from "lucide-react";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { Reveal } from "@/components/motion/Reveal";
 import { CompareTable, PageSection } from "@/components/sections";
 import { QUICK, ROUTING } from "@/content/pages/contact";
-import { HelplineBar, PageHero, Ph, Tag } from "@/components/ui";
+import { CONTACT } from "@/content/site";
+import { HelplineBar, PageHero, Tag } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "Get in touch",
@@ -13,10 +14,16 @@ export const metadata: Metadata = {
 };
 
 const INFO = [
-  { icon: MapPin, label: "Office", value: <Ph>to add</Ph> },
-  { icon: Phone, label: "Phone", value: <Ph>to add</Ph> },
-  { icon: Mail, label: "Email", value: <Ph>to add</Ph> },
-  { icon: MapIcon, label: "Where we work", value: <Ph>states covered</Ph> },
+  { icon: MapPin, label: "Office", value: <address className="not-italic">{CONTACT.address}</address> },
+  {
+    icon: Mail,
+    label: "Email",
+    value: (
+      <a href={`mailto:${CONTACT.email}`} className="break-all underline-offset-4 hover:underline">
+        {CONTACT.email}
+      </a>
+    ),
+  },
 ];
 
 /** From the routing table (content/pages/contact.tsx). */
@@ -26,7 +33,7 @@ const RESPONSE = [
 ];
 
 /** DRAFT (content strategist booking flow). */
-const NEXT = ["We read your message and route it to the right team.", "We reply with a proposed format, timing, and cost.", "We agree a date — and handle the rest."];
+const NEXT = ["We read your message and route it to the right team.", "We reply with a proposed format, timing, and cost.", "We agree a date and handle the rest."];
 
 /* Motion: base reveal only. Helplines above the fold, not after the form. */
 export default function Contact() {

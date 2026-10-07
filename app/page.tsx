@@ -3,9 +3,7 @@ import { Commitment } from "@/components/home/Commitment";
 import {
   ClosingCta,
   CsrBand,
-  EthicsCharter,
   FaqSection,
-  FundingFlow,
   InstitutionsWhy,
   MediaSection,
   ProgramsBand,
@@ -33,8 +31,6 @@ export default function Home() {
       <RuralBand />
       <InstitutionsWhy />
       <CsrBand />
-      <FundingFlow />
-      <EthicsCharter />
       <MediaSection />
       <FaqSection />
       <ClosingCta />

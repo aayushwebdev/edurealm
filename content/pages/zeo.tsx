@@ -5,7 +5,7 @@ import type { FaqItem } from "@/components/sections";
 
 /** DRAFT */
 export const PREPARE = [
-  "You can’t cram for ZEO the way you’d cram for a recall-based exam — that’s the point.",
+  "You can’t cram for ZEO the way you’d cram for a recall-based exam. That’s the point.",
   "The most useful preparation is practising reasoning under time pressure: working through problems you haven’t seen before, discussing real-world scenarios with incomplete information, and getting comfortable being wrong and adjusting your answer rather than freezing.",
   "Reading widely outside the syllabus helps more here than reviewing a formula sheet.",
 ];

@@ -1,11 +1,11 @@
+import Image from "next/image";
 import Link from "next/link";
-import type { ReactNode } from "react";
-import { HELPLINES, PROGRAMS } from "@/content/site";
-import { Container, Ph } from "@/components/ui";
+import { CONTACT, HELPLINES, PROGRAMS } from "@/content/site";
+import { Container } from "@/components/ui";
 
 /*
  * Footer — reference layout: five link columns, a hairline divider, address + copyright
- * with social icons, and an oversized faded wordmark bleeding off the bottom edge.
+ * and an oversized faded wordmark bleeding off the bottom edge.
  * Static, no animation ever. Helplines stay visible (Contact column).
  */
 
@@ -18,7 +18,6 @@ const COLUMNS: { title: string; links: { href: string; label: string }[] }[] = [
     title: "eduRealm",
     links: [
       { href: "/about", label: "About us" },
-      { href: "/about#ethics", label: "Ethics charter" },
       { href: "/impact", label: "Impact" },
       { href: "/media", label: "Media" },
       { href: "/resources", label: "Free resources" },
@@ -38,34 +37,7 @@ const COLUMNS: { title: string; links: { href: string; label: string }[] }[] = [
     links: [
       { href: "/privacy", label: "Privacy" },
       { href: "/terms", label: "Terms of use" },
-      { href: "/about#ethics", label: "Our ethics charter" },
     ],
-  },
-];
-
-/* Minimal brand glyphs (the icon library no longer ships brand logos). */
-const SOCIAL: { name: string; svg: ReactNode }[] = [
-  {
-    name: "LinkedIn",
-    svg: <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9V21h-4V9Z" />,
-  },
-  {
-    name: "X",
-    svg: <path d="M17.7 3H21l-7.2 8.2L22 21h-6.6l-5.2-6.7L4.3 21H1l7.7-8.8L1 3h6.8l4.7 6.2L17.7 3Zm-1.2 16h1.8L6.7 5H4.8l11.7 14Z" />,
-  },
-  {
-    name: "Instagram",
-    svg: (
-      <>
-        <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" strokeWidth="2" />
-        <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" strokeWidth="2" />
-        <circle cx="17.3" cy="6.7" r="1.2" />
-      </>
-    ),
-  },
-  {
-    name: "Facebook",
-    svg: <path d="M14 8h3V4h-3c-2.8 0-4.5 1.8-4.5 4.5V10H7v4h2.5v8h4v-8H17l.6-4h-4.1V8.7c0-.4.3-.7.5-.7Z" />,
   },
 ];
 
@@ -73,6 +45,14 @@ export function Footer() {
   return (
     <footer className="on-dark relative overflow-hidden bg-navy-950 text-small text-white/75">
       <Container className="relative pt-16 md:pt-20">
+        {/* Brand row */}
+        <div className="mb-12 flex flex-col gap-5 border-b border-white/15 pb-10 md:flex-row md:items-center md:justify-between">
+          <Link href="/" aria-label="eduRealm home" className="self-start">
+            <Image src="/brand/edurealm-logo-white.png" alt="eduRealm: Scientia, Nexus, Crescendum" width={1208} height={348} className="h-14 w-auto" />
+          </Link>
+          <p className="max-w-sm text-body text-white/75">Ethical education consultancy, India. We work for the student.</p>
+        </div>
+
         {/* Link columns */}
         <div className="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-3 lg:grid-cols-5">
           {COLUMNS.map((col) => (
@@ -99,10 +79,9 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Ph>email</Ph>
-              </li>
-              <li>
-                <Ph>phone</Ph>
+                <a href={`mailto:${CONTACT.email}`} className="break-all transition-colors duration-150 hover:text-white">
+                  {CONTACT.email}
+                </a>
               </li>
             </ul>
             {/* Helplines — always visible */}
@@ -119,27 +98,10 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Divider + address / copyright / socials */}
-        <div className="mt-14 flex flex-col gap-6 border-t border-white/15 pt-8 md:flex-row md:items-start md:justify-between">
-          <div className="space-y-3 text-body text-white">
-            <p>
-              <Ph>office address</Ph>
-            </p>
-            <p>© 2026 eduRealm. All rights reserved.</p>
-          </div>
-          <ul className="flex gap-3" aria-label="Social media (handles to be confirmed)">
-            {SOCIAL.map((s) => (
-              <li key={s.name}>
-                {/* Not links yet — handles are unconfirmed. Swap the span for <a href> once live. */}
-                <span title={`${s.name} — coming soon`} className="grid h-9 w-9 place-items-center rounded-full bg-white text-navy-950">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
-                    {s.svg}
-                  </svg>
-                  <span className="sr-only">{s.name} (coming soon)</span>
-                </span>
-              </li>
-            ))}
-          </ul>
+        {/* Divider + address / copyright */}
+        <div className="mt-14 flex flex-col gap-4 border-t border-white/15 pt-8 text-body text-white md:flex-row md:items-start md:justify-between md:gap-10">
+          <address className="max-w-md not-italic">{CONTACT.address}</address>
+          <p className="shrink-0">© 2026 eduRealm. All rights reserved.</p>
         </div>
       </Container>
 

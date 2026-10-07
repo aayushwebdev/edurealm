@@ -12,19 +12,19 @@ export const TACTICS = [
   {
     name: "Inflated rank claims",
     looks: "A results poster showing a headline number of “selections” without showing how many students were actually enrolled that year.",
-    matters: "A small number of selections against a huge enrolled batch produces the same headline number as a genuinely strong result — the ratio is what tells you the truth, not the number alone.",
+    matters: "A small number of selections against a huge enrolled batch produces the same headline number as a genuinely strong result. The ratio is what tells you the truth, not the number alone.",
     ask: "“What was your total enrolled batch size for this result year, against this number of selections?”",
   },
   {
     name: "Non-refundable fee traps",
     looks: "A fee structure where withdrawal after a short window forfeits the full amount, regardless of the reason.",
-    matters: "Families sometimes need to withdraw a child for health, financial, or academic-fit reasons partway through a program — and discover the refund window closed weeks earlier than they realised.",
-    ask: "“What exactly is refundable, and by what specific date — in writing, not verbally?”",
+    matters: "Families sometimes need to withdraw a child for health, financial, or academic-fit reasons partway through a program, and discover the refund window closed weeks earlier than they realised.",
+    ask: "“What exactly is refundable, and by what specific date, in writing, not verbally?”",
   },
   {
     name: "“Dummy school” enrolment",
     looks: "A coaching program that enrols a student at a school for board-exam eligibility purposes only, with no real classroom attendance expected or required.",
-    matters: "This can affect a student’s actual academic record and eligibility for certain board-exam categories — families are often not told clearly what this arrangement means before agreeing to it.",
+    matters: "This can affect a student’s actual academic record and eligibility for certain board-exam categories. Families are often not told clearly what this arrangement means before agreeing to it.",
     ask: "“Will my child be required to attend regular classes at this school, or is this enrolment for exam-eligibility purposes only?”",
   },
 ];
@@ -35,7 +35,7 @@ export const BEFORE_YOU_SIGN: Step[] = [
   { title: "Get the refund policy in writing", body: "With specific dates, before paying anything." },
   { title: "Confirm the school arrangement", body: "Confirm directly whether this is a “dummy school” enrolment." },
   { title: "Ask who is teaching", body: "Ask who is actually teaching the batch, and their qualifications." },
-  { title: "Take it home", body: "Read the paperwork before signing — a program that pressures you to sign on the spot is telling you something." },
+  { title: "Take it home", body: "Read the paperwork before signing. A program that pressures you to sign on the spot is telling you something." },
 ];
 
 /**
@@ -51,7 +51,7 @@ export const QUESTIONS = [
   "Is the fee structure the same for every student, or is there a hidden “scholarship discount” that’s actually the real price?",
   "What happens if my child needs to pause or leave the program mid-year?",
   "Can I see the actual syllabus and schedule before I pay, not just a summary?",
-  "Are there any additional mandatory costs beyond the advertised fee — study material, testing fees, uniform, hostel?",
+  "Are there any additional mandatory costs beyond the advertised fee: study material, testing fees, uniform, hostel?",
   "What is the batch size, and is it the number I was told during the sales conversation?",
   "Is this institute registered or affiliated with any regulatory or accreditation body, and can I verify that independently?",
   "Can I speak to a current parent whose child is enrolled, without the institute arranging or being present for that conversation?",
@@ -77,5 +77,5 @@ export const FAQ: FaqItem[] = [
     a: "No. We’re against tactics that hide the facts a parent needs before paying. Any institute should be able to answer every one of the twelve questions.",
   },
   { id: "free", q: "Is the checklist free?", a: "Yes. Email only. No phone number requested." },
-  { id: "review", q: "Who checks this content?", a: <Ph>legal review — who reviews, and when</Ph> },
+  { id: "review", q: "Who checks this content?", a: <Ph>legal review: who reviews, and when</Ph> },
 ];

@@ -379,6 +379,24 @@ p {
   animation-play-state: paused;
 }
 
+/* About: the ecosystem ring turns very slowly (decorative; reduced motion stops it globally). */
+.eco-ring {
+  animation: eco-spin 90s linear infinite;
+}
+@keyframes eco-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Inner-page hero: fine dot grid, faded out from the centre */
+.page-hero-dots {
+  background-image: radial-gradient(rgb(25 167 230 / 0.22) 1px, transparent 1px);
+  background-size: 22px 22px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 35%, #000 0%, transparent 75%);
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 35%, #000 0%, transparent 75%);
+}
+
 /* Slow drifting background glows */
 .hero-blob {
   animation: blob-drift 16s ease-in-out infinite alternate;
