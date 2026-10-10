@@ -34,7 +34,7 @@ export function PageHero({
   const calm = tone === "mist";
 
   return (
-    <header className="relative isolate overflow-hidden bg-gradient-to-b from-paper via-brand-tint/70 to-paper px-4 pt-36 pb-28 text-center md:pt-44 md:pb-36">
+    <header className="relative isolate overflow-hidden bg-gradient-to-b from-paper via-brand-tint/70 to-paper px-4 pt-28 pb-20 text-center md:pt-36 md:pb-24">
       {/* Soft glows */}
       <div
         aria-hidden="true"
@@ -60,8 +60,8 @@ export function PageHero({
 
       <Reveal className="relative mx-auto flex max-w-4xl flex-col items-center">
         {tag && <Tag noGold={noGold || calm}>{tag}</Tag>}
-        <h1 className="mt-6 text-[2.6rem] leading-[1.04] tracking-[-0.02em] text-navy md:text-[4.25rem]">{title}</h1>
-        {lead && <p className="mt-6 max-w-2xl text-lead text-graphite">{lead}</p>}
+        <h1 className="mt-5 text-[2.25rem] leading-[1.06] tracking-[-0.02em] text-navy md:text-[3.25rem]">{title}</h1>
+        {lead && <p className="mt-5 max-w-2xl text-lead text-graphite">{lead}</p>}
         {children}
         {aside && <div className="mt-10 w-full max-w-xl text-left">{aside}</div>}
       </Reveal>

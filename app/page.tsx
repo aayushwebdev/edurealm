@@ -1,7 +1,6 @@
 import { HeroSplit } from "@/components/home/HeroSplit";
 import { Commitment } from "@/components/home/Commitment";
 import {
-  ClosingCta,
   CsrBand,
   FaqSection,
   InstitutionsWhy,
@@ -33,7 +32,6 @@ export default function Home() {
       <CsrBand />
       <MediaSection />
       <FaqSection />
-      <ClosingCta />
     </>
   );
 }

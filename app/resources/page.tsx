@@ -32,7 +32,7 @@ export default function Resources() {
           </>
         }
       />
-      <Container className="grid gap-5 pb-16 md:grid-cols-2 md:pb-24">
+      <Container className="grid gap-5 pb-16 md:grid-cols-2 md:pb-20">
         {RESOURCES.map((r, i) => {
           const featured = i === 0;
           return (
@@ -73,7 +73,7 @@ export default function Resources() {
       </Container>
 
       {/* Privacy note */}
-      <Container className="pb-16 md:pb-24">
+      <Container className="pb-12 md:pb-20">
         <Reveal className="flex flex-col gap-4 rounded-card bg-navy p-8 text-white/80 md:flex-row md:items-center md:p-10">
           <IconBadge tone="light">
             <Lock size={20} aria-hidden="true" />

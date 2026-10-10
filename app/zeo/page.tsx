@@ -21,8 +21,9 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
-import { Button, ButtonRow, Container, IconBadge, PageHero, PhotoFrame, Section, SectionHeading, Tag } from "@/components/ui";
+import { Button, ButtonRow, Container, IconBadge, PageHero, PhotoCard, PhotoFrame, Section, SectionHeading, Tag } from "@/components/ui";
 import { PHOTOS } from "@/content/photos";
+import { CARD_PHOTOS, type CardPhoto } from "@/content/cardPhotos";
 
 const INTRO = "A national talent discovery assessment designed to find, nurture, and empower India’s brightest young minds.";
 
@@ -34,13 +35,13 @@ export const metadata: Metadata = {
 const REGISTER_STUDENT = "/contact?role=parent&topic=zeo#form";
 const REGISTER_SCHOOL = "/contact?role=school&topic=zeo#form";
 
-const MEASURES: { icon: LucideIcon; title: string; body: string }[] = [
-  { icon: Calculator, title: "Quantitative Reasoning", body: "Basic math logic and everyday numerical thinking." },
-  { icon: HeartHandshake, title: "Emotional Intelligence (EQ)", body: "Self-awareness, understanding others, and handling pressure calmly." },
-  { icon: Brain, title: "Critical Thinking", body: "Analyzing situations, spotting patterns, and making sound judgments." },
-  { icon: Puzzle, title: "Practical Problem-Solving", body: "Finding creative, working solutions to everyday real-world challenges." },
-  { icon: Sparkles, title: "Multiple Intelligences", body: "Evaluating diverse talents including verbal, visual, and spatial strengths." },
-  { icon: Rocket, title: "Entrepreneurial Mindset", body: "Basic initiative, resourcefulness, and practical decision-making." },
+const MEASURES: { icon: LucideIcon; title: string; body: string; photo: CardPhoto }[] = [
+  { icon: Calculator, title: "Quantitative Reasoning", body: "Basic math logic and everyday numerical thinking.", photo: CARD_PHOTOS.mathBoard },
+  { icon: HeartHandshake, title: "Emotional Intelligence (EQ)", body: "Self-awareness, understanding others, and handling pressure calmly.", photo: CARD_PHOTOS.handsRaised },
+  { icon: Brain, title: "Critical Thinking", body: "Analyzing situations, spotting patterns, and making sound judgments.", photo: CARD_PHOTOS.focusedReader },
+  { icon: Puzzle, title: "Practical Problem-Solving", body: "Finding creative, working solutions to everyday real-world challenges.", photo: CARD_PHOTOS.redUniforms },
+  { icon: Sparkles, title: "Multiple Intelligences", body: "Evaluating diverse talents including verbal, visual, and spatial strengths.", photo: CARD_PHOTOS.drawing },
+  { icon: Rocket, title: "Entrepreneurial Mindset", body: "Basic initiative, resourcefulness, and practical decision-making.", photo: CARD_PHOTOS.professional },
 ];
 
 const ELIGIBILITY: { icon: LucideIcon; title: string; body: string }[] = [
@@ -65,15 +66,16 @@ const STEPS: { icon: LucideIcon; title: string; body: string }[] = [
   },
 ];
 
-const BENEFITS: { icon: LucideIcon; title: string; body: string }[] = [
+const BENEFITS: { icon: LucideIcon; title: string; body: string; photo: CardPhoto }[] = [
   {
     icon: GraduationCap,
     title: "For Students",
     body: "Earn national recognition, clear self-insight, learning devices (like laptops or tablets for toppers), and scholarship opportunities.",
+    photo: CARD_PHOTOS.graduates,
   },
-  { icon: Users, title: "For Parents", body: "Receive an honest, detailed evaluation of your child's real cognitive talents without toxic competition." },
-  { icon: Building2, title: "For Schools", body: "Benchmark your students against national standards and access specialized teacher support resources." },
-  { icon: BadgeCheck, title: "For CSR Sponsors", body: "Directly identify and sponsor proven, high-potential students who need financial support." },
+  { icon: Users, title: "For Parents", body: "Receive an honest, detailed evaluation of your child's real cognitive talents without toxic competition.", photo: CARD_PHOTOS.motherSonTablet },
+  { icon: Building2, title: "For Schools", body: "Benchmark your students against national standards and access specialized teacher support resources.", photo: CARD_PHOTOS.ludhianaSchool },
+  { icon: BadgeCheck, title: "For CSR Sponsors", body: "Directly identify and sponsor proven, high-potential students who need financial support.", photo: CARD_PHOTOS.bicycleFields },
 ];
 
 /* Motion: base reveal only. */
@@ -139,22 +141,10 @@ export default function ZeoPage() {
               }
             />
           </Reveal>
-          <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {MEASURES.map((m, i) => (
-              <Reveal
-                as="li"
-                key={m.title}
-                index={i}
-                className="group flex flex-col rounded-card border border-brand/15 bg-paper p-7 transition-[border-color,transform] duration-200 hover:-translate-y-1 hover:border-brand/50 md:p-8"
-              >
-                <div className="flex items-center justify-between">
-                  <IconBadge tone="brand">
-                    <m.icon size={22} aria-hidden="true" />
-                  </IconBadge>
-                  <span className="font-mono text-micro text-gray">Pillar {i + 1}</span>
-                </div>
-                <h3 className="mt-6 text-d5 font-medium">{m.title}</h3>
-                <p className="mt-2 text-body text-graphite">{m.body}</p>
+              <Reveal as="li" key={m.title} index={i}>
+                <PhotoCard photo={m.photo} icon={m.icon} label={`Pillar ${i + 1}`} title={m.title} body={m.body} />
               </Reveal>
             ))}
           </ul>
@@ -236,21 +226,10 @@ export default function ZeoPage() {
               }
             />
           </Reveal>
-          <ul className="mt-12 grid gap-5 md:grid-cols-2">
+          <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {BENEFITS.map((b, i) => (
-              <Reveal
-                as="li"
-                key={b.title}
-                index={i}
-                className="flex gap-5 rounded-card border border-rule bg-paper p-7 transition-colors duration-200 hover:border-brand/50 md:p-8"
-              >
-                <IconBadge tone={i === 0 ? "gold" : "brand"}>
-                  <b.icon size={22} aria-hidden="true" />
-                </IconBadge>
-                <div>
-                  <h3 className="text-d5 font-medium">{b.title}</h3>
-                  <p className="mt-2 text-body text-graphite">{b.body}</p>
-                </div>
+              <Reveal as="li" key={b.title} index={i}>
+                <PhotoCard photo={b.photo} icon={b.icon} title={b.title} body={b.body} featured={i === 0} />
               </Reveal>
             ))}
           </ul>
@@ -258,7 +237,7 @@ export default function ZeoPage() {
       </Section>
 
       {/* 7 · School coordinator call to action */}
-      <section aria-labelledby="school-cta-title" className="bg-cream pb-16 md:pb-28">
+      <section aria-labelledby="school-cta-title" className="bg-cream pb-12 md:pb-20">
         <Container>
           <Reveal>
             <div className="on-brand relative overflow-hidden rounded-[32px] bg-gradient-to-br from-brand to-brand-600 px-6 py-16 md:px-16 md:py-20">

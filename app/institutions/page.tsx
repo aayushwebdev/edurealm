@@ -17,8 +17,10 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
-import { Button, ButtonRow, Container, IconBadge, PageHero, PhotoFrame, Section, SectionHeading, Tag, cx } from "@/components/ui";
+import { BgPhotoCard } from "@/components/BgPhotoCard";
+import { Button, ButtonRow, Container, IconBadge, PageHero, PhotoCard, PhotoFrame, Section, SectionHeading, Tag } from "@/components/ui";
 import { PHOTOS } from "@/content/photos";
+import { CARD_PHOTOS, type CardPhoto } from "@/content/cardPhotos";
 import { HELPLINES } from "@/content/site";
 
 const INTRO =
@@ -33,7 +35,7 @@ const CONSULT = "/contact?role=school&topic=consultation#form";
 const CAMPUS_DRIVE = "/contact?role=school&topic=campus-drive#form";
 const INDUSTRY = "/contact?role=school&topic=industry#form";
 
-const DRIVES: { label: string; title: string; icon: LucideIcon; format: string; impact: string; dark?: boolean }[] = [
+const DRIVES: { label: string; title: string; icon: LucideIcon; format: string; impact: string; photo: CardPhoto; dark?: boolean }[] = [
   {
     label: "Drive 1",
     title: "On-Campus Suicide Prevention & Parent Sensitivity Drives",
@@ -41,6 +43,7 @@ const DRIVES: { label: string; title: string; icon: LucideIcon; format: string; 
     format: "In-person school assemblies and parent-teacher seminars.",
     impact:
       "Helps your school community recognize mental health warning signs early, builds constructive communication between teachers and parents, and creates a safe campus environment.",
+    photo: CARD_PHOTOS.assemblyJaipur,
     dark: true,
   },
   {
@@ -50,6 +53,7 @@ const DRIVES: { label: string; title: string; icon: LucideIcon; format: string; 
     format: "Orientation sessions for parents of classes 8 to 12.",
     impact:
       "Protects your school's students from abandoning regular schooling for misleading coaching setups, while helping parents plan realistic academic roadmaps.",
+    photo: CARD_PHOTOS.schoolClassroom,
   },
 ];
 
@@ -59,10 +63,10 @@ const DELIVER: { icon: LucideIcon; text: string }[] = [
   { icon: Puzzle, text: "Activity-based learning models that move away from pure memorization." },
 ];
 
-const TRAINING: { icon: LucideIcon; text: string }[] = [
-  { icon: Presentation, text: "Modern interactive teaching techniques and classroom management." },
-  { icon: Stethoscope, text: "Identifying emotional distress, academic burnout, and learning difficulties in students." },
-  { icon: MessagesSquare, text: "Constructive parent communication and student counseling skills." },
+const TRAINING: { icon: LucideIcon; text: string; photo: CardPhoto }[] = [
+  { icon: Presentation, text: "Modern interactive teaching techniques and classroom management.", photo: CARD_PHOTOS.teacherGuiding },
+  { icon: Stethoscope, text: "Identifying emotional distress, academic burnout, and learning difficulties in students.", photo: CARD_PHOTOS.thoughtful },
+  { icon: MessagesSquare, text: "Constructive parent communication and student counseling skills.", photo: CARD_PHOTOS.womenSession },
 ];
 
 const INDUSTRY_FEATURES: { icon: LucideIcon; text: string }[] = [
@@ -108,43 +112,30 @@ export default function Institutions() {
               }
             />
           </Reveal>
-          <div className="mt-12 grid gap-5 lg:grid-cols-2">
+          <div className="mt-10 grid gap-5 lg:grid-cols-2">
             {DRIVES.map((d, i) => (
-              <Reveal
-                key={d.title}
-                index={i}
-                className={cx(
-                  "relative flex flex-col overflow-hidden rounded-card p-8 md:p-10",
-                  d.dark ? "on-dark bg-navy text-white/80" : "border border-brand/25 bg-brand-tint",
-                )}
-              >
-                {d.dark && <div aria-hidden="true" className="hero-rings pointer-events-none absolute inset-0 opacity-40" />}
-                <div className="relative">
+              <Reveal key={d.title} index={i}>
+                <BgPhotoCard photo={d.photo} tone={d.dark ? "navy" : "blue"}>
                   <div className="flex items-center justify-between gap-4">
-                    <IconBadge tone={d.dark ? "light" : "brand"}>
+                    <span className="grid h-12 w-12 place-items-center rounded-full bg-white/15 text-gold ring-1 ring-white/25 backdrop-blur transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6">
                       <d.icon size={22} aria-hidden="true" />
-                    </IconBadge>
-                    <span
-                      className={cx(
-                        "rounded-full px-3 py-1 font-mono text-micro tracking-wide uppercase",
-                        d.dark ? "bg-white/10 text-white" : "bg-paper text-navy",
-                      )}
-                    >
+                    </span>
+                    <span className="rounded-full bg-white/15 px-3 py-1 font-mono text-micro tracking-wide text-white uppercase backdrop-blur">
                       {d.label}
                     </span>
                   </div>
-                  <h3 className={cx("mt-6 text-d4 font-medium", d.dark ? "text-white" : "text-navy")}>{d.title}</h3>
+                  <h3 className="mt-6 text-d4 font-medium text-white">{d.title}</h3>
                   <dl className="mt-6 space-y-4">
                     {[
                       { k: "Format", v: d.format, icon: CalendarCheck },
                       { k: "Impact", v: d.impact, icon: ShieldCheck },
                     ].map((row) => (
-                      <div key={row.k} className={cx("rounded-2xl p-5", d.dark ? "bg-white/[0.06]" : "bg-paper")}>
-                        <dt className={cx("flex items-center gap-2 text-micro font-semibold tracking-wide uppercase", d.dark ? "text-gold" : "text-blue")}>
+                      <div key={row.k} className="rounded-2xl bg-white/10 p-5 ring-1 ring-white/15 backdrop-blur-sm transition-colors duration-300 group-hover:bg-white/[0.14]">
+                        <dt className="flex items-center gap-2 text-micro font-semibold tracking-wide text-gold uppercase">
                           <row.icon size={15} aria-hidden="true" />
                           {row.k}
                         </dt>
-                        <dd className={cx("mt-2 text-body", d.dark ? "text-white/85" : "text-graphite")}>{row.v}</dd>
+                        <dd className="mt-2 text-body text-white/90">{row.v}</dd>
                       </div>
                     ))}
                   </dl>
@@ -161,7 +152,7 @@ export default function Institutions() {
                       ))}
                     </p>
                   )}
-                </div>
+                </BgPhotoCard>
               </Reveal>
             ))}
           </div>
@@ -223,19 +214,8 @@ export default function Institutions() {
           <p className="mt-12 text-micro font-semibold tracking-wide text-blue uppercase">Training modules</p>
           <ol className="mt-4 grid gap-5 md:grid-cols-3">
             {TRAINING.map((t, i) => (
-              <Reveal
-                as="li"
-                key={t.text}
-                index={i}
-                className="flex flex-col rounded-card border border-rule bg-paper p-7 transition-[border-color,transform] duration-200 hover:-translate-y-1 hover:border-brand/50 md:p-8"
-              >
-                <div className="flex items-center justify-between">
-                  <IconBadge tone="brand">
-                    <t.icon size={22} aria-hidden="true" />
-                  </IconBadge>
-                  <span className="font-mono text-micro text-gray">Module {i + 1}</span>
-                </div>
-                <p className="mt-6 text-d5 leading-snug font-medium text-navy">{t.text}</p>
+              <Reveal as="li" key={t.text} index={i}>
+                <PhotoCard photo={t.photo} icon={t.icon} label={`Module ${i + 1}`} title={t.text} />
               </Reveal>
             ))}
           </ol>

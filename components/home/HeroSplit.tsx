@@ -40,7 +40,7 @@ const SLIDES: {
       { label: "Book a Workshop", href: BOOK_SCHOOL_HREF },
       { label: "View Workshop Details", href: "/programs/mind-before-marks" },
     ],
-    photo: { src: "/hero/slide-1.webp", alt: "A student talks openly with a counsellor in a calm, sunlit room" },
+    photo: { src: "/hero/slide-1-candle.webp", alt: "Two hands gently shield a lit candle beside a sign reading Save your child from suicide" },
   },
   {
     tab: "Beware of Coaching Tactics",
@@ -162,21 +162,20 @@ export function HeroSplit() {
       />
 
       {/* Content */}
-      <div className="relative mx-auto flex w-full max-w-[1368px] flex-1 flex-col justify-center px-8 pt-28 pb-10 md:px-11 lg:pt-[5.5rem] lg:pb-6">
+      <div className="relative mx-auto flex w-full max-w-[1280px] flex-1 flex-col justify-center px-6 pt-28 pb-10 md:px-12 lg:px-20 lg:pt-20 lg:pb-6">
         <div className="max-w-[40rem] lg:max-w-[46rem]">
-          <p className="inline-flex items-center gap-2 rounded-full border border-navy/10 bg-paper/80 p-1 pr-4 text-small text-navy backdrop-blur">
-            <span className="rounded-full bg-brand px-3 py-1 text-micro font-medium text-brand-ink">eduRealm</span>
-            We work for the student.
-          </p>
 
-          {/* Active slide — key replays the entrance animation. Heading stays on one line on desktop;
-              subheading and body reserve 2 and 5 lines so the layout doesn't jump between slides. */}
+          {/* Active slide — key replays the entrance animation. Heading, subheading and body reserve 2,
+              2 and 5 lines so the layout doesn't jump between slides. */}
           <div key={active} id="hero-panel" role="tabpanel" aria-labelledby={`hero-tab-${active}`}>
             <h1
               id="hero-title"
-              className="mt-6 min-h-[2.1em] text-[2.5rem] leading-[1.04] tracking-[-0.025em] whitespace-normal text-navy md:text-[3.5rem] lg:min-h-0 lg:text-[clamp(2.6rem,7svh,3.75rem)] lg:whitespace-nowrap"
+              className="flex min-h-[2.3em] flex-col justify-end text-[2.75rem] leading-[1.02] !font-semibold tracking-[-0.03em] text-navy md:text-[3.25rem] lg:text-[clamp(2.5rem,6.6svh,3.75rem)]"
             >
-              <AnimatedTitle segs={s.title} />
+              {/* One wrapper so a one-line heading sits at the bottom of the reserved two-line space */}
+              <span className="block">
+                <AnimatedTitle segs={s.title} />
+              </span>
             </h1>
             <p
               className="hero-fade mt-4 max-w-xl text-[1.25rem] leading-snug font-medium text-blue md:text-[1.5rem] lg:min-h-[2.75em]"

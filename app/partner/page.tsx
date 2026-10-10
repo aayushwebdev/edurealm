@@ -16,8 +16,9 @@ import {
 import { Reveal } from "@/components/motion/Reveal";
 import { FaqBlock } from "@/components/sections";
 import { FAQ, FLOW } from "@/content/pages/partner";
-import { Button, ButtonRow, Container, IconBadge, PageHero, Ph, PhotoFrame, Section, SectionHeading, Tag } from "@/components/ui";
+import { Button, ButtonRow, Container, IconBadge, PageHero, Ph, PhotoCard, PhotoFrame, Section, SectionHeading, Tag } from "@/components/ui";
 import { PHOTOS } from "@/content/photos";
+import { CARD_PHOTOS, type CardPhoto } from "@/content/cardPhotos";
 
 const INTRO =
   "Connecting corporate CSR capital, NGO outreach, and government programs with deserving students and under-resourced schools across India.";
@@ -30,26 +31,30 @@ export const metadata: Metadata = {
 const CSR_ENQUIRY = "/contact?role=company&topic=partnership#form";
 const OVERVIEW = "/contact?role=company&topic=overview#form";
 
-const OPPORTUNITIES: { icon: LucideIcon; title: string; body: string }[] = [
+const OPPORTUNITIES: { icon: LucideIcon; title: string; body: string; photo: CardPhoto }[] = [
   {
     icon: GraduationCap,
     title: "Sponsoring Rural & Tribal Scholarships",
     body: "Directly fund the higher education of verified, high-potential students identified through our ZEO Olympiad talent search.",
+    photo: CARD_PHOTOS.lucknowGirl,
   },
   {
     icon: School,
     title: "Adopting Underserved Schools",
     body: "Sponsor modern study materials, curriculum upgrades, and comprehensive teacher training for schools in remote areas.",
+    photo: CARD_PHOTOS.banaskantha,
   },
   {
     icon: HeartHandshake,
     title: "Funding Student Mental Health & Suicide Prevention Drives",
     body: "Support free, life-saving parent awareness and student counseling seminars in high-pressure regional hubs.",
+    photo: CARD_PHOTOS.girlsListening,
   },
   {
     icon: Tablet,
     title: "Digital & Skill Infrastructure Kits",
     body: "Provide foundational learning kits, tablet devices, and skill workshops to tribal community classrooms.",
+    photo: CARD_PHOTOS.boyTablet,
   },
 ];
 
@@ -104,7 +109,7 @@ export default function Partner() {
               }
             />
           </Reveal>
-          <div className="relative mt-12 grid gap-5 lg:grid-cols-2 lg:gap-8">
+          <div className="relative mt-10 grid gap-5 lg:grid-cols-2 lg:gap-8">
             <Reveal className="flex flex-col rounded-card border border-rule bg-cream p-8 md:p-10">
               <span className="inline-flex w-fit items-center gap-2 rounded-full bg-paper px-3 py-1 text-micro font-semibold tracking-wide text-navy uppercase">
                 <AlertTriangle size={14} aria-hidden="true" className="text-gold" /> The problem
@@ -155,24 +160,10 @@ export default function Partner() {
               }
             />
           </Reveal>
-          <ol className="mt-12 grid gap-5 md:grid-cols-2">
+          <ol className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {OPPORTUNITIES.map((o, i) => (
-              <Reveal
-                as="li"
-                key={o.title}
-                index={i}
-                className="flex gap-5 rounded-card border border-brand/15 bg-paper p-7 transition-[border-color,transform] duration-200 hover:-translate-y-1 hover:border-brand/50 md:p-8"
-              >
-                <div className="flex flex-col items-center gap-3">
-                  <IconBadge tone="brand">
-                    <o.icon size={22} aria-hidden="true" />
-                  </IconBadge>
-                  <span className="font-mono text-micro text-gray">{String(i + 1).padStart(2, "0")}</span>
-                </div>
-                <div>
-                  <h3 className="text-d5 font-medium">{o.title}</h3>
-                  <p className="mt-2 text-body text-graphite">{o.body}</p>
-                </div>
+              <Reveal as="li" key={o.title} index={i}>
+                <PhotoCard photo={o.photo} icon={o.icon} label={String(i + 1).padStart(2, "0")} title={o.title} body={o.body} />
               </Reveal>
             ))}
           </ol>

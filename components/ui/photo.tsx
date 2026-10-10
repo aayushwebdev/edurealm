@@ -74,8 +74,8 @@ export function PhotoCollage({
 export function PhotoPair({ photos, className, badge }: { photos: [Photo, Photo]; className?: string; badge?: ReactNode }) {
   return (
     <div className={cx("relative grid grid-cols-2 gap-3 md:gap-4", className)}>
-      <PhotoFrame photo={photos[0]} sizes="(min-width: 1024px) 25vw, 50vw" className="aspect-[4/5]" />
-      <PhotoFrame photo={photos[1]} sizes="(min-width: 1024px) 25vw, 50vw" className="mt-12 aspect-[4/5]" />
+      <PhotoFrame photo={photos[0]} sizes="(min-width: 1024px) 25vw, 50vw" className="aspect-square" />
+      <PhotoFrame photo={photos[1]} sizes="(min-width: 1024px) 25vw, 50vw" className="mt-8 aspect-square" />
       {badge && <div className="absolute top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2">{badge}</div>}
     </div>
   );

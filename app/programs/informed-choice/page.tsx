@@ -113,7 +113,7 @@ export default function InformedChoice() {
         </Container>
       </Section>
 
-      <Container className="grid gap-5 py-16 md:py-24 lg:grid-cols-3">
+      <Container className="grid gap-5 py-12 md:py-20 lg:grid-cols-3">
         <Reveal className="rounded-card border border-rule bg-paper p-8 lg:col-span-2">
           <IconBadge tone="navy">
             <ListChecks size={20} aria-hidden="true" />

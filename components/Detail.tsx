@@ -40,7 +40,7 @@ export function Detail({
 
 export function DetailStack({ children, className }: { children: ReactNode; className?: string }) {
   return (
-    <Container className={className ?? "py-16 md:py-24"}>
+    <Container className={className ?? "py-12 md:py-20"}>
       <div className="grid gap-4 md:grid-cols-2 md:gap-5">{children}</div>
     </Container>
   );

@@ -50,7 +50,7 @@ export default function Contact() {
         lead="One form, routed by role: Parent · School · Company · NGO/Government."
         aside={<HelplineBar large />}
       />
-      <section id="form" aria-labelledby="form-title" className="scroll-mt-28 px-3 pt-10 pb-16 md:px-6 md:pb-24">
+      <section id="form" aria-labelledby="form-title" className="scroll-mt-28 px-3 pt-10 pb-16 md:px-6 md:pb-20">
         <Reveal className="mx-auto grid max-w-[1240px] overflow-hidden rounded-[36px] border border-rule bg-paper shadow-[var(--shadow-float)] lg:grid-cols-[1.45fr_1fr]">
           {/* Form */}
           <div className="p-6 sm:p-10 lg:p-14">

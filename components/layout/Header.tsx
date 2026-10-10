@@ -38,15 +38,16 @@ export function Header() {
   return (
     <header className="fixed inset-x-0 top-0 z-50">
       {/* Floating pill nav */}
-      <div className="px-3 pt-3 md:px-6">
+      {/* Same container as the homepage hero text, so the bar's edges line up with it */}
+      <div className="mx-auto max-w-[1280px] px-3 pt-3 md:px-12 lg:px-20">
         <div
           className={cx(
-            "mx-auto flex h-16 max-w-[1320px] items-center justify-between gap-6 rounded-full border bg-paper/95 pr-2 pl-5 backdrop-blur transition-shadow duration-200",
+            "flex h-14 w-full items-center justify-between gap-6 rounded-full border bg-paper/95 pr-2 pl-5 backdrop-blur transition-shadow duration-200",
             scrolled ? "border-rule shadow-[var(--shadow-float)]" : "border-transparent",
           )}
         >
           <Link href="/" className="flex shrink-0 items-center" aria-label="eduRealm home">
-            <Image src="/brand/edurealm-logo.png" alt="eduRealm: Scientia, Nexus, Crescendum" width={1188} height={342} priority className="h-12 w-auto" />
+            <Image src="/brand/edurealm-logo.png" alt="eduRealm: Scientia, Nexus, Crescendum" width={1188} height={342} priority className="h-9 w-auto" />
           </Link>
 
           <nav aria-label="Main" className="hidden xl:block">
@@ -57,7 +58,7 @@ export function Header() {
                     href={n.href}
                     aria-current={isActive(n.href) ? "page" : undefined}
                     className={cx(
-                      "block rounded-full px-2.5 py-2 whitespace-nowrap transition-colors duration-150 min-[1440px]:px-3.5",
+                      "block rounded-full px-2.5 py-1.5 whitespace-nowrap transition-colors duration-150 min-[1440px]:px-3.5",
                       isActive(n.href) ? "bg-navy text-white" : "text-navy hover:bg-paper",
                     )}
                   >
@@ -71,13 +72,13 @@ export function Header() {
           <div className="flex shrink-0 items-center gap-2">
             <Link
               href={BOOK_HREF}
-              className="hidden min-h-12 items-center whitespace-nowrap rounded-full bg-gold px-5 text-small min-[1440px]:px-6 font-medium text-navy transition-colors duration-150 hover:bg-[#f2c64f] sm:inline-flex"
+              className="hidden min-h-10 items-center whitespace-nowrap rounded-full bg-gold px-5 text-small min-[1440px]:px-6 font-medium text-navy transition-colors duration-150 hover:bg-[#f2c64f] sm:inline-flex"
             >
               Book A Session
             </Link>
             <button
               type="button"
-              className="grid h-12 w-12 place-items-center rounded-full bg-navy text-white xl:hidden"
+              className="grid h-10 w-10 place-items-center rounded-full bg-navy text-white xl:hidden"
               aria-expanded={open}
               aria-controls="mobile-nav"
               aria-label={open ? "Close menu" : "Open menu"}
@@ -94,7 +95,7 @@ export function Header() {
         id="mobile-nav"
         aria-label="Main"
         hidden={!open}
-        className="fixed inset-x-3 top-20 bottom-3 overflow-y-auto rounded-card bg-navy p-6 text-white xl:hidden"
+        className="fixed inset-x-3 top-[4.5rem] bottom-3 overflow-y-auto rounded-card bg-navy p-6 text-white xl:hidden"
       >
         <ul className="flex flex-col">
           {[...NAV, { href: "/impact", label: "Impact" }, { href: "/resources", label: "Free resources" }, { href: "/contact", label: "Contact" }].map((n) => (

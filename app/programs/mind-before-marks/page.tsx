@@ -80,7 +80,7 @@ export default function MindBeforeMarks() {
         </ul>
       </PageSection>
 
-      <DetailStack className="py-16 md:py-24">
+      <DetailStack className="py-12 md:py-20">
         <Detail index={0} title="A session, in brief">
           <Ph block>Hour-by-hour breakdown: format, group size, materials.</Ph>
         </Detail>
@@ -130,7 +130,7 @@ export default function MindBeforeMarks() {
 
       <FaqBlock id="mbm-faq" items={FAQ} />
 
-      <Container className="pb-16 md:pb-24">
+      <Container className="pb-12 md:pb-20">
         <Reveal className="rounded-card bg-mist p-8 md:p-10">
           <HelplineBar />
           <ButtonRow>

@@ -13,7 +13,7 @@ export const HELPLINES = [
 
 /** Public contact details (set by the owner, 2026-10). No phone number published for now. */
 export const CONTACT = {
-  email: "zubuntuedu@gmail.com",
+  email: "educontact@edurealm.org",
   address: "Flat 202, Parsvnath, Panorama, Alpha Greater Noida, Gautam Buddha Nagar, 201310",
 } as const;
 

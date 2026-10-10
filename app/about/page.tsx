@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import {
   Briefcase,
   Eye,
@@ -17,7 +18,8 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
-import { Container, IconBadge, PageHero, Ph, PhotoFrame, Section, SectionHeading, Tag, cx } from "@/components/ui";
+import { Container, IconBadge, PageHero, Ph, PhotoCard, PhotoFrame, Section, SectionHeading, Tag, cx } from "@/components/ui";
+import { CARD_PHOTOS, type CardPhoto } from "@/content/cardPhotos";
 import { PHOTOS } from "@/content/photos";
 
 const INTRO =
@@ -28,20 +30,22 @@ export const metadata: Metadata = {
   description: INTRO,
 };
 
-const VALUES: { icon: LucideIcon; title: string; body: string }[] = [
-  { icon: HeartPulse, title: "Empathy & Life-First Guidance", body: "A student’s mental and physical health is always more important than any exam score." },
+const VALUES: { icon: LucideIcon; title: string; body: string; photo: CardPhoto }[] = [
+  { icon: HeartPulse, title: "Empathy & Life-First Guidance", body: "A student’s mental and physical health is always more important than any exam score.", photo: CARD_PHOTOS.motherDaughter },
   {
     icon: ShieldCheck,
     title: "Honesty & Transparency",
     body: "We do not sell false dreams, fake results, or unnecessary courses. We tell parents and institutions the truth.",
+    photo: CARD_PHOTOS.twoWomenTalk,
   },
-  { icon: Globe, title: "Inclusivity", body: "Talent exists everywhere. We actively bring our best tools to small towns, villages, and tribal belts." },
+  { icon: Globe, title: "Inclusivity", body: "Talent exists everywhere. We actively bring our best tools to small towns, villages, and tribal belts.", photo: CARD_PHOTOS.slateSchool },
   {
     icon: Lightbulb,
     title: "Real-World Relevance",
     body: "We teach skills that actually matter in life and work, like clear thinking, emotional balance, and problem-solving.",
+    photo: CARD_PHOTOS.indiaMap,
   },
-  { icon: Handshake, title: "Collaboration", body: "Lasting change happens when schools, businesses, and communities work hand-in-hand." },
+  { icon: Handshake, title: "Collaboration", body: "Lasting change happens when schools, businesses, and communities work hand-in-hand.", photo: CARD_PHOTOS.underTree },
 ];
 
 const PILLARS: { icon: LucideIcon; title: string; body: string }[] = [
@@ -62,10 +66,8 @@ function EcosystemCircle() {
       <svg viewBox="0 0 100 100" className="eco-ring absolute inset-0 h-full w-full">
         <circle cx="50" cy="50" r="38" fill="none" stroke="rgb(255 255 255 / 0.25)" strokeWidth="0.4" strokeDasharray="1.6 1.6" />
       </svg>
-      <div className="absolute inset-[30%] grid place-items-center rounded-full bg-brand text-center text-brand-ink shadow-[0_0_80px_rgb(25_167_230_/_0.45)]">
-        <span className="text-d5 leading-tight font-semibold">
-          edu<span className="accent font-normal">Realm</span>
-        </span>
+      <div className="absolute inset-[27%] rounded-full shadow-[0_0_80px_rgb(25_167_230_/_0.45)]">
+        <Image src="/brand/edurealm-badge.webp" alt="" fill sizes="16rem" className="object-contain" />
       </div>
       {PILLARS.map((p, i) => {
         const a = ((-90 + i * 72) * Math.PI) / 180;
@@ -181,26 +183,10 @@ export default function About() {
               }
             />
           </Reveal>
-          <ul className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-6">
+          <ul className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-6">
             {VALUES.map((v, i) => (
-              <Reveal
-                as="li"
-                key={v.title}
-                index={i}
-                className={cx(
-                  "group flex flex-col rounded-card border border-rule bg-paper p-7 transition-colors duration-200 hover:border-brand/50 md:p-8",
-                  VALUE_SPAN[i],
-                  i === 4 && "md:col-span-2",
-                )}
-              >
-                <div className="flex items-center justify-between">
-                  <IconBadge tone="brand">
-                    <v.icon size={22} aria-hidden="true" />
-                  </IconBadge>
-                  <span className="font-mono text-micro text-gray">{String(i + 1).padStart(2, "0")}</span>
-                </div>
-                <h3 className="mt-6 text-d5 font-medium">{v.title}</h3>
-                <p className="mt-2 text-body text-graphite">{v.body}</p>
+              <Reveal as="li" key={v.title} index={i} className={cx(VALUE_SPAN[i], i === 4 && "md:col-span-2")}>
+                <PhotoCard photo={v.photo} icon={v.icon} label={String(i + 1).padStart(2, "0")} title={v.title} body={v.body} />
               </Reveal>
             ))}
           </ul>

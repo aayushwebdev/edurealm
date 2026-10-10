@@ -6,7 +6,7 @@ import { Container, IconBadge, Tag } from "@/components/ui";
 /* /zeo parallax: ghost labels at 0.85× behind the two comparison cards (1×). */
 export function RoteVsReasoning() {
   return (
-    <section data-parallax-section aria-labelledby="rote-title" className="relative overflow-hidden bg-cream py-16 md:py-28">
+    <section data-parallax-section aria-labelledby="rote-title" className="relative overflow-hidden bg-cream py-12 md:py-20">
       <ParallaxLayer
         speed={0.85}
         className="pointer-events-none absolute inset-0 hidden overflow-hidden pt-40 select-none md:grid md:grid-cols-2 md:items-center"
@@ -22,7 +22,7 @@ export function RoteVsReasoning() {
             Rote vs. <em>reasoning</em>
           </h2>
         </Reveal>
-        <div className="mt-12 grid gap-5 md:grid-cols-2">
+        <div className="mt-10 grid gap-5 md:grid-cols-2">
           <Reveal index={0}>
             <article className="h-full rounded-card border border-rule bg-paper p-8 md:p-10">
               <IconBadge tone="mist">

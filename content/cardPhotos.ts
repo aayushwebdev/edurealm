@@ -1,0 +1,53 @@
+export type CardPhoto = { src: string; alt: string; position?: string };
+
+/**
+ * Photos for idea/feature cards: one unique photo per card across the site.
+ * Pexels photos (free licence, no attribution required) in /public/cards/px-*.webp, plus two
+ * client-supplied coaching photos. Suicide-prevention cards use photos with no identifiable child.
+ */
+export const CARD_PHOTOS = {
+  chennaiClassroom: { src: "/cards/px-chennaiClassroom.webp", alt: "A bright classroom in Chennai with wooden desks, a blackboard and a screen" },
+  ruralLesson: { src: "/cards/px-ruralLesson.webp", alt: "Children in a rural Indian classroom listening to a lesson", position: "50% 65%" },
+  twoStudying: { src: "/cards/px-twoStudying.webp", alt: "Two Indian children in school uniforms concentrating on their studies" },
+  workTogether: { src: "/cards/px-workTogether.webp", alt: "A young Indian man and woman working together with documents and a laptop" },
+  motherDaughter: { src: "/cards/px-motherDaughter.webp", alt: "A mother holding her daughter outdoors in Bilaspur, India" },
+  twoWomenTalk: { src: "/cards/px-twoWomenTalk.webp", alt: "Two Indian women in sarees sitting together in conversation" },
+  slateSchool: { src: "/cards/px-slateSchool.webp", alt: "Young students writing on slates in a village school in Melghat, India" },
+  indiaMap: { src: "/cards/px-indiaMap.webp", alt: "A young student points to a map of India in a classroom" },
+  underTree: { src: "/cards/px-underTree.webp", alt: "College students sitting together under a tree at Santiniketan, India" },
+  mathBoard: { src: "/cards/px-mathBoard.webp", alt: "A young student writing equations on a green blackboard" },
+  handsRaised: { src: "/cards/px-handsRaised.webp", alt: "A cheerful schoolgirl raising her hands with classmates in Jaipur" },
+  focusedReader: { src: "/cards/px-focusedReader.webp", alt: "A focused young girl reading at her classroom desk" },
+  redUniforms: { src: "/cards/px-redUniforms.webp", alt: "Children in red uniforms working on a classroom activity in Patiala, India" },
+  drawing: { src: "/cards/px-drawing.webp", alt: "Young girls drawing in an Indian classroom" },
+  professional: { src: "/cards/px-professional.webp", alt: "A confident Indian professional on a break in a modern office" },
+  graduates: { src: "/cards/px-graduates.webp", alt: "Two Indian graduates smiling outdoors" },
+  motherSonTablet: { src: "/cards/px-motherSonTablet.webp", alt: "A mother and son using a tablet together at home" },
+  ludhianaSchool: { src: "/cards/px-ludhianaSchool.webp", alt: "A colourful school building amid green fields in Ludhiana, Punjab" },
+  bicycleFields: { src: "/cards/px-bicycleFields.webp", alt: "Two boys riding a bicycle through misty rural fields" },
+  notebookBoy: { src: "/cards/px-notebookBoy.webp", alt: "A young Indian boy smiling while writing in his notebook" },
+  fiveStudents: { src: "/cards/px-fiveStudents.webp", alt: "Five teenage students in school uniforms smiling together" },
+  stoneArch: { src: "/cards/px-stoneArch.webp", alt: "Children learning with a teacher inside an old stone archway", position: "50% 60%" },
+  schoolGames: { src: "/cards/px-schoolGames.webp", alt: "Schoolchildren enjoying outdoor games at a school event in Surat, India" },
+  fromBehind: { src: "/cards/px-fromBehind.webp", alt: "Schoolgirls in uniform seen from behind", position: "50% 40%" },
+  assemblyJaipur: { src: "/cards/px-assemblyJaipur.webp", alt: "A school assembly seen from above in Jaipur, India", position: "50% 60%" },
+  teacherGuiding: { src: "/cards/px-teacherGuiding.webp", alt: "A teacher guiding attentive students in an interactive lesson" },
+  thoughtful: { src: "/cards/px-thoughtful.webp", alt: "A young girl sitting alone in a classroom, thoughtful" },
+  womenSession: { src: "/cards/px-womenSession.webp", alt: "Women attending an educational session in a rural Indian classroom" },
+  lucknowGirl: { src: "/cards/px-lucknowGirl.webp", alt: "A cheerful schoolgirl in uniform in Lucknow, India" },
+  banaskantha: { src: "/cards/px-banaskantha.webp", alt: "Children learning in a rural classroom in Banaskantha, India" },
+  girlsListening: { src: "/cards/px-girlsListening.webp", alt: "Indian schoolgirls in uniform listening in class" },
+  boyTablet: { src: "/cards/px-boyTablet.webp", alt: "A young Indian boy holding a tablet" },
+  childrenListening: { src: "/cards/px-childrenListening.webp", alt: "Indian school children in uniforms listening in class" },
+  delhiLibrary: { src: "/cards/px-delhiLibrary.webp", alt: "A young woman reading a textbook in a university library in New Delhi" },
+  motherDaughterOut: { src: "/cards/px-motherDaughterOut.webp", alt: "A mother and daughter smiling together outdoors" },
+  ruralClassmates: { src: "/cards/px-ruralClassmates.webp", alt: "A smiling schoolgirl with classmates in a rural village" },
+  colourfulClass: { src: "/cards/px-colourfulClass.webp", alt: "Happy Indian children learning together in a colourful school" },
+  girlsClassroom: { src: "/cards/px-girlsClassroom.webp", alt: "A group of Indian girls learning in a classroom" },
+  groupStudy: { src: "/cards/px-groupStudy.webp", alt: "Children in an Indian classroom learning together" },
+  market: { src: "/cards/px-market.webp", alt: "A busy market in Barna, Uttar Pradesh" },
+  parkStudy: { src: "/cards/px-parkStudy.webp", alt: "A young woman studying with books in a Delhi park" },
+  threeStudents: { src: "/cards/px-threeStudents.webp", alt: "Three Indian school students posing confidently in uniform" },
+  coachingCorridor: { src: "/cards/coaching-corridor.webp", alt: "A coaching corridor full of rank and guarantee banners", position: "50% 30%" },
+  schoolClassroom: { src: "/cards/px-schoolClassroom.webp", alt: "Children taking part in a lesson in an Indian school classroom" },
+} satisfies Record<string, CardPhoto>;

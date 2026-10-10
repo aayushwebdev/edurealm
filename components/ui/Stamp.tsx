@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { Mark } from "@/components/layout/Mark";
 
 /**
@@ -8,11 +9,17 @@ export function Stamp({
   id,
   text = "NO COMMISSIONS · STUDENT FIRST · ETHICAL · ",
   size = 132,
+  center,
+  fontSize = 8,
 }: {
   /** Unique per page — names the SVG circle path. */
   id: string;
   text?: string;
   size?: number;
+  /** Replaces the default gold brand-mark centre. */
+  center?: ReactNode;
+  /** Ring text size (viewBox units); raise it for a short phrase so the ring stays evenly filled. */
+  fontSize?: number;
 }) {
   return (
     <div
@@ -24,16 +31,18 @@ export function Stamp({
         <defs>
           <path id={`stamp-${id}`} d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0" />
         </defs>
-        <text className="fill-white font-mono" style={{ fontSize: 8 }}>
+        <text className="fill-white font-mono" style={{ fontSize }}>
           {/* textLength = circumference (2π·44 ≈ 276) so the phrase closes the ring exactly */}
           <textPath href={`#stamp-${id}`} textLength="274" lengthAdjust="spacing">
             {text}
           </textPath>
         </text>
       </svg>
-      <span className="grid h-11 w-11 place-items-center rounded-full bg-gold text-navy">
-        <Mark className="h-6 w-6" />
-      </span>
+      {center ?? (
+        <span className="grid h-11 w-11 place-items-center rounded-full bg-gold text-navy">
+          <Mark className="h-6 w-6" />
+        </span>
+      )}
     </div>
   );
 }

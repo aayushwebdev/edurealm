@@ -32,6 +32,7 @@ import {
   EmptyState,
   IconBadge,
   Ph,
+  PhotoCard,
   PhotoFrame,
   PhotoPair,
   Section,
@@ -40,8 +41,9 @@ import {
   Tag,
   cx,
 } from "@/components/ui";
+import { CARD_PHOTOS } from "@/content/cardPhotos";
 import { PHOTOS } from "@/content/photos";
-import { BOOK_HREF, BOOK_SCHOOL_HREF, ETHICS_CHARTER, FUNDING, INSTITUTION_NEEDS, MEDIA, PROGRAMS, TARGETS_YEAR_ONE } from "@/content/site";
+import { BOOK_SCHOOL_HREF, ETHICS_CHARTER, FUNDING, INSTITUTION_NEEDS, MEDIA, PROGRAMS, TARGETS_YEAR_ONE } from "@/content/site";
 
 /* ---------------------------------------------------------------- */
 /* 6 · For students & parents: light-blue band of photo program cards */
@@ -66,31 +68,12 @@ export function ProgramsBand() {
             }
           />
         </Reveal>
-        <ul className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {PROGRAMS.map((p, i) => (
             <Reveal as="li" key={p.slug} index={i}>
               <ProgramCard program={p} tone="paper" />
             </Reveal>
           ))}
-          {/* The one highlighted card in this group (agency / Finovate pattern) */}
-          <Reveal as="li" index={4}>
-            <div className="flex h-full min-h-[18rem] flex-col justify-between rounded-card bg-gold p-8 text-navy">
-              <div>
-                <p className="font-mono text-micro tracking-wider uppercase">For students &amp; parents</p>
-                <h3 className="mt-4 text-d3">
-                  Book a <em>session</em>
-                </h3>
-              </div>
-              <div className="flex flex-wrap items-center gap-4">
-                <Button href={BOOK_HREF} variant="dark">
-                  Book a session
-                </Button>
-                <Link href="/programs" className="inline-flex items-center gap-1.5 text-small font-medium underline-offset-4 hover:underline">
-                  Browse all programs <ArrowRight size={15} aria-hidden="true" />
-                </Link>
-              </div>
-            </div>
-          </Reveal>
         </ul>
       </Container>
     </Section>
@@ -112,7 +95,7 @@ const ZEO_JOURNEY = ["Register", "Take the Assessment", "Detailed Report Card", 
 
 export function ZeoFeature() {
   return (
-    <section aria-labelledby="zeo-title" className="relative isolate overflow-hidden bg-paper py-20 md:py-28">
+    <section aria-labelledby="zeo-title" className="relative isolate overflow-hidden bg-paper py-12 md:py-16">
       {/* Soft glows + faded dot grid */}
       <div aria-hidden="true" className="hero-blob pointer-events-none absolute -top-40 -left-40 -z-10 h-[30rem] w-[30rem] rounded-full bg-brand/15 blur-3xl" />
       <div aria-hidden="true" className="hero-blob-2 pointer-events-none absolute -right-40 -bottom-40 -z-10 h-[30rem] w-[30rem] rounded-full bg-gold/15 blur-3xl" />
@@ -124,18 +107,21 @@ export function ZeoFeature() {
           <span className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/15 px-4 py-1.5 text-small font-medium text-navy">
             <Trophy size={15} aria-hidden="true" className="text-gold" /> National Talent Search · ZEO 2026
           </span>
-          <h2 id="zeo-title" className="mt-6 text-d3 md:text-d2">
+          <h2 id="zeo-title" className="mt-4 text-d3 md:text-d2">
             Zubuntu eduRealm <em>Olympiad</em>
           </h2>
-          <p className="mt-4 text-lead text-graphite">
-            A national talent discovery assessment designed to find, nurture, and empower India&rsquo;s brightest young minds.
+          <p className="mt-3 text-lead text-graphite">
+            A national talent discovery assessment designed to find, nurture, and empower India&rsquo;s brightest young minds.{" "}
+            <Link href="/zeo" className="font-medium whitespace-nowrap text-navy underline underline-offset-4">
+              Full details
+            </Link>
           </p>
         </Reveal>
 
         {/* Bento */}
-        <div className="mt-14 grid gap-5 lg:grid-cols-[1.05fr_1fr]">
+        <div className="mt-10 grid gap-4 lg:grid-cols-[1.05fr_1fr]">
           {/* Feature card */}
-          <Reveal className="on-brand relative flex flex-col overflow-hidden rounded-[28px] bg-gradient-to-br from-brand to-brand-600 p-8 md:p-10">
+          <Reveal className="on-brand relative flex flex-col overflow-hidden rounded-[24px] bg-gradient-to-br from-brand to-brand-600 p-7 md:p-8">
             <div aria-hidden="true" className="hero-rings pointer-events-none absolute inset-0" />
             <div className="relative flex flex-1 flex-col">
               <p className="font-mono text-micro tracking-wide uppercase opacity-80">What is ZEO?</p>
@@ -159,23 +145,23 @@ export function ZeoFeature() {
 
           {/* What ZEO measures + rewards */}
           <div className="flex flex-col gap-5">
-            <Reveal index={1} className="rounded-[28px] border border-rule bg-paper p-6 shadow-[var(--shadow-float)] md:p-7">
+            <Reveal index={1} className="rounded-[24px] border border-rule bg-paper p-5 shadow-[var(--shadow-float)]">
               <p className="text-micro font-semibold tracking-wide text-blue uppercase">What ZEO measures</p>
-              <ul className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3">
+              <ul className="mt-4 grid grid-cols-2 gap-2.5">
                 {ZEO_AREAS.map((z) => (
                   <li
                     key={z.title}
-                    className="group flex flex-col items-start gap-3 rounded-2xl bg-cream p-4 transition-[background-color,transform] duration-200 hover:-translate-y-0.5 hover:bg-brand-tint"
+                    className="group flex items-center gap-3 rounded-2xl bg-cream p-3 transition-[background-color,transform] duration-200 hover:-translate-y-0.5 hover:bg-brand-tint"
                   >
-                    <span className="grid h-10 w-10 place-items-center rounded-full bg-brand text-brand-ink transition-transform duration-200 group-hover:scale-110">
-                      <z.icon size={18} aria-hidden="true" />
+                    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-brand text-brand-ink transition-transform duration-200 group-hover:scale-110">
+                      <z.icon size={16} aria-hidden="true" />
                     </span>
                     <span className="text-small leading-snug font-medium text-navy">{z.title}</span>
                   </li>
                 ))}
               </ul>
             </Reveal>
-            <Reveal index={2} className="flex flex-1 items-center gap-5 rounded-[28px] bg-navy p-6 text-white md:p-7">
+            <Reveal index={2} className="flex flex-1 items-center gap-5 rounded-[24px] bg-navy p-5 text-white">
               <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-gold text-navy">
                 <Laptop size={26} aria-hidden="true" />
               </span>
@@ -190,7 +176,7 @@ export function ZeoFeature() {
         </div>
 
         {/* Journey strip */}
-        <Reveal className="mt-5 rounded-[28px] border border-rule bg-paper p-5 md:p-6">
+        <Reveal className="mt-4 rounded-[24px] border border-rule bg-paper p-4 md:p-5">
           <ol className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5 lg:gap-0">
             {ZEO_JOURNEY.map((step, i) => (
               <li key={step} className="flex items-center gap-3 lg:px-3">
@@ -204,11 +190,6 @@ export function ZeoFeature() {
           </ol>
         </Reveal>
 
-        <Reveal className="mt-8 flex justify-center">
-          <Link href="/zeo" className="inline-flex items-center gap-2 text-small font-medium text-navy underline-offset-4 hover:underline">
-            Explore the full ZEO details <ArrowRight size={15} aria-hidden="true" />
-          </Link>
-        </Reveal>
       </Container>
     </section>
   );
@@ -220,7 +201,7 @@ export function ZeoFeature() {
 export function RuralBand() {
   return (
     <Section tone="charcoal" labelledBy="rural-title">
-      <Container className="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
+      <Container className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
         <Reveal>
           <PhotoPair photos={[PHOTOS.rural, PHOTOS.ruralAerial]} />
         </Reveal>
@@ -237,16 +218,14 @@ export function RuralBand() {
             <p className="mt-4">Every scholarship goes to a named, verified student. Every sponsor sees exactly where the money went.</p>
           </Reveal>
           <Reveal index={1}>
-            <div className="mt-10 grid gap-8">
+            <div className="mt-7 grid gap-6 sm:grid-cols-3">
               <StatPill value={1000} label="fully funded rural scholarships, by 2030" dark />
-              <div className="grid gap-8 sm:grid-cols-2">
-                <StatPill value={TARGETS_YEAR_ONE.districts} label="districts covered, year one" dark />
-                <StatPill value={TARGETS_YEAR_ONE.scholarships} label="scholarships awarded, year one" dark />
-              </div>
+              <StatPill value={TARGETS_YEAR_ONE.districts} label="districts covered, year one" dark />
+              <StatPill value={TARGETS_YEAR_ONE.scholarships} label="scholarships awarded, year one" dark />
             </div>
           </Reveal>
           <Reveal index={2}>
-            <ButtonRow className="mt-10">
+            <ButtonRow className="mt-7">
               <Button href="/partner">Sponsor a student</Button>
               <Button href="/impact" variant="outlineLight">
                 See our approach
@@ -262,33 +241,35 @@ export function RuralBand() {
 /* ---------------------------------------------------------------- */
 /* 7 · For institutions — Nuova "Why choose us" icon cards            */
 /* ---------------------------------------------------------------- */
+const NEED_PHOTOS = [CARD_PHOTOS.chennaiClassroom, CARD_PHOTOS.ruralLesson, CARD_PHOTOS.twoStudying, CARD_PHOTOS.workTogether];
 const NEED_ICONS: LucideIcon[] = [BookOpen, GraduationCap, Layers, Briefcase];
 
 export function InstitutionCards({ items = INSTITUTION_NEEDS, headingLevel = 3 }: { items?: { q: string; a: string }[]; headingLevel?: 2 | 3 }) {
-  const H = `h${headingLevel}` as const;
   return (
     <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
       {items.map((n, i) => {
-        const Icon = NEED_ICONS[i];
         const hl = i === 1;
         return (
           <Reveal as="li" key={n.q} index={i % 2} stagger={100}>
-            <Card variant={hl ? "outlineHighlight" : "paper"} className="flex h-full flex-col">
-              <IconBadge tone={hl ? "gold" : "navy"}>
-                <Icon size={20} aria-hidden="true" />
-              </IconBadge>
-              <H className="mt-6 text-d5 font-medium">{n.q}</H>
-              <p className="mt-3 flex-1 text-small text-graphite">{n.a}</p>
-              <Link
-                href="/institutions"
-                className={cx(
-                  "mt-6 inline-flex min-h-11 items-center justify-center gap-2 rounded-full text-small font-medium transition-colors duration-150",
-                  hl ? "bg-navy text-white hover:bg-navy-800" : "bg-cream text-navy hover:bg-cream-200",
-                )}
-              >
-                For schools &amp; colleges <ArrowRight size={15} aria-hidden="true" />
-              </Link>
-            </Card>
+            <PhotoCard
+              photo={NEED_PHOTOS[i]}
+              icon={NEED_ICONS[i]}
+              title={n.q}
+              body={<p className="text-small">{n.a}</p>}
+              featured={hl}
+              headingLevel={headingLevel}
+              footer={
+                <Link
+                  href="/institutions"
+                  className={cx(
+                    "inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full text-small font-medium transition-colors duration-150",
+                    hl ? "bg-navy text-white hover:bg-navy-800" : "bg-cream text-navy hover:bg-cream-200",
+                  )}
+                >
+                  For schools &amp; colleges <ArrowRight size={15} aria-hidden="true" />
+                </Link>
+              }
+            />
           </Reveal>
         );
       })}
@@ -347,7 +328,7 @@ export function CsrBand() {
             action={<Button href="/partner">Partner with us</Button>}
           />
         </Reveal>
-        <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {CSR.map((c, i) => (
             <Reveal as="li" key={c.text} index={i}>
               <Card variant="glass" className="h-full">
@@ -418,7 +399,7 @@ export function FundingFlow({ id = "funding", withCta = true }: { id?: string; w
 /* ---------------------------------------------------------------- */
 export function EthicsCharter({ id = "ethics", expanded }: { id?: string; expanded?: React.ReactNode[] }) {
   return (
-    <section id={id} aria-labelledby={`${id}-title`} className="scroll-mt-24 bg-paper py-16 md:py-28">
+    <section id={id} aria-labelledby={`${id}-title`} className="scroll-mt-24 bg-paper py-12 md:py-20">
       <Container className="grid gap-12 lg:grid-cols-[1fr_1.6fr] lg:gap-20">
         <Reveal travel={0}>
           <Tag>Ethics charter</Tag>
@@ -493,7 +474,7 @@ export function MediaSection() {
           />
         </Reveal>
         {/* Empty state — nothing published yet. */}
-        <div className="mt-12">
+        <div className="mt-10">
           <MediaGrid />
         </div>
       </Container>
@@ -580,7 +561,7 @@ export function FaqSection() {
 /* ---------------------------------------------------------------- */
 export function ClosingCta() {
   return (
-    <section aria-labelledby="closing-title" className="bg-paper pb-16 md:pb-28">
+    <section aria-labelledby="closing-title" className="bg-paper pb-12 md:pb-20">
       <Container>
         <Reveal>
           <div className="on-brand relative overflow-hidden rounded-[32px] bg-gradient-to-br from-brand to-brand-600 px-6 py-16 text-center md:px-16 md:py-24">

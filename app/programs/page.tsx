@@ -19,8 +19,10 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
-import { Button, ButtonRow, Container, IconBadge, PageHero, PhotoFrame, Section, SectionHeading, Tag, cx } from "@/components/ui";
+import { BgPhotoCard } from "@/components/BgPhotoCard";
+import { Button, ButtonRow, Container, IconBadge, PageHero, PhotoCard, PhotoFrame, Section, SectionHeading, Tag } from "@/components/ui";
 import { PHOTOS } from "@/content/photos";
+import { CARD_PHOTOS, type CardPhoto } from "@/content/cardPhotos";
 import { BOOK_HREF, HELPLINES } from "@/content/site";
 
 const INTRO = "Helping students and parents make smart academic choices without fear, confusion, or destructive pressure.";
@@ -37,6 +39,7 @@ const MODULES: {
   cover: string[];
   action: { label: string; href: string };
   more: { label: string; href: string };
+  photo: CardPhoto;
   dark?: boolean;
 }[] = [
   {
@@ -50,6 +53,7 @@ const MODULES: {
     ],
     action: { label: "Book a Counseling Session", href: "/contact?role=parent&topic=counseling#form" },
     more: { label: "About Mind Before Marks", href: "/programs/mind-before-marks" },
+    photo: CARD_PHOTOS.fromBehind,
     dark: true,
   },
   {
@@ -63,6 +67,7 @@ const MODULES: {
     ],
     action: { label: "Attend an Awareness Session", href: "/contact?role=parent&topic=awareness#form" },
     more: { label: "About Informed Choice", href: "/programs/informed-choice" },
+    photo: CARD_PHOTOS.coachingCorridor,
   },
 ];
 
@@ -73,25 +78,28 @@ const RECEIVE: { icon: LucideIcon; text: string }[] = [
   { icon: Compass, text: "Exploration of emerging modern careers in technology, design, business, and social sectors." },
 ];
 
-const WORKSHOPS: { icon: LucideIcon; title: string; body: string; href: string }[] = [
-  { icon: Calculator, title: "Quantitative Reasoning", body: "Practical math logic, analytical thinking, and everyday number skills.", href: "/programs/cognitive-skills" },
+const WORKSHOPS: { icon: LucideIcon; title: string; body: string; href: string; photo: CardPhoto }[] = [
+  { icon: Calculator, title: "Quantitative Reasoning", body: "Practical math logic, analytical thinking, and everyday number skills.", href: "/programs/cognitive-skills", photo: CARD_PHOTOS.notebookBoy },
   {
     icon: HeartHandshake,
     title: "Emotional Intelligence (EQ)",
     body: "Self-awareness, managing exam stress, building resilience, and communicating clearly.",
     href: "/programs/cognitive-skills",
+    photo: CARD_PHOTOS.fiveStudents,
   },
   {
     icon: Brain,
     title: "Multiple Intelligences & Problem-Solving",
     body: "Understanding your unique learning style (visual, verbal, logical) and solving real-world challenges.",
     href: "/programs/cognitive-skills",
+    photo: CARD_PHOTOS.stoneArch,
   },
   {
     icon: Rocket,
     title: "Youth Entrepreneurship & Summer Camps",
     body: "Fun, hands-on bootcamps where young minds turn ideas into working projects.",
     href: "/programs/founders-bootcamp",
+    photo: CARD_PHOTOS.schoolGames,
   },
 ];
 
@@ -139,52 +147,34 @@ export default function StudentSolutions() {
               lead="Two critical initiatives dedicated to keeping students safe and families informed."
             />
           </Reveal>
-          <div className="mt-12 grid gap-5 lg:grid-cols-2">
+          <div className="mt-10 grid gap-5 lg:grid-cols-2">
             {MODULES.map((m, i) => (
-              <Reveal
-                key={m.title}
-                index={i}
-                className={cx(
-                  "relative flex flex-col overflow-hidden rounded-card p-8 md:p-10",
-                  m.dark ? "on-dark bg-navy text-white/80" : "border border-brand/25 bg-brand-tint",
-                )}
-              >
-                {m.dark && <div aria-hidden="true" className="hero-rings pointer-events-none absolute inset-0 opacity-40" />}
-                <div className="relative flex flex-1 flex-col">
+              <Reveal key={m.title} index={i}>
+                <BgPhotoCard photo={m.photo} tone={m.dark ? "navy" : "blue"}>
                   <div className="flex items-center justify-between gap-4">
-                    <IconBadge tone={m.dark ? "light" : "brand"}>
+                    <span className="grid h-12 w-12 place-items-center rounded-full bg-white/15 text-gold ring-1 ring-white/25 backdrop-blur transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6">
                       <m.icon size={22} aria-hidden="true" />
-                    </IconBadge>
-                    <span
-                      className={cx(
-                        "rounded-full px-3 py-1 font-mono text-micro tracking-wide uppercase",
-                        m.dark ? "bg-white/10 text-white" : "bg-paper text-navy",
-                      )}
-                    >
+                    </span>
+                    <span className="rounded-full bg-white/15 px-3 py-1 font-mono text-micro tracking-wide text-white uppercase backdrop-blur">
                       {m.label}
                     </span>
                   </div>
-                  <h3 className={cx("mt-6 text-d4 font-medium", m.dark ? "text-white" : "text-navy")}>{m.title}</h3>
-                  <p className={cx("mt-6 text-micro font-semibold tracking-wide uppercase", m.dark ? "text-gold" : "text-blue")}>
-                    What we cover
-                  </p>
+                  <h3 className="mt-6 text-d4 font-medium text-white">{m.title}</h3>
+                  <p className="mt-6 text-micro font-semibold tracking-wide text-gold uppercase">What we cover</p>
                   <ul className="mt-3 space-y-3">
                     {m.cover.map((c) => (
-                      <li key={c} className={cx("flex gap-3 text-body", m.dark ? "text-white/85" : "text-graphite")}>
-                        <CheckCircle2 size={20} aria-hidden="true" className={cx("mt-0.5 shrink-0", m.dark ? "text-brand" : "text-brand-600")} />
+                      <li key={c} className="flex gap-3 text-body text-white/90">
+                        <CheckCircle2 size={20} aria-hidden="true" className="mt-0.5 shrink-0 text-brand-100" />
                         {c}.
                       </li>
                     ))}
                   </ul>
                   <div className="mt-auto flex flex-wrap items-center gap-x-6 gap-y-3 pt-8">
-                    <Button href={m.action.href} variant={m.dark ? "primary" : "dark"}>
+                    <Button href={m.action.href} variant={m.dark ? "primary" : "light"}>
                       {m.action.label}
                     </Button>
-                    <Link
-                      href={m.more.href}
-                      className={cx("inline-flex items-center gap-1.5 text-small font-medium underline-offset-4 hover:underline", m.dark ? "text-white" : "text-navy")}
-                    >
-                      {m.more.label} <ArrowRight size={15} aria-hidden="true" />
+                    <Link href={m.more.href} className="inline-flex items-center gap-1.5 text-small font-medium text-white underline-offset-4 hover:underline">
+                      {m.more.label} <ArrowRight size={15} aria-hidden="true" className="transition-transform duration-150 group-hover:translate-x-1" />
                     </Link>
                   </div>
                   {m.dark && (
@@ -200,7 +190,7 @@ export default function StudentSolutions() {
                       ))}
                     </p>
                   )}
-                </div>
+                </BgPhotoCard>
               </Reveal>
             ))}
           </div>
@@ -256,25 +246,22 @@ export default function StudentSolutions() {
               }
             />
           </Reveal>
-          <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {WORKSHOPS.map((w, i) => (
               <Reveal as="li" key={w.title} index={i}>
-                <Link
+                <PhotoCard
                   href={w.href}
-                  className="group flex h-full flex-col rounded-card border border-rule bg-paper p-7 transition-[border-color,transform] duration-200 hover:-translate-y-1 hover:border-brand/50"
-                >
-                  <div className="flex items-center justify-between">
-                    <IconBadge tone="brand">
-                      <w.icon size={22} aria-hidden="true" />
-                    </IconBadge>
-                    <span className="font-mono text-micro text-gray">Workshop {i + 1}</span>
-                  </div>
-                  <h3 className="mt-6 text-d5 font-medium text-navy">{w.title}</h3>
-                  <p className="mt-2 flex-1 text-small text-graphite">{w.body}</p>
-                  <span className="mt-6 inline-flex items-center gap-1.5 text-small font-medium text-navy">
-                    Learn more <ArrowRight size={15} aria-hidden="true" className="transition-transform duration-150 group-hover:translate-x-1" />
-                  </span>
-                </Link>
+                  photo={w.photo}
+                  icon={w.icon}
+                  label={`Workshop ${i + 1}`}
+                  title={w.title}
+                  body={<p className="text-small">{w.body}</p>}
+                  footer={
+                    <span className="inline-flex items-center gap-1.5 text-small font-medium text-navy">
+                      Learn more <ArrowRight size={15} aria-hidden="true" className="transition-transform duration-150 group-hover:translate-x-1" />
+                    </span>
+                  }
+                />
               </Reveal>
             ))}
           </ul>

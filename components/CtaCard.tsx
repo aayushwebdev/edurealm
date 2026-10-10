@@ -5,7 +5,7 @@ import { Button, Container } from "@/components/ui";
 /** Closing CTA card used by inner pages. */
 export function CtaCard({ title, href, label, secondary }: { title: ReactNode; href: string; label: string; secondary?: { href: string; label: string } }) {
   return (
-    <section className="pb-16 md:pb-24">
+    <section className="pb-12 md:pb-20">
       <Container>
         <Reveal>
           <div className="on-brand relative overflow-hidden rounded-[32px] bg-gradient-to-br from-brand to-brand-600 px-6 py-14 md:flex md:items-center md:justify-between md:px-14 md:py-16">

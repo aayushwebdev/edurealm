@@ -53,7 +53,7 @@ export default function Media() {
         </div>
       </PageSection>
 
-      <Container className="pt-16 pb-16 md:pb-24">
+      <Container className="pt-16 pb-12 md:pb-20">
         <Reveal className="on-dark mt-5 grid items-center gap-8 rounded-card bg-navy p-8 text-white/80 md:grid-cols-[1fr_1.2fr] md:p-12">
           <div>
             <IconBadge tone="gold">

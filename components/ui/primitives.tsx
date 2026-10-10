@@ -46,7 +46,7 @@ export function Section({
     <section
       id={id}
       aria-labelledby={labelledBy}
-      className={cx("relative scroll-mt-24 py-16 md:py-28", TONES[tone], className)}
+      className={cx("relative scroll-mt-24 py-12 md:py-20", TONES[tone], className)}
       {...rest}
     >
       {children}
@@ -177,7 +177,7 @@ export function Button({
       href={href}
       target={external ? "_blank" : undefined}
       className={cx(
-        "group/btn inline-flex min-h-12 items-center justify-center gap-3 rounded-full text-small font-medium transition-colors duration-150",
+        "group/btn inline-flex min-h-11 items-center justify-center gap-3 rounded-full text-small font-medium transition-colors duration-150",
         BTN[variant],
         className,
       )}
@@ -186,7 +186,7 @@ export function Button({
       {circle ? (
         <span
           aria-hidden="true"
-          className={cx("grid h-9 w-9 place-items-center rounded-full transition-transform duration-150 group-hover/btn:-rotate-45", circle)}
+          className={cx("grid h-8 w-8 place-items-center rounded-full transition-transform duration-150 group-hover/btn:-rotate-45", circle)}
         >
           <ArrowRight size={16} strokeWidth={2} />
         </span>
@@ -293,7 +293,7 @@ export function StatPill({
     <div className={cx("flex flex-col gap-3 border-l pl-5", dark ? "border-white/15" : "border-navy/15")}>
       <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
         <span
-          className={cx("text-d3 leading-none font-medium whitespace-nowrap tabular-nums tracking-[-0.02em] md:text-[3.25rem]", dark ? "text-white" : "text-navy")}
+          className={cx("text-d3 leading-none font-medium whitespace-nowrap tabular-nums tracking-[-0.02em] md:text-[2.5rem]", dark ? "text-white" : "text-navy")}
           {...(countUp && typeof value === "number" ? { "data-count-to": String(value) } : {})}
         >
           {shown}

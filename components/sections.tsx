@@ -3,7 +3,8 @@ import type { LucideIcon } from "lucide-react";
 import { Check } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
 import { AccordionList } from "@/components/ui/AccordionList";
-import { Confirm, Container, IconBadge, Section, SectionHeading, cx, type Tone } from "@/components/ui";
+import { Confirm, Container, IconBadge, PhotoCard, Section, SectionHeading, cx, type Tone } from "@/components/ui";
+import type { CardPhoto } from "@/content/cardPhotos";
 
 /*
  * Reusable inner-page section patterns. Copy lives in content/pages/*.tsx.
@@ -11,7 +12,7 @@ import { Confirm, Container, IconBadge, Section, SectionHeading, cx, type Tone }
  */
 
 export type Step = { title: string; body: ReactNode };
-export type CardItem = { icon?: LucideIcon; title: string; body: ReactNode; meta?: ReactNode };
+export type CardItem = { icon?: LucideIcon; title: string; body: ReactNode; meta?: ReactNode; photo?: CardPhoto };
 export type FaqItem = { id: string; q: string; a: ReactNode };
 
 const dark = (t: Tone) => t === "navy" || t === "charcoal" || t === "deep";
@@ -44,7 +45,7 @@ export function PageSection({
           <SectionHeading tag={tag} id={`${id}-title`} title={title} lead={lead} dark={dark(tone)} brand={tone === "brand"} center={center} noGold />
           {confirm && <Confirm note={confirm} />}
         </Reveal>
-        {children && <div className="mt-12">{children}</div>}
+        {children && <div className="mt-10">{children}</div>}
       </Container>
     </Section>
   );
@@ -79,7 +80,18 @@ export function CardGrid({ items, cols = 3, onDark }: { items: CardItem[]; cols?
   const c = { 2: "md:grid-cols-2", 3: "md:grid-cols-2 lg:grid-cols-3", 4: "sm:grid-cols-2 lg:grid-cols-4" }[cols];
   return (
     <ul className={cx("grid gap-5", c)}>
-      {items.map((it, i) => (
+      {items.map((it, i) =>
+        it.photo ? (
+          <Reveal as="li" key={it.title} index={i}>
+            <PhotoCard
+              photo={it.photo}
+              icon={it.icon}
+              title={it.title}
+              body={<div className="space-y-3 text-small">{it.body}</div>}
+              footer={it.meta && <div className="border-t border-rule pt-4 text-micro text-gray">{it.meta}</div>}
+            />
+          </Reveal>
+        ) : (
         <Reveal
           as="li"
           key={it.title}
@@ -96,7 +108,8 @@ export function CardGrid({ items, cols = 3, onDark }: { items: CardItem[]; cols?
           <div className={cx("mt-3 flex-1 space-y-3 text-small", onDark ? "text-white/75" : "text-graphite")}>{it.body}</div>
           {it.meta && <div className={cx("mt-5 border-t pt-4 text-micro", onDark ? "border-white/10 text-white/60" : "border-rule text-gray")}>{it.meta}</div>}
         </Reveal>
-      ))}
+        ),
+      )}
     </ul>
   );
 }

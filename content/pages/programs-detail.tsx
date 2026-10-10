@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Brain, Calculator, Lightbulb, Puzzle, Sparkles } from "lucide-react";
 import { Ph } from "@/components/ui";
+import { CARD_PHOTOS } from "@/content/cardPhotos";
 import type { CardItem, FaqItem } from "@/components/sections";
 
 /*
@@ -16,16 +17,19 @@ export const COMPASS_SESSIONS: CardItem[] = [
     title: "1 · Assessment",
     body: "The student completes two structured assessments under a counsellor’s guidance: one measuring aptitudes, one measuring interests and working style. No right or wrong answers. This isn’t a test to pass.",
     meta: "Student · 45 minutes",
+    photo: CARD_PHOTOS.childrenListening,
   },
   {
     title: "2 · Interpretation",
     body: "The counsellor walks the student through the results one-on-one, translating scores into plain language and connecting them to real fields and pathways, not a single “correct” career.",
     meta: "Student · 45 minutes",
+    photo: CARD_PHOTOS.delhiLibrary,
   },
   {
     title: "3 · Report review",
     body: "Student and parent review the written report together with the counsellor, with room for questions and a discussion of next steps: subjects to focus on, extracurriculars worth exploring, or further research the family can do together.",
     meta: "Student and parent · 45 minutes",
+    photo: CARD_PHOTOS.motherDaughterOut,
   },
 ];
 
@@ -75,13 +79,14 @@ export const COMPASS_FAQ: FaqItem[] = [
 
 /** DRAFT */
 export const SKILLS: CardItem[] = [
-  { icon: Calculator, title: "Quantitative reasoning", body: "Working through numerical problems by logic, not memorised formulas." },
-  { icon: Sparkles, title: "Emotional intelligence", body: "Recognising and managing emotional responses, in yourself and in group situations." },
-  { icon: Puzzle, title: "Problem-solving", body: "Breaking an unfamiliar problem into steps, without knowing the answer in advance." },
+  { icon: Calculator, title: "Quantitative reasoning", body: "Working through numerical problems by logic, not memorised formulas.", photo: CARD_PHOTOS.groupStudy },
+  { icon: Sparkles, title: "Emotional intelligence", body: "Recognising and managing emotional responses, in yourself and in group situations.", photo: CARD_PHOTOS.ruralClassmates },
+  { icon: Puzzle, title: "Problem-solving", body: "Breaking an unfamiliar problem into steps, without knowing the answer in advance.", photo: CARD_PHOTOS.colourfulClass },
   {
     icon: Brain,
     title: "Multiple intelligences",
     body: "Recognising that “smart” looks different across people, and working with your own strengths rather than against them.",
+    photo: CARD_PHOTOS.girlsClassroom,
   },
 ];
 
@@ -116,9 +121,9 @@ export const WORKSHOP_RELATED = (
 /* ---------------- Founders' Bootcamp ---------------- */
 
 export const BUILD: CardItem[] = [
-  { icon: Lightbulb, title: "Market research", body: "Talk to real potential users and test whether the problem actually exists." },
-  { icon: Calculator, title: "A basic plan", body: "Costs, pricing, and how the idea could sustain itself, in simple numbers." },
-  { icon: Sparkles, title: "A pitch", body: "A short, honest presentation of the idea, the evidence, and the next step." },
+  { icon: Lightbulb, title: "Market research", body: "Talk to real potential users and test whether the problem actually exists.", photo: CARD_PHOTOS.market },
+  { icon: Calculator, title: "A basic plan", body: "Costs, pricing, and how the idea could sustain itself, in simple numbers.", photo: CARD_PHOTOS.parkStudy },
+  { icon: Sparkles, title: "A pitch", body: "A short, honest presentation of the idea, the evidence, and the next step.", photo: CARD_PHOTOS.threeStudents },
 ];
 
 /** Length is FRAMEWORK (5 days, from the programs compare table). */
