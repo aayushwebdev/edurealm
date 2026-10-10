@@ -39,7 +39,7 @@ export function Header() {
     <header className="fixed inset-x-0 top-0 z-50">
       {/* Floating pill nav */}
       {/* Same container as the homepage hero text, so the bar's edges line up with it */}
-      <div className="mx-auto max-w-[1280px] px-3 pt-3 md:px-12 lg:px-20">
+      <div className="mx-auto max-w-[1440px] px-3 pt-3 md:px-8 lg:px-12">
         <div
           className={cx(
             "flex h-14 w-full items-center justify-between gap-6 rounded-full border bg-paper/95 pr-2 pl-5 backdrop-blur transition-shadow duration-200",

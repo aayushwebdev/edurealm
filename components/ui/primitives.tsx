@@ -10,7 +10,7 @@ export function cx(...c: unknown[]) {
 /* ---------------- Layout ---------------- */
 
 export function Container({ className, children }: { className?: string; children: ReactNode }) {
-  return <div className={cx("mx-auto w-full max-w-[1200px] px-4 md:px-8", className)}>{children}</div>;
+  return <div className={cx("mx-auto w-full max-w-[1440px] px-5 md:px-8 lg:px-12", className)}>{children}</div>;
 }
 
 export type Tone = "cream" | "paper" | "mist" | "tint" | "brand" | "navy" | "charcoal" | "deep";

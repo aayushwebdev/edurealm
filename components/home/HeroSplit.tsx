@@ -201,7 +201,7 @@ export function HeroSplit() {
       />
 
       {/* Content */}
-      <div className="relative mx-auto flex w-full max-w-[1280px] flex-1 flex-col justify-center px-6 pt-28 pb-10 md:px-12 lg:px-20 lg:pt-20 lg:pb-6">
+      <div className="relative mx-auto flex w-full max-w-[1440px] flex-1 flex-col justify-center px-5 pt-28 pb-10 md:px-8 lg:px-12 lg:pt-20 lg:pb-6">
         <div className="max-w-[40rem] lg:max-w-[46rem]">
 
           {/* All three slides share one grid cell: invisible copies size the block to the longest slide,

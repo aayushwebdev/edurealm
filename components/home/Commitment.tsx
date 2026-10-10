@@ -20,7 +20,7 @@ export function Commitment() {
   const statsRef = useScrollEffect<HTMLDivElement>(registerCounters);
 
   return (
-    <section data-parallax-section aria-labelledby="vision-title" className="relative overflow-hidden bg-paper py-12 md:py-20">
+    <section data-parallax-section aria-labelledby="vision-title" className="relative overflow-hidden bg-paper py-12 md:py-20 lg:flex lg:min-h-[100svh] lg:flex-col lg:justify-center">
       <Container>
         <div className="grid items-center gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
           <ParallaxLayer speed={0.9} className="order-2 lg:order-1">

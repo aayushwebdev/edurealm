@@ -49,7 +49,7 @@ import { BOOK_SCHOOL_HREF, ETHICS_CHARTER, FUNDING, INSTITUTION_NEEDS, MEDIA, PR
 /* ---------------------------------------------------------------- */
 export function ProgramsBand() {
   return (
-    <Section tone="tint" labelledBy="book-title">
+    <Section tone="tint" labelledBy="book-title" className="lg:flex lg:min-h-[100svh] lg:flex-col lg:justify-center">
       <Container>
         <Reveal>
           <SectionHeading
@@ -94,7 +94,7 @@ const ZEO_JOURNEY = ["Register", "Take the Assessment", "Detailed Report Card", 
 
 export function ZeoFeature() {
   return (
-    <section aria-labelledby="zeo-title" className="relative isolate overflow-hidden bg-paper py-12 md:py-16">
+    <section aria-labelledby="zeo-title" className="relative isolate overflow-hidden bg-paper py-12 md:py-16 lg:flex lg:min-h-[100svh] lg:flex-col lg:justify-center">
       {/* Soft glows + faded dot grid */}
       <div aria-hidden="true" className="hero-blob pointer-events-none absolute -top-40 -left-40 -z-10 h-[30rem] w-[30rem] rounded-full bg-brand/15 blur-3xl" />
       <div aria-hidden="true" className="hero-blob-2 pointer-events-none absolute -right-40 -bottom-40 -z-10 h-[30rem] w-[30rem] rounded-full bg-gold/15 blur-3xl" />
@@ -199,7 +199,7 @@ export function ZeoFeature() {
 /* ---------------------------------------------------------------- */
 export function RuralBand() {
   return (
-    <Section tone="charcoal" labelledBy="rural-title">
+    <Section tone="charcoal" labelledBy="rural-title" className="lg:flex lg:min-h-[100svh] lg:flex-col lg:justify-center">
       <Container className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
         <Reveal>
           <PhotoPair photos={[PHOTOS.rural, PHOTOS.ruralAerial]} />
@@ -278,7 +278,7 @@ export function InstitutionCards({ items = INSTITUTION_NEEDS, headingLevel = 3 }
 
 export function InstitutionsWhy() {
   return (
-    <Section tone="cream" labelledBy="inst-title">
+    <Section tone="cream" labelledBy="inst-title" className="lg:flex lg:min-h-[100svh] lg:flex-col lg:justify-center">
       <Container>
         <Reveal>
           <SectionHeading
@@ -312,7 +312,7 @@ const CSR = [
 
 export function CsrBand() {
   return (
-    <Section tone="navy" labelledBy="csr-title">
+    <Section tone="navy" labelledBy="csr-title" className="lg:flex lg:min-h-[100svh] lg:flex-col lg:justify-center">
       <Container>
         <Reveal>
           <SectionHeading
@@ -453,7 +453,7 @@ export function MediaGrid() {
 
 export function MediaSection() {
   return (
-    <Section tone="cream" labelledBy="media-title">
+    <Section tone="cream" labelledBy="media-title" className="lg:flex lg:min-h-[100svh] lg:flex-col lg:justify-center">
       <Container>
         <Reveal>
           <SectionHeading
@@ -534,7 +534,7 @@ const FAQ = [
 
 export function FaqSection() {
   return (
-    <Section tone="paper" labelledBy="faq-title">
+    <Section tone="paper" labelledBy="faq-title" className="lg:flex lg:min-h-[100svh] lg:flex-col lg:justify-center">
       <Container className="grid gap-12 lg:grid-cols-[1fr_1.3fr] lg:gap-16">
         <Reveal>
           <Tag>FAQ</Tag>
