@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import {
-  ArrowRight,
   Brain,
   Calculator,
   CheckCircle2,
@@ -38,7 +36,6 @@ const MODULES: {
   icon: LucideIcon;
   cover: string[];
   action: { label: string; href: string };
-  more: { label: string; href: string };
   photo: CardPhoto;
   dark?: boolean;
 }[] = [
@@ -52,7 +49,6 @@ const MODULES: {
       "Direct access to caring counseling sessions",
     ],
     action: { label: "Book a Counseling Session", href: "/contact?role=parent&topic=counseling#form" },
-    more: { label: "About Mind Before Marks", href: "/programs/mind-before-marks" },
     photo: CARD_PHOTOS.fromBehind,
     dark: true,
   },
@@ -66,7 +62,6 @@ const MODULES: {
       "Choosing healthy career options based on real strengths",
     ],
     action: { label: "Attend an Awareness Session", href: "/contact?role=parent&topic=awareness#form" },
-    more: { label: "About Informed Choice", href: "/programs/informed-choice" },
     photo: CARD_PHOTOS.coachingCorridor,
   },
 ];
@@ -78,27 +73,24 @@ const RECEIVE: { icon: LucideIcon; text: string }[] = [
   { icon: Compass, text: "Exploration of emerging modern careers in technology, design, business, and social sectors." },
 ];
 
-const WORKSHOPS: { icon: LucideIcon; title: string; body: string; href: string; photo: CardPhoto }[] = [
-  { icon: Calculator, title: "Quantitative Reasoning", body: "Practical math logic, analytical thinking, and everyday number skills.", href: "/programs/cognitive-skills", photo: CARD_PHOTOS.notebookBoy },
+const WORKSHOPS: { icon: LucideIcon; title: string; body: string; photo: CardPhoto }[] = [
+  { icon: Calculator, title: "Quantitative Reasoning", body: "Practical math logic, analytical thinking, and everyday number skills.", photo: CARD_PHOTOS.notebookBoy },
   {
     icon: HeartHandshake,
     title: "Emotional Intelligence (EQ)",
     body: "Self-awareness, managing exam stress, building resilience, and communicating clearly.",
-    href: "/programs/cognitive-skills",
     photo: CARD_PHOTOS.fiveStudents,
   },
   {
     icon: Brain,
     title: "Multiple Intelligences & Problem-Solving",
     body: "Understanding your unique learning style (visual, verbal, logical) and solving real-world challenges.",
-    href: "/programs/cognitive-skills",
     photo: CARD_PHOTOS.stoneArch,
   },
   {
     icon: Rocket,
     title: "Youth Entrepreneurship & Summer Camps",
     body: "Fun, hands-on bootcamps where young minds turn ideas into working projects.",
-    href: "/programs/founders-bootcamp",
     photo: CARD_PHOTOS.schoolGames,
   },
 ];
@@ -173,13 +165,10 @@ export default function StudentSolutions() {
                     <Button href={m.action.href} variant={m.dark ? "primary" : "light"}>
                       {m.action.label}
                     </Button>
-                    <Link href={m.more.href} className="inline-flex items-center gap-1.5 text-small font-medium text-white underline-offset-4 hover:underline">
-                      {m.more.label} <ArrowRight size={15} aria-hidden="true" className="transition-transform duration-150 group-hover:translate-x-1" />
-                    </Link>
                   </div>
                   {m.dark && (
                     <p className="mt-6 border-t border-white/15 pt-4 text-small text-white/75">
-                      Need help now? Call free:{" "}
+                      Need help now? Call these free Government of India helplines:{" "}
                       {HELPLINES.map((h, hi) => (
                         <span key={h.name}>
                           {hi > 0 && " · "}
@@ -250,17 +239,11 @@ export default function StudentSolutions() {
             {WORKSHOPS.map((w, i) => (
               <Reveal as="li" key={w.title} index={i}>
                 <PhotoCard
-                  href={w.href}
                   photo={w.photo}
                   icon={w.icon}
                   label={`Workshop ${i + 1}`}
                   title={w.title}
                   body={<p className="text-small">{w.body}</p>}
-                  footer={
-                    <span className="inline-flex items-center gap-1.5 text-small font-medium text-navy">
-                      Learn more <ArrowRight size={15} aria-hidden="true" className="transition-transform duration-150 group-hover:translate-x-1" />
-                    </span>
-                  }
                 />
               </Reveal>
             ))}

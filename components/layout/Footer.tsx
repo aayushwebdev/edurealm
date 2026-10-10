@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Mail, MapPin } from "lucide-react";
-import { CONTACT, HELPLINES, PROGRAMS } from "@/content/site";
+import { CONTACT, HELPLINES } from "@/content/site";
 import { Container } from "@/components/ui";
 import { FooterCta } from "./FooterCta";
 
@@ -12,7 +12,6 @@ import { FooterCta } from "./FooterCta";
  */
 
 const COLUMNS: { title: string; links: { href: string; label: string }[] }[] = [
-  { title: "Programs", links: PROGRAMS.map((p) => ({ href: `/programs/${p.slug}`, label: p.name })) },
   {
     title: "Explore",
     links: [
@@ -46,7 +45,7 @@ export function Footer() {
             <Image src="/brand/edurealm-logo.png" alt="eduRealm: Scientia, Nexus, Crescendum" width={1188} height={342} className="h-10 w-auto" />
           </Link>
           <div className="flex flex-wrap items-center gap-2">
-            <span className="mr-1 text-small text-navy">Need help now? Call free</span>
+            <span className="mr-1 text-small text-navy">Need help now? Free Government of India helplines</span>
             {HELPLINES.map((h) => (
               <a
                 key={h.name}
@@ -83,7 +82,7 @@ export function Footer() {
               <address className="text-micro text-graphite not-italic">{CONTACT.address}</address>
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3">
+          <div className="grid grid-cols-2 gap-x-6 gap-y-8">
             {COLUMNS.map((col) => (
               <nav key={col.title} aria-label={col.title}>
                 <p className="text-small font-medium text-navy">{col.title}</p>

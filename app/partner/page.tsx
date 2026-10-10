@@ -16,7 +16,7 @@ import {
 import { Reveal } from "@/components/motion/Reveal";
 import { FaqBlock } from "@/components/sections";
 import { FAQ, FLOW } from "@/content/pages/partner";
-import { Button, ButtonRow, Container, IconBadge, PageHero, Ph, PhotoCard, PhotoFrame, Section, SectionHeading, Tag } from "@/components/ui";
+import { Button, ButtonRow, Container, IconBadge, PageHero, PhotoCard, PhotoFrame, Section, SectionHeading, Tag } from "@/components/ui";
 import { PHOTOS } from "@/content/photos";
 import { CARD_PHOTOS, type CardPhoto } from "@/content/cardPhotos";
 
@@ -214,7 +214,7 @@ export default function Partner() {
                 <Button href={OVERVIEW}>Download Partnership Overview</Button>
               </ButtonRow>
               <p className="on-dark mt-3">
-                <Ph>partnership overview PDF to add</Ph>
+                We&rsquo;ll email the overview to you.
               </p>
             </Reveal>
             <Reveal index={1} className="rounded-card border border-white/10 bg-white/[0.05] p-7 md:p-8">

@@ -8,8 +8,8 @@ import { RESPONSE_BY_ROLE } from "@/content/pages/contact";
 
 const ROLES: { v: "parent" | "school" | "company" | "ngo"; l: string; icon: LucideIcon }[] = [
   { v: "parent", l: "Parent", icon: Users },
-  { v: "school", l: "School", icon: School },
-  { v: "company", l: "Company", icon: Building2 },
+  { v: "school", l: "School/College", icon: School },
+  { v: "company", l: "Corporate", icon: Building2 },
   { v: "ngo", l: "NGO/Government", icon: Landmark },
 ];
 type Role = (typeof ROLES)[number]["v"];

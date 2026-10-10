@@ -51,14 +51,14 @@ export function Header() {
           </Link>
 
           <nav aria-label="Main" className="hidden xl:block">
-            <ul className="flex items-center gap-0.5 rounded-full bg-cream p-1 text-[0.8125rem] min-[1440px]:text-small">
+            <ul className="flex items-center gap-0.5 rounded-full bg-cream p-1 text-[0.8125rem]">
               {NAV.map((n) => (
                 <li key={n.href}>
                   <Link
                     href={n.href}
                     aria-current={isActive(n.href) ? "page" : undefined}
                     className={cx(
-                      "block rounded-full px-2.5 py-1.5 whitespace-nowrap transition-colors duration-150 min-[1440px]:px-3.5",
+                      "block rounded-full px-2.5 py-1.5 whitespace-nowrap transition-colors duration-150",
                       isActive(n.href) ? "bg-navy text-white" : "text-navy hover:bg-paper",
                     )}
                   >
@@ -72,7 +72,7 @@ export function Header() {
           <div className="flex shrink-0 items-center gap-2">
             <Link
               href={BOOK_HREF}
-              className="hidden min-h-10 items-center whitespace-nowrap rounded-full bg-gold px-5 text-small min-[1440px]:px-6 font-medium text-navy transition-colors duration-150 hover:bg-[#f2c64f] sm:inline-flex"
+              className="hidden min-h-10 items-center whitespace-nowrap rounded-full bg-gold px-5 text-small font-medium text-navy transition-colors duration-150 hover:bg-[#f2c64f] sm:inline-flex"
             >
               Book A Session
             </Link>

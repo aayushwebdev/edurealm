@@ -5,7 +5,7 @@ import { CheckList, PageSection } from "@/components/sections";
 import { STANDARDS, SUGGEST, TOPICS } from "@/content/pages/media-resources";
 import { MediaGrid } from "@/components/home/Sections";
 import { Reveal } from "@/components/motion/Reveal";
-import { Container, IconBadge, PageHero, Ph } from "@/components/ui";
+import { Container, IconBadge, PageHero } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "eduRealm TV, the Podcast & our Journal",
@@ -61,7 +61,7 @@ export default function Media() {
             </IconBadge>
             <h2 className="mt-6 text-d4">Get notified</h2>
             <p className="mt-2 text-small">
-              Launch date: <Ph>once confirmed</Ph>
+              Launch date to be announced. Sign up and we&rsquo;ll tell you first.
             </p>
           </div>
           <ChecklistGate resource="Launch news" cta="Get notified" sentLine="We’ll email launch news to" dark />

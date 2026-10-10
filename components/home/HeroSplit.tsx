@@ -29,7 +29,8 @@ const SLIDES: {
   subtitle: string;
   body: string;
   ctas: { label: string; href: string }[];
-  photo: { src: string; alt: string };
+  /** `position` overrides the default crop (e.g. keep text in the photo clear of the navbar). */
+  photo: { src: string; alt: string; position?: string };
 }[] = [
   {
     tab: "Mental Health & Resilience",
@@ -38,9 +39,14 @@ const SLIDES: {
     body: "Equipping parents, students, and educators to navigate modern pressures. Our expert-led workshops tackle the root causes of student distress, from academic anxiety and competitive exams to social media vanity and family dynamics.",
     ctas: [
       { label: "Book a Workshop", href: BOOK_SCHOOL_HREF },
-      { label: "View Workshop Details", href: "/programs/mind-before-marks" },
+      { label: "View Workshop Details", href: "/programs#protection" },
     ],
-    photo: { src: "/hero/slide-1-candle.webp", alt: "Two hands gently shield a lit candle beside a sign reading Save your child from suicide" },
+    photo: {
+      src: "/hero/slide-1-candle-v2.webp",
+      alt: "Two hands gently shield a lit candle beside a sign reading Save your child from suicide",
+      // Top-anchored: the image has extra headroom so the sign sits below the floating navbar.
+      position: "68% 0%",
+    },
   },
   {
     tab: "Beware of Coaching Tactics",
@@ -49,7 +55,7 @@ const SLIDES: {
     body: "Protect your child from the commercialization of education. Learn directly from neutral, former industry insiders who expose the hidden academic tactics, false promises, teenage validation traps and psychological baits used by modern coaching centers and their faculty.",
     ctas: [
       { label: "Book a School Workshop", href: BOOK_SCHOOL_HREF },
-      { label: "Learn the Truth", href: "/programs/informed-choice" },
+      { label: "Learn the Truth", href: "/programs#protection" },
     ],
     photo: {
       src: "/hero/slide-2-coaching.webp",
@@ -90,6 +96,38 @@ function AnimatedTitle({ segs }: { segs: Seg[] }) {
         }),
       )}
     </>
+  );
+}
+
+/** One slide's heading, subheading, body and buttons. `live` adds the id and entrance animations. */
+function SlideText({ slide, live }: { slide: (typeof SLIDES)[number]; live?: boolean }) {
+  const Heading = live ? "h1" : "p";
+  return (
+    <div className="flex h-full flex-col">
+      <Heading
+        id={live ? "hero-title" : undefined}
+        className="text-[2.75rem] leading-[1.04] !font-semibold tracking-[-0.03em] text-navy md:text-[3.25rem] lg:text-[clamp(2.5rem,6.6svh,3.75rem)]"
+      >
+        <AnimatedTitle segs={slide.title} />
+      </Heading>
+      <p
+        className={cx("mt-4 max-w-xl text-[1.25rem] leading-snug font-medium text-blue md:text-[1.5rem]", live && "hero-fade")}
+        style={live ? { animationDelay: "250ms" } : undefined}
+      >
+        {slide.subtitle}
+      </p>
+      <p className={cx("mt-3 max-w-xl text-body text-graphite", live && "hero-fade")} style={live ? { animationDelay: "350ms" } : undefined}>
+        {slide.body}
+      </p>
+      <div className={cx("mt-auto flex flex-wrap gap-3 pt-6", live && "hero-fade")} style={live ? { animationDelay: "480ms" } : undefined}>
+        <Button href={slide.ctas[0].href} variant="dark">
+          {slide.ctas[0].label}
+        </Button>
+        <Button href={slide.ctas[1].href} variant="outline" className="bg-paper/70 backdrop-blur">
+          {slide.ctas[1].label}
+        </Button>
+      </div>
+    </div>
   );
 }
 
@@ -152,6 +190,7 @@ export function HeroSplit() {
             priority={i === 0}
             sizes="100vw"
             className="object-cover object-[72%_center] lg:object-center"
+            style={sl.photo.position ? { objectPosition: sl.photo.position } : undefined}
           />
         </div>
       ))}
@@ -165,34 +204,16 @@ export function HeroSplit() {
       <div className="relative mx-auto flex w-full max-w-[1280px] flex-1 flex-col justify-center px-6 pt-28 pb-10 md:px-12 lg:px-20 lg:pt-20 lg:pb-6">
         <div className="max-w-[40rem] lg:max-w-[46rem]">
 
-          {/* Active slide — key replays the entrance animation. Heading, subheading and body reserve 2,
-              2 and 5 lines so the layout doesn't jump between slides. */}
-          <div key={active} id="hero-panel" role="tabpanel" aria-labelledby={`hero-tab-${active}`}>
-            <h1
-              id="hero-title"
-              className="flex min-h-[2.3em] flex-col justify-end text-[2.75rem] leading-[1.02] !font-semibold tracking-[-0.03em] text-navy md:text-[3.25rem] lg:text-[clamp(2.5rem,6.6svh,3.75rem)]"
-            >
-              {/* One wrapper so a one-line heading sits at the bottom of the reserved two-line space */}
-              <span className="block">
-                <AnimatedTitle segs={s.title} />
-              </span>
-            </h1>
-            <p
-              className="hero-fade mt-4 max-w-xl text-[1.25rem] leading-snug font-medium text-blue md:text-[1.5rem] lg:min-h-[2.75em]"
-              style={{ animationDelay: "250ms" }}
-            >
-              {s.subtitle}
-            </p>
-            <p className="hero-fade mt-3 max-w-xl text-body text-graphite lg:min-h-[8em]" style={{ animationDelay: "350ms" }}>
-              {s.body}
-            </p>
-            <div className="hero-fade mt-6 flex flex-wrap gap-3" style={{ animationDelay: "480ms" }}>
-              <Button href={s.ctas[0].href} variant="dark">
-                {s.ctas[0].label}
-              </Button>
-              <Button href={s.ctas[1].href} variant="outline" className="bg-paper/70 backdrop-blur">
-                {s.ctas[1].label}
-              </Button>
+          {/* All three slides share one grid cell: invisible copies size the block to the longest slide,
+              so the visible slide's text keeps natural spacing and its buttons stay in the same place. */}
+          <div className="grid">
+            {SLIDES.map((sl) => (
+              <div key={sl.tab} aria-hidden="true" className="invisible [grid-area:1/1]">
+                <SlideText slide={sl} />
+              </div>
+            ))}
+            <div key={active} id="hero-panel" role="tabpanel" aria-labelledby={`hero-tab-${active}`} className="[grid-area:1/1]">
+              <SlideText slide={s} live />
             </div>
           </div>
 

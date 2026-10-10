@@ -335,7 +335,10 @@ export function HelplineBar({ className, large }: { className?: string; large?: 
         className,
       )}
     >
-      <p className={cx("font-medium text-navy", large ? "text-d5" : "text-small")}>Need to talk to someone now?</p>
+      <div>
+        <p className={cx("font-medium text-navy", large ? "text-d5" : "text-small")}>Need to talk to someone now?</p>
+        <p className="mt-1 text-micro text-graphite">Government of India helplines. Free to call.</p>
+      </div>
       <p className="flex flex-wrap gap-x-6 gap-y-2 text-small">
         {HELPLINES.map((h) => (
           <a

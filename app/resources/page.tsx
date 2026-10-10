@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { FileCheck2, FileText, HeartPulse, PenLine, type LucideIcon } from "lucide-react";
 import { ChecklistGate } from "@/components/forms/ChecklistGate";
 import { Reveal } from "@/components/motion/Reveal";
-import { Container, IconBadge, PageHero, Ph, cx } from "@/components/ui";
+import { Container, IconBadge, PageHero, cx } from "@/components/ui";
 import { Lock } from "lucide-react";
 import { PRIVACY_NOTE, RESOURCE_DETAILS } from "@/content/pages/media-resources";
 import Link from "next/link";
@@ -52,7 +52,7 @@ export default function Resources() {
               {r.line && <p className={cx("mt-2", featured ? "text-navy" : "text-graphite")}>{r.line}</p>}
               {!r.available && (
                 <p className="mt-2">
-                  <Ph>once available</Ph>
+                  <span className="inline-flex rounded-full bg-brand-tint px-3 py-1 text-micro font-medium text-navy">Coming soon</span>
                 </p>
               )}
               <div className={cx("mt-6 border-t pt-5 text-small", featured ? "border-navy/15" : "border-rule")}>

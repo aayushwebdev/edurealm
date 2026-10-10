@@ -5,7 +5,7 @@ import { PlannedCoverageMap } from "@/components/impact/PlannedCoverageMap";
 import { Reveal } from "@/components/motion/Reveal";
 import { CompareTable, PageSection } from "@/components/sections";
 import { CALENDAR, LOG, MEASURES, MEASURES_NOTE } from "@/content/pages/impact";
-import { Button, ButtonRow, PageHero, Ph } from "@/components/ui";
+import { Button, ButtonRow, PageHero } from "@/components/ui";
 import { PHOTOS } from "@/content/photos";
 
 export const metadata: Metadata = {
@@ -48,13 +48,13 @@ export default function Impact() {
             <span className="text-graphite">awarded yet.</span>
           </p>
           <p>
-            First cohort: <Ph>date</Ph>
+            First cohort: to be announced.
           </p>
         </Detail>
         <Detail index={2} n={3} title="Annual report">
           <p>Not published yet.</p>
           <p>
-            First edition: <Ph>date</Ph>
+            First edition: to be announced.
           </p>
         </Detail>
       </DetailStack>

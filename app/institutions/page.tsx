@@ -141,7 +141,7 @@ export default function Institutions() {
                   </dl>
                   {d.dark && (
                     <p className="mt-6 border-t border-white/15 pt-4 text-small text-white/75">
-                      Need help now? Call free:{" "}
+                      Need help now? Call these free Government of India helplines:{" "}
                       {HELPLINES.map((h, hi) => (
                         <span key={h.name}>
                           {hi > 0 && " · "}

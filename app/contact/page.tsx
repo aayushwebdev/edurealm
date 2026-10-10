@@ -41,7 +41,7 @@ export default function Contact() {
     <>
       <PageHero
         crumbs={[{ href: "/contact", label: "Contact" }]}
-        tag="Parent · School · Company · NGO/Government"
+        tag="Parent · School/College/Universities · Corporate · NGO/Government"
         title={
           <>
             Get in <em>touch</em>

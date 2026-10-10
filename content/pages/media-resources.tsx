@@ -50,12 +50,12 @@ export const RESOURCE_DETAILS: Record<string, { inside: string; who: string; rel
   checklist: {
     inside: "A one-page, print-ready list of every question from the Informed Choice program, formatted to bring to an actual enrolment meeting.",
     who: "Parents",
-    related: lnk("/programs/informed-choice", "Informed Choice"),
+    related: lnk("/programs#protection", "Student Hub: coaching tactics awareness"),
   },
   "warning-signs": {
     inside: "Five early signs of academic burnout, described plainly, with one suggested next step for each.",
     who: "Parents",
-    related: lnk("/programs/mind-before-marks", "Mind Before Marks"),
+    related: lnk("/programs#protection", "Student Hub: suicide prevention support"),
   },
   nep: {
     inside: "A two-page plain-language summary of what NEP 2020 actually changes, written for a principal or trustee, not a policy specialist.",

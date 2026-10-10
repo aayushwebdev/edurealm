@@ -1,4 +1,3 @@
-import { Ph } from "@/components/ui";
 import { LAST_UPDATED } from "@/content/site";
 
 /* /impact. Copy: eduRealm content strategist draft. */
@@ -19,8 +18,8 @@ export const MEASURES_NOTE = "Every one of these publishes with its denominator,
 export const CALENDAR = [
   { what: "This page", when: "Updated quarterly" },
   { what: "Annual report", when: "Published each year alongside it" },
-  { what: "First scholarship cohort", when: <Ph key="c">date</Ph> },
-  { what: "First annual report", when: <Ph key="r">date</Ph> },
+  { what: "First scholarship cohort", when: "To be announced" },
+  { what: "First annual report", when: "To be announced" },
 ];
 
 export const LOG = [{ date: LAST_UPDATED, note: "eduRealm launched. No sessions, scholarships, or reports yet." }];

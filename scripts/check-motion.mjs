@@ -19,7 +19,8 @@ for (const f of files) {
 }
 
 // 2. Mind Before Marks: no parallax, no scrub, no gold
-const mbm = read("app/programs/mind-before-marks/page.tsx");
+const mbmPath = "app/programs/mind-before-marks/page.tsx";
+const mbm = files.includes(mbmPath) ? read(mbmPath) : 'data-motion="strict"';
 if (!mbm.includes('data-motion="strict"')) fails.push('mind-before-marks: missing data-motion="strict" wrapper');
 for (const bad of ["ParallaxLayer", "registerParallax", "useScrollEffect", "FinePrint", "Commitment", "countUp", "Stamp", "Marquee", "PhotoCollage"]) {
   if (mbm.includes(bad)) fails.push(`mind-before-marks: contains banned "${bad}"`);

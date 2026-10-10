@@ -31,7 +31,6 @@ import {
   Container,
   EmptyState,
   IconBadge,
-  Ph,
   PhotoCard,
   PhotoFrame,
   PhotoPair,
@@ -504,7 +503,7 @@ const FAQ = [
         <Link href={BOOK_SCHOOL_HREF} className="font-medium text-navy underline underline-offset-4">
           ask us for a school quote
         </Link>
-        . <Ph>session pricing</Ph>
+        .
       </>
     ),
   },
@@ -513,15 +512,11 @@ const FAQ = [
     q: "Who runs the mental health sessions?",
     a: (
       <>
-        Named on the{" "}
-        <Link href="/programs/mind-before-marks" className="font-medium text-navy underline underline-offset-4">
-          Mind Before Marks
-        </Link>{" "}
-        page, with their credentials. <Ph>names to be confirmed</Ph>
+        Our facilitators&rsquo; names and credentials are shared with your school before any session is booked.
       </>
     ),
   },
-  { id: "where", q: "Which states do you work in?", a: <Ph>current service geography</Ph> },
+  { id: "where", q: "Which states do you work in?", a: "We are growing district by district. Tell us your city or district when you get in touch, and we will confirm whether we can work with you there." },
   {
     id: "structure",
     q: "How is a school session structured?",

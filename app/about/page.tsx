@@ -18,7 +18,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
-import { Container, IconBadge, PageHero, Ph, PhotoCard, PhotoFrame, Section, SectionHeading, Tag, cx } from "@/components/ui";
+import { Container, IconBadge, PageHero, PhotoCard, PhotoFrame, Section, SectionHeading, Tag, cx } from "@/components/ui";
 import { CARD_PHOTOS, type CardPhoto } from "@/content/cardPhotos";
 import { PHOTOS } from "@/content/photos";
 
@@ -265,13 +265,12 @@ export default function About() {
                 </span>
               </div>
               <p className="absolute bottom-4 left-4 rounded-full bg-navy/80 px-4 py-1.5 text-micro font-medium text-white backdrop-blur">
-                Introductory video
+                Introductory video · Coming soon
               </p>
             </PhotoFrame>
             <p className="mt-5 text-body text-graphite">
-              Watch our short introductory video to learn more about our commitment to Indian education.
+              Watch our short introductory video to learn more about our commitment to Indian education. It&rsquo;s coming soon.
             </p>
-            <Ph>video file or link to add</Ph>
           </Reveal>
         </Container>
       </Section>

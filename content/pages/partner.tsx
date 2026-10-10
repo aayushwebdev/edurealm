@@ -1,4 +1,3 @@
-import { Ph } from "@/components/ui";
 import type { CardItem, FaqItem, Step } from "@/components/sections";
 import { Handshake, HandCoins, Share2 } from "lucide-react";
 
@@ -59,8 +58,8 @@ export const COMMITMENTS = [
 ];
 
 export const FAQ: FaqItem[] = [
-  { id: "csr", q: "Is this eligible CSR spend?", a: <Ph>CSR eligibility: confirm with your compliance team</Ph> },
-  { id: "min", q: "Is there a minimum contribution?", a: <Ph>minimum, if any</Ph> },
+  { id: "csr", q: "Is this eligible CSR spend?", a: "Our programs focus on education, which is listed as an eligible CSR activity under Schedule VII of the Companies Act, 2013. Please confirm with your compliance team; we will share whatever documentation they need." },
+  { id: "min", q: "Is there a minimum contribution?", a: "We shape the scope around your budget. Tell us what you have in mind when you get in touch." },
   { id: "cash", q: "Does the money go to the student as cash?", a: "No. Funds are disbursed directly toward the student’s education costs, not as unrestricted cash." },
-  { id: "report", q: "When do we get reports?", a: <>On the reporting cadence agreed with each partner. <Ph>default cadence</Ph></> },
+  { id: "report", q: "When do we get reports?", a: "On the reporting cadence agreed with each partner, and at least once a year." },
 ];

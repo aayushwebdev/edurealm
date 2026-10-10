@@ -1,4 +1,3 @@
-import { Ph } from "@/components/ui";
 import type { FaqItem } from "@/components/sections";
 
 /* /zeo. Copy: eduRealm content strategist draft. FRAMEWORK items are marked in the page. */
@@ -24,9 +23,9 @@ export const RURAL_TOPPER =
 
 export const FAQ: FaqItem[] = [
   { id: "coaching", q: "Do I need coaching to prepare?", a: "No. A coaching batch can’t prepare you for ZEO. That’s the point." },
-  { id: "who", q: "Who can take ZEO?", a: <Ph>grade range and eligibility criteria</Ph> },
-  { id: "fee", q: "Is there a fee?", a: <Ph>fee</Ph> },
+  { id: "who", q: "Who can take ZEO?", a: "School students across junior and senior categories. Exact grades are published with each Olympiad cycle." },
+  { id: "fee", q: "Is there a fee?", a: "Fee details are published with each Olympiad cycle." },
   { id: "rural", q: "Who counts as a rural topper?", a: RURAL_TOPPER },
   { id: "funded", q: "Who pays for the scholarships?", a: "They are fully CSR-funded, from year one." },
-  { id: "bulk", q: "Can my school register students together?", a: <Ph>bulk school registration process</Ph> },
+  { id: "bulk", q: "Can my school register students together?", a: "Yes. School coordinators can enrol multiple classes at once. Get in touch and we will share the sign-up process." },
 ];

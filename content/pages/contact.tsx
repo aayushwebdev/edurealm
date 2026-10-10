@@ -21,7 +21,7 @@ export const RESPONSE_BY_ROLE: Record<string, string> = {
 
 export const QUICK = [
   { href: "/programs", label: "Programs & sessions" },
-  { href: "/programs/informed-choice#checklist", label: "The 12 Questions Checklist" },
+  { href: "/resources#checklist", label: "The 12 Questions Checklist" },
   { href: "/contact?role=school&topic=consultation#form", label: "Book an institutional consultation" },
   { href: "/partner", label: "Partner with us" },
   { href: "/zeo", label: "ZEO Olympiad" },
